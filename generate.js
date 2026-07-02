@@ -579,7 +579,11 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
   if (info === "iron-vault-mechanics" || info === "mechanics") {
     return renderMechanicsBlock(token.content, env.currentSlug);
   }
-  if (info === "iron-vault-track" || info === "iron-vault-clock") {
+  if (
+    info === "iron-vault-track" ||
+    info === "iron-vault-clock" ||
+    info.startsWith("iron-vault-character-")
+  ) {
     return ""; // rendered separately from frontmatter, this fence is just an Obsidian placeholder
   }
   if (info === "zoommap") {
@@ -700,6 +704,135 @@ function pageHeader(title, meta) {
   </header>`;
 }
 
+// ---------------- Character sheet ----------------
+
+function titleCase(str) {
+  return String(str ?? "")
+    .replace(/[_/-]+/g, " ")
+    .trim()
+    .split(" ")
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
+function pipMeterHtml(label, value, max = 5) {
+  let pips = "";
+  for (let i = 0; i < max; i++) {
+    pips += `<span class="char-pip ${i < value ? "char-pip--filled" : ""}"></span>`;
+  }
+  return `<div class="char-meter">
+    <span class="char-meter-label">${escapeHtml(label)}</span>
+    <div class="char-pip-row">${pips}</div>
+    <span class="char-meter-value">${value}/${max}</span>
+  </div>`;
+}
+
+function assetCardHtml(asset) {
+  const idParts = String(asset.id ?? "").replace(/^asset:/, "").split("/");
+  const category = idParts.length > 1 ? titleCase(idParts[idParts.length - 2]) : "";
+  const name = titleCase(idParts[idParts.length - 1] || "Asset");
+
+  const abilities = Array.isArray(asset.abilities) ? asset.abilities : [];
+  const abilityDots = abilities
+    .map((on, i) => `<span class="char-pip ${on ? "char-pip--filled" : ""}" title="Ability ${i + 1}"></span>`)
+    .join("");
+
+  const options = asset.options && typeof asset.options === "object" ? Object.entries(asset.options) : [];
+  const optionsHtml = options.length
+    ? `<div class="char-asset-options">${options
+        .map(([k, v]) => `<span class="ivm-detail"><span class="ivm-detail-label">${escapeHtml(titleCase(k))}</span><span class="ivm-detail-value">${escapeHtml(String(v))}</span></span>`)
+        .join("")}</div>`
+    : "";
+
+  const controls = asset.controls && typeof asset.controls === "object" ? Object.entries(asset.controls) : [];
+  const controlValues = controls.filter(([k, v]) => !k.includes("/") && typeof v !== "boolean");
+  const controlFlags = controls.filter(([k, v]) => typeof v === "boolean" && v === true);
+  const controlsHtml =
+    controlValues.length || controlFlags.length
+      ? `<div class="char-asset-options">
+          ${controlValues.map(([k, v]) => `<span class="ivm-detail"><span class="ivm-detail-label">${escapeHtml(titleCase(k))}</span><span class="ivm-detail-value">${escapeHtml(String(v))}</span></span>`).join("")}
+          ${controlFlags.map(([k]) => `<span class="ivm-status-badge ivm-status-badge--reopened">${escapeHtml(titleCase(k.split("/").pop()))}</span>`).join("")}
+        </div>`
+      : "";
+
+  return `<div class="char-asset-card">
+    <div class="char-asset-header">
+      <span class="char-asset-name">${escapeHtml(name)}</span>
+      ${category ? `<span class="char-asset-category">${escapeHtml(category)}</span>` : ""}
+    </div>
+    ${abilities.length ? `<div class="char-pip-row">${abilityDots}</div>` : ""}
+    ${optionsHtml}
+    ${controlsHtml}
+  </div>`;
+}
+
+function characterSheetHtml(fm) {
+  const stats = ["edge", "heart", "iron", "shadow", "wits"]
+    .map((s) => `<div class="char-stat"><span class="char-stat-label">${s}</span><span class="char-stat-value">${fm[s] ?? 0}</span></div>`)
+    .join("");
+
+  const meters = [
+    pipMeterHtml("Health", num(fm.health, 0), 5),
+    pipMeterHtml("Spirit", num(fm.spirit, 0), 5),
+    pipMeterHtml("Supply", num(fm.supply, 0), 5),
+  ].join("");
+
+  const momentum = num(fm.momentum, 0);
+  const momentumHtml = `<div class="ivm-node">
+    <span class="ivm-node-label">Momentum</span>
+    ${meterBarHtml(0, momentum, -6, 10)}
+  </div>`;
+
+  const specialTracks = ["Bonds", "Discoveries", "Quests"]
+    .map((t) => {
+      const progress = num(fm[`${t}_Progress`], 0);
+      const xp = num(fm[`${t}_XPEarned`], 0);
+      return `<div class="ivm-node ivm-progress">
+        <span class="ivm-node-label">${t} <span class="char-meter-value">(${xp} XP earned)</span></span>
+        <div class="ivm-progress-bar">${trackBoxesHtml(progress, progress, 40)}</div>
+      </div>`;
+    })
+    .join("");
+
+  const xpAdded = num(fm.xp_added, 0);
+  const xpSpent = num(fm.xp_spent, 0);
+  const xpHtml = `<div class="ivm-node ivm-xp">
+    <span class="ivm-node-label">Experience</span>
+    <div class="ivm-details">${detail("Available", xpAdded - xpSpent)}${detail("Earned", xpAdded)}${detail("Spent", xpSpent)}</div>
+  </div>`;
+
+  const assets = Array.isArray(fm.assets) ? fm.assets.map(assetCardHtml).join("") : "";
+
+  const infoBits = [fm.callsign, fm.pronouns].filter(Boolean).map(escapeHtml).join(" &middot; ");
+
+  return `<div class="char-sheet">
+    ${fm.description ? `<p class="char-description">${escapeHtml(fm.description)}</p>` : ""}
+    ${infoBits ? `<p class="page-meta">${infoBits}</p>` : ""}
+    <div class="char-section">
+      <h3 class="char-section-title">Stats</h3>
+      <div class="char-stats-row">${stats}</div>
+    </div>
+    <div class="char-section">
+      <h3 class="char-section-title">Meters</h3>
+      <div class="char-meters-row">${meters}</div>
+      ${momentumHtml}
+    </div>
+    <div class="char-section">
+      <h3 class="char-section-title">Experience</h3>
+      ${xpHtml}
+    </div>
+    <div class="char-section">
+      <h3 class="char-section-title">Special Tracks</h3>
+      <div class="ivm-block">${specialTracks}</div>
+    </div>
+    ${assets ? `<div class="char-section">
+      <h3 class="char-section-title">Assets</h3>
+      <div class="char-assets-grid">${assets}</div>
+    </div>` : ""}
+  </div>`;
+}
+
 // ---------------- Build pages ----------------
 
 function ensureDirFor(outFile) {
@@ -745,6 +878,9 @@ for (const page of pages) {
       ${metaBits ? `<span class="ivm-node-label">${metaBits}</span>` : ""}
       <div class="ivm-progress-bar">${boxes}</div>
     </div></div>`;
+  }
+  if (fm["iron-vault-kind"] === "character") {
+    trackWidget = characterSheetHtml(fm);
   }
   const contentHtml = `${pageHeader(page.title)}${headerImg}${trackWidget}<div class="prose">${bodyHtml}</div>`;
   writePage(page.slug, layout({ title: page.title, currentSlug: page.slug, contentHtml }));
@@ -979,6 +1115,29 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
 .ivm-note { font-style: italic; color: var(--text-dim); padding-left: 0.4rem; border-left: 2px solid var(--border); }
 .ivm-unknown { font-size: 0.85em; color: var(--text-faint); }
 .ivm-parse-error { background: var(--bg-card); padding: 0.5rem; border-radius: 4px; font-size: 0.85em; }
+
+/* Character sheet */
+.char-sheet { display: flex; flex-direction: column; gap: 1.4rem; margin-bottom: 2rem; }
+.char-description { color: var(--text-dim); font-style: italic; }
+.char-section { border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.1rem; background: var(--bg-card); }
+.char-section-title { margin: 0 0 0.8rem; font-family: var(--font-head); color: var(--accent-blue); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
+.char-stats-row { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+.char-stat { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.2rem; width: 70px; height: 70px; border: 1px solid var(--border); border-radius: 50%; background: var(--bg-elevated); }
+.char-stat-label { font-size: 0.72rem; text-transform: uppercase; color: var(--text-faint); letter-spacing: 0.03em; }
+.char-stat-value { font-family: var(--font-head); font-size: 1.5rem; color: var(--accent-green); font-weight: 700; }
+.char-meters-row { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 0.8rem; }
+.char-meter { display: flex; flex-direction: column; gap: 0.3rem; }
+.char-meter-label { font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.03em; }
+.char-meter-value { font-size: 0.8rem; color: var(--text-faint); }
+.char-pip-row { display: flex; gap: 4px; }
+.char-pip { width: 14px; height: 14px; border-radius: 3px; border: 1px solid var(--border); background: var(--bg-elevated); display: inline-block; }
+.char-pip--filled { background: var(--accent-green); border-color: var(--accent-green); }
+.char-assets-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.8rem; }
+.char-asset-card { border: 1px solid var(--border); border-radius: 6px; padding: 0.7rem 0.85rem; background: var(--bg-elevated); display: flex; flex-direction: column; gap: 0.5rem; }
+.char-asset-header { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
+.char-asset-name { font-weight: 700; color: var(--text); }
+.char-asset-category { font-size: 0.72rem; color: var(--text-faint); text-transform: uppercase; }
+.char-asset-options { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
 /* Mobile-first: sidebar hidden by default, slides in from the right */
 @media (max-width: 900px) {
