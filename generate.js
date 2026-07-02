@@ -854,24 +854,25 @@ function loadMarkersFile(raw) {
   return null;
 }
 
+// Only pins with an actual link get shown on the site -- the decorative
+// wayfinding icons (paper-plane, android, etc. with no link) are Obsidian-only
+// map furniture, not something readers need.
 function mapPinsHtml(markersData, currentSlug) {
   if (!markersData || !Array.isArray(markersData.markers) || markersData.markers.length === 0) return "";
   return markersData.markers
     .map((m) => {
-      if (typeof m.x !== "number" || typeof m.y !== "number") return "";
+      if (typeof m.x !== "number" || typeof m.y !== "number" || !m.link) return "";
+      const targetSlug = resolveWikiTarget(m.link);
+      if (!targetSlug) return "";
       const xPct = (m.x * 100).toFixed(2);
       const yPct = (m.y * 100).toFixed(2);
       const color = m.iconColor ? escapeHtml(m.iconColor) : "var(--accent-green)";
       const tooltip = m.tooltip || "";
-      const targetSlug = m.link ? resolveWikiTarget(m.link) : null;
       const style = `left:${xPct}%;top:${yPct}%;`;
-      const inner = `<span class="map-pin-dot" style="background:${color};border-color:${color}"></span>${
+      const inner = `<span class="map-pin-dot" style="background:${color};color:${color}"></span>${
         tooltip ? `<span class="map-pin-tooltip">${escapeHtml(tooltip)}</span>` : ""
       }`;
-      if (targetSlug) {
-        return `<a class="map-pin" style="${style}" href="${relHref(currentSlug, targetSlug)}">${inner}</a>`;
-      }
-      return `<span class="map-pin map-pin--static" style="${style}">${inner}</span>`;
+      return `<a class="map-pin" style="${style}" href="${relHref(currentSlug, targetSlug)}">${inner}</a>`;
     })
     .join("");
 }
@@ -1296,15 +1297,14 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
   text-decoration: none;
 }
 .map-pin-dot {
-  width: 11px;
-  height: 11px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  border: 2px solid var(--bg);
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 2px currentColor, 0 0 10px 2px rgba(0, 0, 0, 0.7);
   transition: transform 0.15s ease;
 }
-.map-pin:hover .map-pin-dot { transform: scale(1.35); }
-.map-pin--static .map-pin-dot { opacity: 0.75; width: 7px; height: 7px; }
+.map-pin:hover .map-pin-dot { transform: scale(1.25); }
 .map-pin-tooltip {
   position: absolute;
   bottom: calc(100% + 6px);
