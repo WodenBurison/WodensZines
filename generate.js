@@ -1029,7 +1029,7 @@ function characterSheetHtml(fm) {
   ].join("");
 
   const momentum = num(fm.momentum, 0);
-  const momentumHtml = `<div class="ivm-node">
+  const momentumHtml = `<div class="ivm-node char-momentum-block">
     <span class="ivm-node-label">Momentum</span>
     ${momentumTrackHtml(momentum)}
   </div>`;
@@ -1065,8 +1065,10 @@ function characterSheetHtml(fm) {
     </div>
     <div class="char-section">
       <h3 class="char-section-title">Meters</h3>
-      <div class="char-meters-row">${meters}</div>
-      ${momentumHtml}
+      <div class="char-meters-layout">
+        <div class="char-meters-row">${meters}</div>
+        ${momentumHtml}
+      </div>
     </div>
     <div class="char-section">
       <h3 class="char-section-title">Experience</h3>
@@ -1553,6 +1555,28 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
   .sidebar-overlay.overlay-visible { display: block; }
   .content { padding: 1.4rem 1.1rem 3rem; }
   .page-header h1 { font-size: 1.4rem; }
+
+  /* Meters: stack Health/Spirit/Supply in a column on the left, Momentum
+     becomes a vertical chevron chain on the right instead of side-scrolling. */
+  .char-meters-layout { display: flex; flex-direction: row; align-items: flex-start; gap: 1.25rem; }
+  .char-meters-row { flex-direction: column; gap: 0.7rem; }
+  .char-momentum-block { flex-shrink: 0; }
+  .char-momentum-block .momentum-track { overflow: visible; padding: 0; }
+  .char-momentum-block .momentum-boxes { flex-direction: column; width: auto; padding: 4px 6px; }
+  .char-momentum-block .momentum-box {
+    width: 32px;
+    height: 38px;
+    margin-left: 0;
+    margin-top: -9px;
+    padding: 13px 0 6px;
+    clip-path: polygon(100% 0, 100% calc(100% - 9px), 50% 100%, 0 calc(100% - 9px), 0 0);
+  }
+  .char-momentum-block .momentum-box:first-child { margin-top: 0; padding-top: 6px; }
+  .char-momentum-block .momentum-box--last { clip-path: none; padding-bottom: 6px; }
+  .char-momentum-block .momentum-box--current {
+    clip-path: polygon(100% 0, 100% calc(100% - 9px), 50% 100%, 0 calc(100% - 9px), 0 0, 50% 9px);
+    transform-origin: center top;
+  }
 }
 @media (min-width: 901px) {
   .hamburger { display: none; }
