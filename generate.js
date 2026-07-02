@@ -22,7 +22,9 @@ const GRAPHICS_DIR = path.join(VAULT_ROOT, "Graphics");
 const OUTPUT_DIR = path.join(__dirname, "docs");
 const SITE_TITLE = "Woden's Adventures";
 const SITE_TAGLINE = "An Ironsworn: Starforged solo playthrough";
-const SKIP_TOP_LEVEL = new Set(["Custom Content"]); // shown in nav but collapsed by default
+// Top-level vault folders that are Obsidian-only reference material (roll tables,
+// oracles, etc.) and should never be published to the site at all.
+const EXCLUDED_TOP_LEVEL = new Set(["Custom Content"]);
 const IMAGE_EXT = new Set([".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".svg"]);
 
 // ---------------- Utilities ----------------
@@ -80,7 +82,10 @@ function relAssetHref(fromSlug, assetRelPath) {
 
 // ---------------- Discover content ----------------
 
-const mdFiles = walk(CONTENT_DIR, [".md"]);
+const mdFiles = walk(CONTENT_DIR, [".md"]).filter((file) => {
+  const topFolder = path.relative(CONTENT_DIR, file).split(path.sep)[0];
+  return !EXCLUDED_TOP_LEVEL.has(topFolder);
+});
 const graphicsFiles = fs.existsSync(GRAPHICS_DIR)
   ? fs
       .readdirSync(GRAPHICS_DIR)
@@ -620,8 +625,7 @@ function renderNavNode(name, node, currentSlug, depth) {
   const items = (node.items || []).sort((a, b) => a.title.localeCompare(b.title));
   const childFolders = Object.entries(node.children || {}).sort(([a], [b]) => a.localeCompare(b));
   if (items.length === 0 && childFolders.length === 0) return "";
-  const collapsedClass = SKIP_TOP_LEVEL.has(name) && depth === 0 ? " nav-collapsed" : "";
-  let html = `<li class="nav-folder${collapsedClass}"><button class="nav-folder-toggle" type="button">${escapeHtml(name)}</button><ul class="nav-sublist">`;
+  let html = `<li class="nav-folder"><button class="nav-folder-toggle" type="button">${escapeHtml(name)}</button><ul class="nav-sublist">`;
   for (const [childName, childNode] of childFolders) {
     html += renderNavNode(childName, childNode, currentSlug, depth + 1);
   }
