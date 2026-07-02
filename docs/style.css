@@ -390,8 +390,8 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
   /* Meters: stack Health/Spirit/Supply in a column on the left, Momentum
      becomes a vertical chevron chain on the right instead of side-scrolling. */
   .char-meters-layout { display: flex; flex-direction: row; align-items: flex-start; gap: 1.25rem; }
-  .char-meters-row { flex-direction: column; gap: 0.7rem; }
-  .char-momentum-block { flex-shrink: 0; }
+  .char-meters-row { flex-direction: column; gap: 0.7rem; order: 2; }
+  .char-momentum-block { flex-shrink: 0; order: 1; }
   .char-momentum-block .momentum-track { overflow: visible; padding: 0; }
   .char-momentum-block .momentum-boxes { flex-direction: column; width: auto; padding: 4px 6px; }
   .char-momentum-block .momentum-box {
