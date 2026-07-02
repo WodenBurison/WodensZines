@@ -614,7 +614,10 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
       if (assetSlug) {
         const label = titleCase((env.currentSlug || "").split("/").pop() || "Map");
         const img = `<img class="page-hero-image" src="${relAssetHref(env.currentSlug, assetSlug)}" alt="${escapeHtml(label)}">`;
-        return mapFrameHtml(img, label);
+        const markersMatch = token.content.match(/^\s*markers:\s*(.+)$/m);
+        const markersData = markersMatch ? loadMarkersFile(markersMatch[1]) : null;
+        const pins = mapPinsHtml(markersData, env.currentSlug);
+        return mapFrameHtml(img, label, pins);
       }
     }
     return "";
@@ -814,7 +817,7 @@ function mapFrameAccentHtml({ pos, along, inset = 0, len, color, corner }) {
 
 // Site-only HUD frame for map images -- purely CSS/SVG, independent of the
 // viewportFrame image Obsidian's zoommap plugin uses in-app.
-function mapFrameHtml(imgHtml, label) {
+function mapFrameHtml(imgHtml, label, pinsHtml = "") {
   const accents = MAP_FRAME_ACCENTS.map(mapFrameAccentHtml).join("");
   return `<div class="map-frame">
     <span class="map-frame-corner map-frame-corner--tl"></span>
@@ -825,9 +828,52 @@ function mapFrameHtml(imgHtml, label) {
     <div class="map-frame-window">
       ${imgHtml}
       <span class="map-frame-scanlines"></span>
+      ${pinsHtml}
     </div>
     <div class="map-frame-caption">${escapeHtml(label)}</div>
   </div>`;
+}
+
+// Marker files referenced from a zoommap block are either a direct vault-relative
+// path (Graphics/kalidasmaw.markers.json) or a bare name living at the vault
+// root (The Forge -- an extensionless JSON file, same format).
+function loadMarkersFile(raw) {
+  const clean = raw.trim().replace(/^["']|["']$/g, "");
+  const candidates = clean.includes("/")
+    ? [path.join(VAULT_ROOT, clean)]
+    : [path.join(VAULT_ROOT, clean), path.join(VAULT_ROOT, clean + ".json")];
+  for (const p of candidates) {
+    if (fs.existsSync(p)) {
+      try {
+        return JSON.parse(fs.readFileSync(p, "utf-8"));
+      } catch {
+        return null;
+      }
+    }
+  }
+  return null;
+}
+
+function mapPinsHtml(markersData, currentSlug) {
+  if (!markersData || !Array.isArray(markersData.markers) || markersData.markers.length === 0) return "";
+  return markersData.markers
+    .map((m) => {
+      if (typeof m.x !== "number" || typeof m.y !== "number") return "";
+      const xPct = (m.x * 100).toFixed(2);
+      const yPct = (m.y * 100).toFixed(2);
+      const color = m.iconColor ? escapeHtml(m.iconColor) : "var(--accent-green)";
+      const tooltip = m.tooltip || "";
+      const targetSlug = m.link ? resolveWikiTarget(m.link) : null;
+      const style = `left:${xPct}%;top:${yPct}%;`;
+      const inner = `<span class="map-pin-dot" style="background:${color};border-color:${color}"></span>${
+        tooltip ? `<span class="map-pin-tooltip">${escapeHtml(tooltip)}</span>` : ""
+      }`;
+      if (targetSlug) {
+        return `<a class="map-pin" style="${style}" href="${relHref(currentSlug, targetSlug)}">${inner}</a>`;
+      }
+      return `<span class="map-pin map-pin--static" style="${style}">${inner}</span>`;
+    })
+    .join("");
 }
 
 function pipMeterHtml(label, value, max = 5) {
@@ -1240,6 +1286,44 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
   );
   mix-blend-mode: overlay;
 }
+.map-pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  text-decoration: none;
+}
+.map-pin-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  transition: transform 0.15s ease;
+}
+.map-pin:hover .map-pin-dot { transform: scale(1.35); }
+.map-pin--static .map-pin-dot { opacity: 0.75; width: 7px; height: 7px; }
+.map-pin-tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: var(--font-head);
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  background: rgba(10, 20, 32, 0.85);
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+.map-pin:hover .map-pin-tooltip { opacity: 1; }
 
 .prose h2 { color: var(--accent-blue); font-family: var(--font-head); margin-top: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
 .prose h3 { color: var(--accent-green); font-family: var(--font-head); margin-top: 1.5rem; }

@@ -190,6 +190,44 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
   );
   mix-blend-mode: overlay;
 }
+.map-pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  text-decoration: none;
+}
+.map-pin-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  transition: transform 0.15s ease;
+}
+.map-pin:hover .map-pin-dot { transform: scale(1.35); }
+.map-pin--static .map-pin-dot { opacity: 0.75; width: 7px; height: 7px; }
+.map-pin-tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: var(--font-head);
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  background: rgba(10, 20, 32, 0.85);
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+.map-pin:hover .map-pin-tooltip { opacity: 1; }
 
 .prose h2 { color: var(--accent-blue); font-family: var(--font-head); margin-top: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
 .prose h3 { color: var(--accent-green); font-family: var(--font-head); margin-top: 1.5rem; }
