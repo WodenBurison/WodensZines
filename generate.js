@@ -862,8 +862,23 @@ function loadMarkersFile(raw) {
 // list of [name, name] pairs), deliberately separate from Iron Vault's marker
 // JSON -- proximity between pins isn't reliable enough to infer connections
 // from, and this way editing pins in Obsidian can never silently break a route.
-function mapRoutesHtml(routes, markersData) {
-  if (!Array.isArray(routes) || routes.length === 0) return "";
+// Pulls wikilink targets out of a "| Passages | [[A]]; [[B]] |" style table
+// row, which is how Ironsworn's planet-oracle results already get recorded.
+function extractPassagesRow(bodyText) {
+  if (!bodyText) return [];
+  const rowMatch = bodyText.match(/^\s*\|\s*Passages\s*\|\s*(.+?)\s*\|?\s*$/im);
+  if (!rowMatch) return [];
+  const cell = rowMatch[1];
+  const links = [];
+  const linkRe = /\[\[([^\]|#]+)/g;
+  let m;
+  while ((m = linkRe.exec(cell))) {
+    links.push(m[1].trim());
+  }
+  return links;
+}
+
+function mapRoutesHtml(explicitRoutes, markersData) {
   if (!markersData || !Array.isArray(markersData.markers)) return "";
 
   function findPoint(name) {
@@ -874,12 +889,36 @@ function mapRoutesHtml(routes, markersData) {
     return m && typeof m.x === "number" && typeof m.y === "number" ? m : null;
   }
 
-  const lines = routes
-    .map((pair) => {
-      if (!Array.isArray(pair) || pair.length !== 2) return "";
-      const a = findPoint(pair[0]);
-      const b = findPoint(pair[1]);
+  // Two ways to declare a route, both optional and mergeable:
+  //  1. site-routes on the sector map note itself: a list of [name, name] pairs.
+  //  2. a "Passages" row in an individual pinned page's own stat table -- this
+  //     is data you're already recording during play, so it's read directly
+  //     rather than asking you to duplicate it as a separate property. Only
+  //     draws if the target is also pinned on this same map.
+  const pairs = [];
+  if (Array.isArray(explicitRoutes)) {
+    for (const pair of explicitRoutes) {
+      if (Array.isArray(pair) && pair.length === 2) pairs.push([String(pair[0]), String(pair[1])]);
+    }
+  }
+  for (const marker of markersData.markers) {
+    if (!marker.link) continue;
+    const page = slugByFullPath.get(resolveWikiTarget(marker.link) || "");
+    if (!page) continue;
+    for (const target of extractPassagesRow(page.body)) {
+      pairs.push([marker.link, target]);
+    }
+  }
+
+  const seen = new Set();
+  const lines = pairs
+    .map(([nameA, nameB]) => {
+      const a = findPoint(nameA);
+      const b = findPoint(nameB);
       if (!a || !b) return "";
+      const key = [a.id || nameA, b.id || nameB].sort().join("|");
+      if (seen.has(key)) return "";
+      seen.add(key);
       return `<line x1="${(a.x * 100).toFixed(2)}" y1="${(a.y * 100).toFixed(2)}" x2="${(b.x * 100).toFixed(2)}" y2="${(b.y * 100).toFixed(2)}" />`;
     })
     .join("");
@@ -1328,10 +1367,11 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
 }
 .map-routes line {
   stroke: var(--accent-green);
-  stroke-width: 0.35;
-  stroke-dasharray: 1.4 1;
-  opacity: 0.8;
-  vector-effect: non-scaling-stroke;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-dasharray: 3 2;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 3px rgba(61, 220, 151, 0.8));
 }
 .map-pin {
   position: absolute;
