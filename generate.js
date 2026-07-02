@@ -764,6 +764,38 @@ const MAP_FRAME_ACCENTS = [
   { pos: "right", along: 88, inset: 7, len: 11, color: "var(--accent-blue)" },
 ];
 
+// Seeded PRNG (mulberry32) so the extra generated accents are reproducible
+// across builds instead of reshuffling every time -- keeps git diffs clean.
+function mulberry32(seed) {
+  return function () {
+    seed |= 0;
+    seed = (seed + 0x6d2b79f5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function generateMapFrameAccents(count) {
+  const rng = mulberry32(20260702);
+  const edges = ["top", "bottom", "left", "right"];
+  const colors = ["var(--accent-blue)", "var(--accent-green)", "var(--text-faint)"];
+  const out = [];
+  for (let i = 0; i < count; i++) {
+    out.push({
+      pos: edges[Math.floor(rng() * edges.length)],
+      along: Math.round(rng() * 100),
+      inset: Math.round(rng() * 14),
+      len: 4 + Math.round(rng() * 22),
+      color: colors[Math.floor(rng() * colors.length)],
+      corner: rng() < 0.25,
+    });
+  }
+  return out;
+}
+
+MAP_FRAME_ACCENTS.push(...generateMapFrameAccents(32));
+
 function mapFrameAccentHtml({ pos, along, inset = 0, len, color, corner }) {
   const horizontal = pos === "top" || pos === "bottom";
   const edgeStyle =
