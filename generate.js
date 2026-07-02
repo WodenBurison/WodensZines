@@ -617,7 +617,8 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
         const markersMatch = token.content.match(/^\s*markers:\s*(.+)$/m);
         const markersData = markersMatch ? loadMarkersFile(markersMatch[1]) : null;
         const pins = mapPinsHtml(markersData, env.currentSlug);
-        return mapFrameHtml(img, label, pins);
+        const routes = mapRoutesHtml(env.frontmatter?.["site-routes"], markersData);
+        return mapFrameHtml(img, label, routes + pins);
       }
     }
     return "";
@@ -625,9 +626,9 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
   return defaultFence(tokens, idx, options, env, self);
 };
 
-function renderMarkdown(bodyText, currentSlug) {
+function renderMarkdown(bodyText, currentSlug, frontmatter) {
   const withLinks = processOutsideFences(bodyText, (chunk) => convertWikilinks(chunk, currentSlug));
-  return md.render(withLinks, { currentSlug });
+  return md.render(withLinks, { currentSlug, frontmatter: frontmatter || {} });
 }
 
 // ---------------- Navigation tree ----------------
@@ -857,6 +858,36 @@ function loadMarkersFile(raw) {
 // Only pins with an actual link get shown on the site -- the decorative
 // wayfinding icons (paper-plane, android, etc. with no link) are Obsidian-only
 // map furniture, not something readers need.
+// Routes are declared explicitly in the note's own frontmatter (site-routes: a
+// list of [name, name] pairs), deliberately separate from Iron Vault's marker
+// JSON -- proximity between pins isn't reliable enough to infer connections
+// from, and this way editing pins in Obsidian can never silently break a route.
+function mapRoutesHtml(routes, markersData) {
+  if (!Array.isArray(routes) || routes.length === 0) return "";
+  if (!markersData || !Array.isArray(markersData.markers)) return "";
+
+  function findPoint(name) {
+    const target = String(name).trim().toLowerCase();
+    const m = markersData.markers.find(
+      (mk) => (mk.link && mk.link.toLowerCase() === target) || (mk.tooltip && mk.tooltip.toLowerCase() === target),
+    );
+    return m && typeof m.x === "number" && typeof m.y === "number" ? m : null;
+  }
+
+  const lines = routes
+    .map((pair) => {
+      if (!Array.isArray(pair) || pair.length !== 2) return "";
+      const a = findPoint(pair[0]);
+      const b = findPoint(pair[1]);
+      if (!a || !b) return "";
+      return `<line x1="${(a.x * 100).toFixed(2)}" y1="${(a.y * 100).toFixed(2)}" x2="${(b.x * 100).toFixed(2)}" y2="${(b.y * 100).toFixed(2)}" />`;
+    })
+    .join("");
+  if (!lines) return "";
+
+  return `<svg class="map-routes" viewBox="0 0 100 100" preserveAspectRatio="none">${lines}</svg>`;
+}
+
 function mapPinsHtml(markersData, currentSlug) {
   if (!markersData || !Array.isArray(markersData.markers) || markersData.markers.length === 0) return "";
   return markersData.markers
@@ -1041,7 +1072,7 @@ for (const f of graphicsFiles) {
 // build every content page
 for (const page of pages) {
   if (page.topFolder === "Journals") continue; // handled specially below
-  const bodyHtml = renderMarkdown(page.body, page.slug);
+  const bodyHtml = renderMarkdown(page.body, page.slug, page.frontmatter);
   let headerImg = "";
   const mapPath = page.frontmatter.path;
   if (mapPath) {
@@ -1286,6 +1317,21 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
     transparent 3px
   );
   mix-blend-mode: overlay;
+}
+.map-routes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+.map-routes line {
+  stroke: var(--accent-green);
+  stroke-width: 0.35;
+  stroke-dasharray: 1.4 1;
+  opacity: 0.8;
+  vector-effect: non-scaling-stroke;
 }
 .map-pin {
   position: absolute;

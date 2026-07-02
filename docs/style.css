@@ -190,6 +190,21 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
   );
   mix-blend-mode: overlay;
 }
+.map-routes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+.map-routes line {
+  stroke: var(--accent-green);
+  stroke-width: 0.35;
+  stroke-dasharray: 1.4 1;
+  opacity: 0.8;
+  vector-effect: non-scaling-stroke;
+}
 .map-pin {
   position: absolute;
   transform: translate(-50%, -50%);
