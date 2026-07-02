@@ -166,10 +166,8 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
 .map-frame-corner--tr { top: 5px; right: 5px; border-top: 2px solid var(--accent-green); border-right: 2px solid var(--accent-green); border-radius: 0 3px 0 0; }
 .map-frame-corner--bl { bottom: 5px; left: 5px; border-bottom: 2px solid var(--accent-green); border-left: 2px solid var(--accent-green); border-radius: 0 0 0 3px; }
 .map-frame-corner--br { bottom: 5px; right: 5px; border-bottom: 2px solid var(--accent-green); border-right: 2px solid var(--accent-green); border-radius: 0 0 3px 0; }
-.map-frame-tick { position: absolute; background: var(--accent-blue); pointer-events: none; opacity: 0.6; }
-.map-frame-tick--left { top: 50%; left: 0; width: 4px; height: 1px; transform: translateY(-50%); }
-.map-frame-tick--right { top: 50%; right: 0; width: 4px; height: 1px; transform: translateY(-50%); }
-.map-frame-tick--top { top: 0; left: 50%; width: 1px; height: 4px; transform: translateX(-50%); }
+.map-frame-accent { position: absolute; pointer-events: none; opacity: 0.85; }
+.map-frame-accent-stub { position: absolute; pointer-events: none; }
 .map-frame-caption {
   margin-top: 10px;
   font-family: var(--font-head);

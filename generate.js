@@ -739,17 +739,49 @@ function titleCase(str) {
     .join(" ");
 }
 
+// Scattered straight/corner accent lines along the frame border -- varied
+// lengths, colors and edges, deliberately asymmetric rather than mirrored.
+// pos = which edge; along = % position along that edge; len = px; corner =
+// bend a short stub inward at the end, like a mini version of the main brackets.
+const MAP_FRAME_ACCENTS = [
+  { pos: "top", along: 22, len: 20, color: "var(--accent-blue)" },
+  { pos: "top", along: 38, len: 8, color: "var(--accent-green)" },
+  { pos: "top", along: 68, len: 14, color: "var(--accent-blue)", corner: true },
+  { pos: "bottom", along: 18, len: 10, color: "var(--accent-green)" },
+  { pos: "bottom", along: 55, len: 26, color: "var(--accent-blue)" },
+  { pos: "left", along: 20, len: 12, color: "var(--accent-green)", corner: true },
+  { pos: "left", along: 48, len: 22, color: "var(--accent-blue)" },
+  { pos: "left", along: 78, len: 8, color: "var(--text-faint)" },
+  { pos: "right", along: 15, len: 18, color: "var(--accent-blue)" },
+  { pos: "right", along: 42, len: 9, color: "var(--accent-green)" },
+  { pos: "right", along: 70, len: 15, color: "var(--accent-green)", corner: true },
+];
+
+function mapFrameAccentHtml({ pos, along, len, color, corner }) {
+  const horizontal = pos === "top" || pos === "bottom";
+  const edgeStyle = pos === "top" ? "top:0;" : pos === "bottom" ? "bottom:0;" : pos === "left" ? "left:0;" : "right:0;";
+  const alongStyle = horizontal ? `left:${along}%;` : `top:${along}%;`;
+  const sizeStyle = horizontal ? `width:${len}px;height:2px;` : `width:2px;height:${len}px;`;
+  const stub = corner
+    ? `<span class="map-frame-accent-stub" style="background:${color};${
+        horizontal
+          ? `width:2px;height:8px;left:0;${pos === "top" ? "top:0;" : "bottom:0;"}`
+          : `width:8px;height:2px;top:0;${pos === "left" ? "left:0;" : "right:0;"}`
+      }"></span>`
+    : "";
+  return `<span class="map-frame-accent" style="background:${color};${edgeStyle}${alongStyle}${sizeStyle}">${stub}</span>`;
+}
+
 // Site-only HUD frame for map images -- purely CSS/SVG, independent of the
 // viewportFrame image Obsidian's zoommap plugin uses in-app.
 function mapFrameHtml(imgHtml, label) {
+  const accents = MAP_FRAME_ACCENTS.map(mapFrameAccentHtml).join("");
   return `<div class="map-frame">
     <span class="map-frame-corner map-frame-corner--tl"></span>
     <span class="map-frame-corner map-frame-corner--tr"></span>
     <span class="map-frame-corner map-frame-corner--bl"></span>
     <span class="map-frame-corner map-frame-corner--br"></span>
-    <span class="map-frame-tick map-frame-tick--left"></span>
-    <span class="map-frame-tick map-frame-tick--right"></span>
-    <span class="map-frame-tick map-frame-tick--top"></span>
+    ${accents}
     <div class="map-frame-window">
       ${imgHtml}
       <span class="map-frame-scanlines"></span>
@@ -1144,10 +1176,8 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
 .map-frame-corner--tr { top: 5px; right: 5px; border-top: 2px solid var(--accent-green); border-right: 2px solid var(--accent-green); border-radius: 0 3px 0 0; }
 .map-frame-corner--bl { bottom: 5px; left: 5px; border-bottom: 2px solid var(--accent-green); border-left: 2px solid var(--accent-green); border-radius: 0 0 0 3px; }
 .map-frame-corner--br { bottom: 5px; right: 5px; border-bottom: 2px solid var(--accent-green); border-right: 2px solid var(--accent-green); border-radius: 0 0 3px 0; }
-.map-frame-tick { position: absolute; background: var(--accent-blue); pointer-events: none; opacity: 0.6; }
-.map-frame-tick--left { top: 50%; left: 0; width: 4px; height: 1px; transform: translateY(-50%); }
-.map-frame-tick--right { top: 50%; right: 0; width: 4px; height: 1px; transform: translateY(-50%); }
-.map-frame-tick--top { top: 0; left: 50%; width: 1px; height: 4px; transform: translateX(-50%); }
+.map-frame-accent { position: absolute; pointer-events: none; opacity: 0.85; }
+.map-frame-accent-stub { position: absolute; pointer-events: none; }
 .map-frame-caption {
   margin-top: 10px;
   font-family: var(--font-head);
