@@ -180,13 +180,13 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
 .ivm-status-badge--completed, .ivm-status-badge--upgraded { background: rgba(79, 179, 217, 0.18); color: var(--accent-blue); }
 .ivm-status-badge--removed { background: rgba(230, 102, 122, 0.18); color: var(--danger); }
 .ivm-status-badge--reopened { background: rgba(224, 178, 86, 0.2); color: var(--warn); }
-.ivm-progress-bar, .ivm-meter { display: flex; flex-direction: column; gap: 0.2rem; }
-.ivm-progress-bar-track, .ivm-meter-track { position: relative; height: 8px; border-radius: 4px; background: var(--bg-elevated); overflow: hidden; }
-.ivm-progress-bar-fill, .ivm-meter-fill { position: absolute; top: 0; left: 0; height: 100%; border-radius: 4px; }
-.ivm-progress-bar-fill--prev { background: var(--text-faint); opacity: 0.5; }
-.ivm-progress-bar-fill--new { background: var(--accent-blue); }
-.ivm-meter-fill { background: var(--accent-green); }
+.ivm-progress-bar, .ivm-meter { display: flex; flex-direction: column; gap: 0.35rem; }
+.ivm-meter-track { position: relative; height: 8px; border-radius: 4px; background: var(--bg-elevated); overflow: hidden; }
+.ivm-meter-fill { position: absolute; top: 0; left: 0; height: 100%; border-radius: 4px; background: var(--accent-green); }
 .ivm-progress-bar-label, .ivm-meter-label { font-size: 0.85em; color: var(--text-dim); }
+.ivm-track-boxes { display: flex; flex-wrap: wrap; gap: 3px; }
+.ivm-tally-box { flex-shrink: 0; }
+.ivm-tally-box rect { transition: fill 0.2s ease; }
 .ivm-meter-up { color: var(--accent-green); }
 .ivm-meter-down { color: var(--danger); }
 .ivm-clock-segs { display: flex; gap: 3px; }

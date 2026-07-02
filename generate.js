@@ -331,16 +331,42 @@ function trackTicksFromRank(rank) {
 function ticksToBoxesTicks(t) { return { boxes: Math.floor(t / 4), ticks: t % 4 }; }
 function boxesTicksToTotal(b, t) { return num(b) * 4 + num(t); }
 
-function progressBarHtml(fromTicks, toTicks, maxTicks = 40) {
-  const pct = (v) => Math.max(0, Math.min(100, (v / maxTicks) * 100));
+// Renders one Ironsworn progress-track box as an SVG tally mark:
+// 0 ticks = empty square, then diagonal, diagonal (X), vertical, horizontal
+// strokes accumulate until the box reads as an 8-point asterisk at 4 ticks.
+function tallyBoxSvg(ticks, opts = {}) {
+  const filled = opts.justFilled === true;
+  const strokeColor = filled ? "var(--accent-green)" : "var(--accent-blue)";
+  const bg = ticks >= 4 ? (filled ? "rgba(61,220,151,0.16)" : "rgba(79,179,217,0.12)") : "transparent";
+  let strokes = "";
+  if (ticks >= 1) strokes += `<line x1="4" y1="4" x2="20" y2="20" />`;
+  if (ticks >= 2) strokes += `<line x1="20" y1="4" x2="4" y2="20" />`;
+  if (ticks >= 3) strokes += `<line x1="12" y1="3" x2="12" y2="21" />`;
+  if (ticks >= 4) strokes += `<line x1="3" y1="12" x2="21" y2="12" />`;
+  return `<svg class="ivm-tally-box" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+    <rect x="1.5" y="1.5" width="21" height="21" rx="3" fill="${bg}" stroke="var(--border)" stroke-width="1.5" />
+    <g stroke="${strokeColor}" stroke-width="2" stroke-linecap="round">${strokes}</g>
+  </svg>`;
+}
+
+function trackBoxesHtml(fromTicks, toTicks, maxTicks = 40) {
+  const totalBoxes = Math.ceil(maxTicks / 4);
   const fromB = ticksToBoxesTicks(fromTicks), toB = ticksToBoxesTicks(toTicks);
-  return `<div class="ivm-progress-bar">
-    <div class="ivm-progress-bar-track">
-      <div class="ivm-progress-bar-fill ivm-progress-bar-fill--prev" style="width:${pct(fromTicks)}%"></div>
-      <div class="ivm-progress-bar-fill ivm-progress-bar-fill--new" style="width:${pct(toTicks)}%"></div>
-    </div>
-    <span class="ivm-progress-bar-label">${fromB.boxes}.${fromB.ticks} &rarr; ${toB.boxes}.${toB.ticks} boxes</span>
-  </div>`;
+  let boxes = "";
+  for (let i = 0; i < totalBoxes; i++) {
+    const boxStart = i * 4;
+    const priorTicks = Math.max(0, Math.min(4, fromTicks - boxStart));
+    const currentTicks = Math.max(0, Math.min(4, toTicks - boxStart));
+    const justFilled = currentTicks > priorTicks;
+    boxes += tallyBoxSvg(currentTicks, { justFilled });
+  }
+  const changed = fromTicks !== toTicks;
+  return `<div class="ivm-track-boxes">${boxes}</div>
+    <span class="ivm-progress-bar-label">${toB.boxes}.${toB.ticks} / ${totalBoxes} boxes${changed ? ` <span class="ivm-meter-up">(was ${fromB.boxes}.${fromB.ticks})</span>` : ""}</span>`;
+}
+
+function progressBarHtml(fromTicks, toTicks, maxTicks = 40) {
+  return `<div class="ivm-progress-bar">${trackBoxesHtml(fromTicks, toTicks, maxTicks)}</div>`;
 }
 
 function meterBarHtml(from, to, min = 0, max = 10) {
@@ -548,6 +574,9 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
   if (info === "iron-vault-mechanics" || info === "mechanics") {
     return renderMechanicsBlock(token.content, env.currentSlug);
   }
+  if (info === "iron-vault-track" || info === "iron-vault-clock") {
+    return ""; // rendered separately from frontmatter, this fence is just an Obsidian placeholder
+  }
   if (info === "zoommap") {
     const pathMatch = token.content.match(/^\s*-?\s*path:\s*(.+)$/m);
     if (pathMatch) {
@@ -703,7 +732,17 @@ for (const page of pages) {
       headerImg = `<img class="page-hero-image" src="${relAssetHref(page.slug, assetSlug)}" alt="${escapeHtml(page.title)}">`;
     }
   }
-  const contentHtml = `${pageHeader(page.title)}${headerImg}<div class="prose">${bodyHtml}</div>`;
+  let trackWidget = "";
+  const fm = page.frontmatter;
+  if (fm["iron-vault-kind"] === "progress" && typeof fm.progress === "number") {
+    const boxes = trackBoxesHtml(fm.progress, fm.progress, 40);
+    const metaBits = [fm["track-type"], fm.rank].filter(Boolean).map(escapeHtml).join(" &middot; ");
+    trackWidget = `<div class="ivm-block"><div class="ivm-node ivm-progress">
+      ${metaBits ? `<span class="ivm-node-label">${metaBits}</span>` : ""}
+      <div class="ivm-progress-bar">${boxes}</div>
+    </div></div>`;
+  }
+  const contentHtml = `${pageHeader(page.title)}${headerImg}${trackWidget}<div class="prose">${bodyHtml}</div>`;
   writePage(page.slug, layout({ title: page.title, currentSlug: page.slug, contentHtml }));
 }
 
@@ -917,13 +956,13 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
 .ivm-status-badge--completed, .ivm-status-badge--upgraded { background: rgba(79, 179, 217, 0.18); color: var(--accent-blue); }
 .ivm-status-badge--removed { background: rgba(230, 102, 122, 0.18); color: var(--danger); }
 .ivm-status-badge--reopened { background: rgba(224, 178, 86, 0.2); color: var(--warn); }
-.ivm-progress-bar, .ivm-meter { display: flex; flex-direction: column; gap: 0.2rem; }
-.ivm-progress-bar-track, .ivm-meter-track { position: relative; height: 8px; border-radius: 4px; background: var(--bg-elevated); overflow: hidden; }
-.ivm-progress-bar-fill, .ivm-meter-fill { position: absolute; top: 0; left: 0; height: 100%; border-radius: 4px; }
-.ivm-progress-bar-fill--prev { background: var(--text-faint); opacity: 0.5; }
-.ivm-progress-bar-fill--new { background: var(--accent-blue); }
-.ivm-meter-fill { background: var(--accent-green); }
+.ivm-progress-bar, .ivm-meter { display: flex; flex-direction: column; gap: 0.35rem; }
+.ivm-meter-track { position: relative; height: 8px; border-radius: 4px; background: var(--bg-elevated); overflow: hidden; }
+.ivm-meter-fill { position: absolute; top: 0; left: 0; height: 100%; border-radius: 4px; background: var(--accent-green); }
 .ivm-progress-bar-label, .ivm-meter-label { font-size: 0.85em; color: var(--text-dim); }
+.ivm-track-boxes { display: flex; flex-wrap: wrap; gap: 3px; }
+.ivm-tally-box { flex-shrink: 0; }
+.ivm-tally-box rect { transition: fill 0.2s ease; }
 .ivm-meter-up { color: var(--accent-green); }
 .ivm-meter-down { color: var(--danger); }
 .ivm-clock-segs { display: flex; gap: 3px; }
