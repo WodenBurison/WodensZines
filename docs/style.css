@@ -222,27 +222,51 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
 .char-asset-name { font-weight: 700; color: var(--text); }
 .char-asset-category { font-size: 0.72rem; color: var(--text-faint); text-transform: uppercase; }
 .char-asset-options { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.char-asset-abilities { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.char-asset-abilities li { display: flex; gap: 0.5rem; align-items: flex-start; font-size: 0.85rem; line-height: 1.45; }
+.char-asset-abilities .char-pip { margin-top: 0.25rem; flex-shrink: 0; }
+.char-ability--unlocked { color: var(--text); }
+.char-ability--locked { color: var(--text-faint); }
+.char-ability--locked .char-pip { opacity: 0.5; }
+.char-asset-credit { font-size: 0.72rem; color: var(--text-faint); margin-top: 0.6rem; }
 
-/* Momentum ruler (-6..+10) */
-.momentum-track { padding: 1.9rem 0.75rem 1.5rem; }
-.momentum-track-bar { position: relative; height: 3px; background: var(--border); border-radius: 2px; margin: 0 2px; }
-.momentum-tick { position: absolute; top: -3px; width: 1px; height: 8px; background: var(--border); transform: translateX(-50%); }
-.momentum-tick--major { width: 2px; height: 12px; top: -5px; background: var(--text-faint); }
-.momentum-tick-label { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); font-size: 0.72rem; color: var(--text-faint); white-space: nowrap; }
-.momentum-track-marker { position: absolute; top: -13px; transform: translateX(-50%); }
-.momentum-track-value {
-  display: inline-block;
+/* Momentum track (-6..+10): connected chevron boxes, point stabs into the next box */
+.momentum-track { padding: 0.6rem 0; overflow-x: auto; }
+.momentum-boxes { display: flex; width: max-content; padding: 6px 4px; }
+.momentum-box {
+  position: relative;
+  flex-shrink: 0;
+  width: 38px;
+  height: 32px;
+  margin-left: -9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px 0 15px;
   font-family: var(--font-head);
+  font-size: 0.66rem;
   font-weight: 700;
-  font-size: 0.85rem;
-  padding: 0.2rem 0.55rem;
-  border-radius: 999px;
-  white-space: nowrap;
-  box-shadow: 0 0 0 3px var(--bg-card);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 50%, calc(100% - 9px) 100%, 0 100%);
 }
-.momentum-positive .momentum-track-value { background: rgba(61, 220, 151, 0.22); color: var(--accent-green); }
-.momentum-negative .momentum-track-value { background: rgba(230, 102, 122, 0.22); color: var(--danger); }
-.momentum-zero .momentum-track-value { background: rgba(79, 179, 217, 0.22); color: var(--accent-blue); }
+.momentum-box:first-child { margin-left: 0; padding-left: 6px; }
+.momentum-box--last { clip-path: none; padding-right: 6px; }
+.momentum-box--neg { color: var(--danger); }
+.momentum-box--pos { color: var(--accent-green); }
+.momentum-box--zero { color: var(--accent-blue); }
+.momentum-box--current {
+  background: var(--accent-green) !important;
+  color: var(--bg) !important;
+  border-color: var(--accent-green);
+  transform: scale(1.05);
+  transform-origin: left center;
+  z-index: 30 !important;
+  box-shadow: 0 0 6px rgba(61, 220, 151, 0.5);
+  /* both edges point rightward: a notch cut into the left mirrors the point on the right */
+  clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 50%, calc(100% - 9px) 100%, 0 100%, 9px 50%);
+}
 
 /* Mobile-first: sidebar hidden by default, slides in from the right */
 @media (max-width: 900px) {
