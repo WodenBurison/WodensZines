@@ -393,20 +393,23 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
   .char-meters-row { flex-direction: column; gap: 0.7rem; order: 2; }
   .char-momentum-block { flex-shrink: 0; order: 1; }
   .char-momentum-block .momentum-track { overflow: visible; padding: 0; }
-  .char-momentum-block .momentum-boxes { flex-direction: column; width: auto; padding: 4px 6px; }
+  /* column-reverse: DOM order is still -6..+10, this just flips the stack so
+     +10 ends up on top and -6 on bottom without touching the desktop order. */
+  .char-momentum-block .momentum-boxes { flex-direction: column-reverse; width: auto; padding: 4px 6px; }
   .char-momentum-block .momentum-box {
     width: 32px;
     height: 38px;
     margin-left: 0;
     margin-top: -9px;
-    padding: 13px 0 6px;
-    clip-path: polygon(100% 0, 100% calc(100% - 9px), 50% 100%, 0 calc(100% - 9px), 0 0);
+    padding: 6px 0 13px;
+    /* point at the top now (stabs upward into the next-higher box), flat bottom */
+    clip-path: polygon(100% 9px, 50% 0, 0 9px, 0 100%, 100% 100%);
   }
-  .char-momentum-block .momentum-box:first-child { margin-top: 0; padding-top: 6px; }
-  .char-momentum-block .momentum-box--last { clip-path: none; padding-bottom: 6px; }
+  .char-momentum-block .momentum-box:first-child { margin-top: 0; padding-bottom: 6px; }
+  .char-momentum-block .momentum-box--last { clip-path: none; padding-top: 6px; }
   .char-momentum-block .momentum-box--current {
-    clip-path: polygon(100% 0, 100% calc(100% - 9px), 50% 100%, 0 calc(100% - 9px), 0 0, 50% 9px);
-    transform-origin: center top;
+    clip-path: polygon(100% 100%, 100% 9px, 50% 0, 0 9px, 0 100%, 50% calc(100% - 9px));
+    transform-origin: center bottom;
   }
 }
 @media (min-width: 901px) {
