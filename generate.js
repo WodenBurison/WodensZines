@@ -385,6 +385,36 @@ function meterBarHtml(from, to, min = 0, max = 10) {
   </div>`;
 }
 
+// Ironsworn momentum is a -6..+10 ruler that acts as a roll modifier, so the
+// sign always matters -- this renders it as a labeled scale with the current
+// value called out, rather than a generic 0-max meter bar.
+function momentumTrackHtml(value) {
+  const min = -6;
+  const max = 10;
+  const clamped = Math.max(min, Math.min(max, value));
+  const pct = (v) => ((v - min) / (max - min)) * 100;
+  const sign = value > 0 ? "+" : "";
+  const valueClass = value > 0 ? "momentum-positive" : value < 0 ? "momentum-negative" : "momentum-zero";
+
+  let ticks = "";
+  for (let i = min; i <= max; i++) {
+    const isMajor = i === min || i === max || i === 0;
+    const label = i > 0 ? `+${i}` : `${i}`;
+    ticks += `<div class="momentum-tick${isMajor ? " momentum-tick--major" : ""}" style="left:${pct(i)}%">${
+      isMajor ? `<span class="momentum-tick-label">${label}</span>` : ""
+    }</div>`;
+  }
+
+  return `<div class="momentum-track">
+    <div class="momentum-track-bar">
+      ${ticks}
+      <div class="momentum-track-marker ${valueClass}" style="left:${pct(clamped)}%">
+        <span class="momentum-track-value">${sign}${value}</span>
+      </div>
+    </div>
+  </div>`;
+}
+
 function renderMechanicsBlock(src, currentSlug) {
   const mdInline = mdInlineFactory(currentSlug);
   let nodes;
@@ -781,7 +811,7 @@ function characterSheetHtml(fm) {
   const momentum = num(fm.momentum, 0);
   const momentumHtml = `<div class="ivm-node">
     <span class="ivm-node-label">Momentum</span>
-    ${meterBarHtml(0, momentum, -6, 10)}
+    ${momentumTrackHtml(momentum)}
   </div>`;
 
   const specialTracks = ["Bonds", "Discoveries", "Quests"]
@@ -1122,8 +1152,8 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
 .char-section { border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.1rem; background: var(--bg-card); }
 .char-section-title { margin: 0 0 0.8rem; font-family: var(--font-head); color: var(--accent-blue); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
 .char-stats-row { display: flex; flex-wrap: wrap; gap: 0.7rem; }
-.char-stat { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.2rem; width: 70px; height: 70px; border: 1px solid var(--border); border-radius: 50%; background: var(--bg-elevated); }
-.char-stat-label { font-size: 0.72rem; text-transform: uppercase; color: var(--text-faint); letter-spacing: 0.03em; }
+.char-stat { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.25rem; width: 74px; height: 74px; padding: 0 0.3rem; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-elevated); }
+.char-stat-label { font-size: 0.68rem; text-transform: uppercase; color: var(--text-faint); letter-spacing: 0.02em; text-align: center; line-height: 1.1; }
 .char-stat-value { font-family: var(--font-head); font-size: 1.5rem; color: var(--accent-green); font-weight: 700; }
 .char-meters-row { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 0.8rem; }
 .char-meter { display: flex; flex-direction: column; gap: 0.3rem; }
@@ -1138,6 +1168,27 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
 .char-asset-name { font-weight: 700; color: var(--text); }
 .char-asset-category { font-size: 0.72rem; color: var(--text-faint); text-transform: uppercase; }
 .char-asset-options { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+/* Momentum ruler (-6..+10) */
+.momentum-track { padding: 1.9rem 0.75rem 1.5rem; }
+.momentum-track-bar { position: relative; height: 3px; background: var(--border); border-radius: 2px; margin: 0 2px; }
+.momentum-tick { position: absolute; top: -3px; width: 1px; height: 8px; background: var(--border); transform: translateX(-50%); }
+.momentum-tick--major { width: 2px; height: 12px; top: -5px; background: var(--text-faint); }
+.momentum-tick-label { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); font-size: 0.72rem; color: var(--text-faint); white-space: nowrap; }
+.momentum-track-marker { position: absolute; top: -13px; transform: translateX(-50%); }
+.momentum-track-value {
+  display: inline-block;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 0 0 3px var(--bg-card);
+}
+.momentum-positive .momentum-track-value { background: rgba(61, 220, 151, 0.22); color: var(--accent-green); }
+.momentum-negative .momentum-track-value { background: rgba(230, 102, 122, 0.22); color: var(--danger); }
+.momentum-zero .momentum-track-value { background: rgba(79, 179, 217, 0.22); color: var(--accent-blue); }
 
 /* Mobile-first: sidebar hidden by default, slides in from the right */
 @media (max-width: 900px) {
