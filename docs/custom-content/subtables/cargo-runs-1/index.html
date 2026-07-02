@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cargo Runs 1 · Woden&#39;s Adventures</title>
+<meta name="description" content="An Ironsworn: Starforged solo playthrough">
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+<div class="topbar">
+  <a class="topbar-title" href="../../../">Woden&#39;s Adventures</a>
+  <button class="hamburger" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-tagline">An Ironsworn: Starforged solo playthrough</div>
+    <ul class="nav-list">
+      <li><a class="nav-link" href="../../../">Home / Sessions</a></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Characters</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../characters/woden/">Woden</a></li></ul></li><li class="nav-folder nav-collapsed"><button class="nav-folder-toggle" type="button">Custom Content</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Activities and Reasons</button><ul class="nav-sublist"><li><a class="nav-link" href="../../activities-and-reasons/npc-crew-shore-leave-activities/">NPC Crew Shore Leave Activities</a></li><li><a class="nav-link" href="../../activities-and-reasons/reasons-a-pc-is-absent/">Reasons a PC is Absent</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Adventure Ideas and Side Jobs</button><ul class="nav-sublist"><li><a class="nav-link" href="../../adventure-ideas-and-side-jobs/adventure-ideas/">Adventure Ideas</a></li><li><a class="nav-link" href="../../adventure-ideas-and-side-jobs/side-jobs/">Side Jobs</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Cargo</button><ul class="nav-sublist"><li><a class="nav-link" href="../../cargo/bulk-cargo/">Bulk Cargo</a></li><li><a class="nav-link" href="../../cargo/cargo-runs/">Cargo Runs</a></li><li><a class="nav-link" href="../../cargo/cargo-weight/">Cargo Weight</a></li><li><a class="nav-link" href="../../cargo/personal-and-small-items-in-a-cargo-hold/">Personal and Small Items in a Cargo Hold</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Encounters and Discoveries</button><ul class="nav-sublist"><li><a class="nav-link" href="../../encounters-and-discoveries/asteroid-belt-encounters/">Asteroid Belt Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/desert-planet-encounters/">Desert Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/events/">Events</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/ice-planet-encounters/">Ice Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/jungle-planet-encounters/">Jungle Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/lab-experiment-encounters/">Lab Experiment Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/news-chatter/">News Chatter</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/ocean-planet-encounters/">Ocean Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/ravaged-research-facility/">Ravaged Research Facility</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/space-complications-and-encounters/">Space Complications and Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/spaceship-mechanical-problems/">Spaceship Mechanical Problems</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/spatial-anomalies/">Spatial Anomalies</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/star-system-exploration-discoveries/">Star System Exploration Discoveries</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/urban-encounters-and-complications/">Urban Encounters and Complications</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/volcanic-planet-encounters/">Volcanic Planet Encounters</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Fields of Study</button><ul class="nav-sublist"><li><a class="nav-link" href="../../fields-of-study/agriculture/">Agriculture</a></li><li><a class="nav-link" href="../../fields-of-study/architecture/">Architecture</a></li><li><a class="nav-link" href="../../fields-of-study/business/">Business</a></li><li><a class="nav-link" href="../../fields-of-study/divinity/">Divinity</a></li><li><a class="nav-link" href="../../fields-of-study/education/">Education</a></li><li><a class="nav-link" href="../../fields-of-study/engineering-fields/">Engineering Fields</a></li><li><a class="nav-link" href="../../fields-of-study/family-and-consumer-science/">Family and Consumer Science</a></li><li><a class="nav-link" href="../../fields-of-study/formal-sciences/">Formal Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/human-physical-performance/">Human Physical Performance</a></li><li><a class="nav-link" href="../../fields-of-study/humanities/">Humanities</a></li><li><a class="nav-link" href="../../fields-of-study/journalism-and-communications/">Journalism and Communications</a></li><li><a class="nav-link" href="../../fields-of-study/law/">Law</a></li><li><a class="nav-link" href="../../fields-of-study/library-studies/">Library Studies</a></li><li><a class="nav-link" href="../../fields-of-study/medicinal-sciences/">Medicinal Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/military-sciences/">Military Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/natural-sciences/">Natural Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/psychic-abilities/">Psychic Abilities</a></li><li><a class="nav-link" href="../../fields-of-study/public-administration/">Public Administration</a></li><li><a class="nav-link" href="../../fields-of-study/social-sciences/">Social Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/transportation/">Transportation</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Items and Things</button><ul class="nav-sublist"><li><a class="nav-link" href="../../items-and-things/book-titles/">Book Titles</a></li><li><a class="nav-link" href="../../items-and-things/bounty-board/">Bounty Board</a></li><li><a class="nav-link" href="../../items-and-things/computer-files/">Computer Files</a></li><li><a class="nav-link" href="../../items-and-things/fictional-alloys/">Fictional Alloys</a></li><li><a class="nav-link" href="../../items-and-things/fictional-infectious-diseases/">Fictional Infectious Diseases</a></li><li><a class="nav-link" href="../../items-and-things/fictional-medications/">Fictional Medications</a></li><li><a class="nav-link" href="../../items-and-things/fictional-spices/">Fictional Spices</a></li><li><a class="nav-link" href="../../items-and-things/fictional-trade-goods-and-animals/">Fictional Trade Goods and Animals</a></li><li><a class="nav-link" href="../../items-and-things/illegal-drugs/">Illegal Drugs</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-biology-lab/">Items in a Biology Lab</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-chemical-lab/">Items in a Chemical Lab</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-crashed-cargo-spaceship/">Items in a Crashed Cargo Spaceship</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-cybernetics-clinic/">Items in a Cybernetics Clinic</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-desk/">Items in a Desk</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-freighter-cockpit/">Items in a Freighter Cockpit</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-governmental-office/">Items in a Governmental Office</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-lab-directors-office/">Items in a Lab Directors Office</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-ship-captain-quarters/">Items in a Ship Captain Quarters</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-warehouse/">Items in a Warehouse</a></li><li><a class="nav-link" href="../../items-and-things/metals/">Metals</a></li><li><a class="nav-link" href="../../items-and-things/military-medals-and-decorations/">Military Medals and Decorations</a></li><li><a class="nav-link" href="../../items-and-things/poisonous-plants/">Poisonous Plants</a></li><li><a class="nav-link" href="../../items-and-things/types-of-planets/">Types of Planets</a></li><li><a class="nav-link" href="../../items-and-things/types-of-stars/">Types of Stars</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Names</button><ul class="nav-sublist"><li><a class="nav-link" href="../../names/alien-names/">Alien Names</a></li><li><a class="nav-link" href="../../names/bar-names/">Bar Names</a></li><li><a class="nav-link" href="../../names/city-names/">City Names</a></li><li><a class="nav-link" href="../../names/corporation-names/">Corporation Names</a></li><li><a class="nav-link" href="../../names/drink-names/">Drink Names</a></li><li><a class="nav-link" href="../../names/human-female-names/">Human Female Names</a></li><li><a class="nav-link" href="../../names/human-male-names/">Human Male Names</a></li><li><a class="nav-link" href="../../names/human-surnames/">Human Surnames</a></li><li><a class="nav-link" href="../../names/planet-names/">Planet Names</a></li><li><a class="nav-link" href="../../names/ship-names/">Ship Names</a></li><li><a class="nav-link" href="../../names/space-station-names/">Space Station Names</a></li><li><a class="nav-link" href="../../names/spaceport-names/">Spaceport Names</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Places</button><ul class="nav-sublist"><li><a class="nav-link" href="../../places/casinos-and-hotels/">Casinos and Hotels</a></li><li><a class="nav-link" href="../../places/spaceport-bar-rumors/">Spaceport Bar Rumors</a></li><li><a class="nav-link" href="../../places/unexplored-planets/">Unexplored Planets</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Subtables</button><ul class="nav-sublist"><li><a class="nav-link" href="../alien-names-1/">Alien Names 1</a></li><li><a class="nav-link" href="../alien-names-2/">Alien Names 2</a></li><li><a class="nav-link" href="../bar-names-1/">Bar Names 1</a></li><li><a class="nav-link" href="../bar-names-2/">Bar Names 2</a></li><li><a class="nav-link" href="../book-titles-1/">Book Titles 1</a></li><li><a class="nav-link" href="../book-titles-2/">Book Titles 2</a></li><li><a class="nav-link" href="../bulk-cargo-1/">Bulk Cargo 1</a></li><li><a class="nav-link" href="../bulk-cargo-2/">Bulk Cargo 2</a></li><li><a class="nav-link" href="../bulk-cargo-3/">Bulk Cargo 3</a></li><li><a class="nav-link nav-active" href="./">Cargo Runs 1</a></li><li><a class="nav-link" href="../cargo-runs-2/">Cargo Runs 2</a></li><li><a class="nav-link" href="../city-names-1/">City Names 1</a></li><li><a class="nav-link" href="../city-names-2/">City Names 2</a></li><li><a class="nav-link" href="../city-names-3/">City Names 3</a></li><li><a class="nav-link" href="../city-names-4/">City Names 4</a></li><li><a class="nav-link" href="../codes-1/">Codes 1</a></li><li><a class="nav-link" href="../codes-2/">Codes 2</a></li><li><a class="nav-link" href="../corporation-names-1/">Corporation Names 1</a></li><li><a class="nav-link" href="../corporation-names-2/">Corporation Names 2</a></li><li><a class="nav-link" href="../divinity-1/">Divinity 1</a></li><li><a class="nav-link" href="../divinity-2/">Divinity 2</a></li><li><a class="nav-link" href="../engineering-fields-1/">Engineering Fields 1</a></li><li><a class="nav-link" href="../engineering-fields-2/">Engineering Fields 2</a></li><li><a class="nav-link" href="../formal-sciences-1/">Formal Sciences 1</a></li><li><a class="nav-link" href="../formal-sciences-2/">Formal Sciences 2</a></li><li><a class="nav-link" href="../human-female-names-1/">Human Female Names 1</a></li><li><a class="nav-link" href="../human-female-names-2/">Human Female Names 2</a></li><li><a class="nav-link" href="../human-female-names-3/">Human Female Names 3</a></li><li><a class="nav-link" href="../human-female-names-4/">Human Female Names 4</a></li><li><a class="nav-link" href="../human-male-names-1/">Human Male Names 1</a></li><li><a class="nav-link" href="../human-male-names-2/">Human Male Names 2</a></li><li><a class="nav-link" href="../human-male-names-3/">Human Male Names 3</a></li><li><a class="nav-link" href="../human-male-names-4/">Human Male Names 4</a></li><li><a class="nav-link" href="../human-surnames-1/">Human Surnames 1</a></li><li><a class="nav-link" href="../human-surnames-2/">Human Surnames 2</a></li><li><a class="nav-link" href="../human-surnames-3/">Human Surnames 3</a></li><li><a class="nav-link" href="../human-surnames-4/">Human Surnames 4</a></li><li><a class="nav-link" href="../humanities-1/">Humanities 1</a></li><li><a class="nav-link" href="../humanities-2/">Humanities 2</a></li><li><a class="nav-link" href="../humanities-3/">Humanities 3</a></li><li><a class="nav-link" href="../journalism-and-communications-1/">Journalism and Communications 1</a></li><li><a class="nav-link" href="../journalism-and-communications-2/">Journalism and Communications 2</a></li><li><a class="nav-link" href="../military-sciences-1/">Military Sciences 1</a></li><li><a class="nav-link" href="../military-sciences-2/">Military Sciences 2</a></li><li><a class="nav-link" href="../natural-sciences-1/">Natural Sciences 1</a></li><li><a class="nav-link" href="../natural-sciences-2/">Natural Sciences 2</a></li><li><a class="nav-link" href="../natural-sciences-3/">Natural Sciences 3</a></li><li><a class="nav-link" href="../planet-names-1/">Planet Names 1</a></li><li><a class="nav-link" href="../planet-names-2/">Planet Names 2</a></li><li><a class="nav-link" href="../planet-names-3/">Planet Names 3</a></li><li><a class="nav-link" href="../planet-names-4/">Planet Names 4</a></li><li><a class="nav-link" href="../planet-names-5/">Planet Names 5</a></li><li><a class="nav-link" href="../planet-names-6/">Planet Names 6</a></li><li><a class="nav-link" href="../ship-names-1/">Ship Names 1</a></li><li><a class="nav-link" href="../ship-names-2/">Ship Names 2</a></li><li><a class="nav-link" href="../ship-names-3/">Ship Names 3</a></li><li><a class="nav-link" href="../ship-names-4/">Ship Names 4</a></li><li><a class="nav-link" href="../ship-transponder-info-1/">Ship Transponder Info 1</a></li><li><a class="nav-link" href="../ship-transponder-info-2/">Ship Transponder Info 2</a></li><li><a class="nav-link" href="../ship-transponder-info-3/">Ship Transponder Info 3</a></li><li><a class="nav-link" href="../ship-transponder-info-4/">Ship Transponder Info 4</a></li><li><a class="nav-link" href="../social-sciences-1/">Social Sciences 1</a></li><li><a class="nav-link" href="../social-sciences-2/">Social Sciences 2</a></li><li><a class="nav-link" href="../social-sciences-3/">Social Sciences 3</a></li><li><a class="nav-link" href="../social-sciences-4/">Social Sciences 4</a></li><li><a class="nav-link" href="../space-station-names-1/">Space Station Names 1</a></li><li><a class="nav-link" href="../space-station-names-2/">Space Station Names 2</a></li><li><a class="nav-link" href="../spaceport-names-1/">Spaceport Names 1</a></li><li><a class="nav-link" href="../spaceport-names-2/">Spaceport Names 2</a></li><li><a class="nav-link" href="../technobabble-1/">Technobabble 1</a></li><li><a class="nav-link" href="../technobabble-2/">Technobabble 2</a></li><li><a class="nav-link" href="../unexplored-planets-1/">Unexplored Planets 1</a></li><li><a class="nav-link" href="../unexplored-planets-2/">Unexplored Planets 2</a></li><li><a class="nav-link" href="../unexplored-planets-3/">Unexplored Planets 3</a></li><li><a class="nav-link" href="../unexplored-planets-4/">Unexplored Planets 4</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Technobabble</button><ul class="nav-sublist"><li><a class="nav-link" href="../../technobabble/codes/">Codes</a></li><li><a class="nav-link" href="../../technobabble/technobabble/">Technobabble</a></li><li><a class="nav-link" href="../../technobabble/technobabble-phrases/">Technobabble Phrases</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Vessels</button><ul class="nav-sublist"><li><a class="nav-link" href="../../vessels/derelicts/">Derelicts</a></li><li><a class="nav-link" href="../../vessels/escape-pods/">Escape Pods</a></li><li><a class="nav-link" href="../../vessels/ship-transponder-info/">Ship Transponder Info</a></li><li><a class="nav-link" href="../../vessels/space-stations/">Space Stations</a></li></ul></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Locations</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">1 Main Map</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../locations/1-main-map/the-forge/">The Forge</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">3 Outlands</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Kalidas Maw</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Planets</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/planets/centurion/">Centurion</a></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/planets/holland/">Holland</a></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/planets/san-luis-potos/">San Luis Potosí</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Settlements</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Beacon</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Places</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/beacon/places/stellartron/">StellarTron</a></li></ul></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/beacon/beacon/">Beacon</a></li></ul></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/concord/">Concord</a></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/lodestar/">Lodestar</a></li></ul></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/kalidas-maw/">Kalidas Maw</a></li></ul></li></ul></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Lore</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Connections Worksheet</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../lore/connections-worksheet/isla-nakayama/">Isla Nakayama</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Factions</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../lore/factions/hunters-of-the-golden-alliance/">Hunters of the Golden Alliance</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">NPCs</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../lore/npcs/tindra-companion/">Tindra (Companion)</a></li></ul></li><li><a class="nav-link" href="../../../lore/galactic-standard-time/">Galactic Standard Time</a></li><li><a class="nav-link" href="../../../lore/quest-starters/">Quest Starters</a></li><li><a class="nav-link" href="../../../lore/truths/">Truths</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Progress</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../progress/bg-vow-find-a-new-precursor-species/">BG Vow Find a new precursor species</a></li><li><a class="nav-link" href="../../../progress/ct-isla-nakayama/">CT Isla Nakayama</a></li></ul></li>
+    </ul>
+  </nav>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <main class="content">
+    <header class="page-header">
+    <h1>Cargo Runs 1</h1>
+    
+  </header><div class="prose"><table>
+<thead>
+<tr>
+<th>dice: 1d100</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Take 59 metric tons of UNDISCLOSED from Theandrios to Columbus — Employer: Botino (corp) — Complication: During the voyage, scanners detect microscopic organisms escaping from several containers.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Take 54 metric tons of dates/figs/pineapples/mangoes/avocados/guavas from Blackburn to Durango — Employer: Sekar Palmer — Complication: The cargo containers bear the logo of a corporation that recently went out of business.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Take 71 metric tons of self-adhesive plastic in rolls from Warren to Sevastopol — Employer: Shiro Darsten — Complication: Malfunction in the computer mainframe causes the ship to drop out of FTL.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Take 400 metric tons of plastic tubes, pipes, and fittings from Fafnir to Kryvyi Rih — Employer: Oza Sandal Sciences (corp) — Complication: At the destination, the employer informs the party that pickup has been delayed by more than a week.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Take 268 metric tons of nitrogenous fertilizers from Holland to Port Jarvis — Employer: Unknown — Complication: A toxic mold begins spreading from one of the containers to the other sand to the ship.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Take 328 metric tons of synthetic staple fiber woven fabrics from Brady to Deadhorse — Employer: Unknown — Complication: En route, the crew is contacted by someone claiming to be the employer that asks them to reroute to another system.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Take 481 metric tons of nitrile-function compounds from Zoltar to Mexicali — Employer: JenCorp (corp) — Complication: When the vessel arrives at the destination the crew is informed that the planet is under quarantine.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Take 440 metric tons of lead (unwrought) from Santiago to Siegen — Employer: Alys Finley — Complication: The employer insists on riding along for the trip.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Take 214 metric tons of fork-lift trucks from Yurupari to Zurn X — Employer: Neptunus Enterprises (corp) — Complication: Upon arrival at the destination the employer demands the crew unload the cargo by themselves.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Take 243 metric tons of manioc/Jerusalem artichoke/sweet potato roots, and tubers from San Luis Potosí to Ozu Athens — Employer: Agnethe Kirk — Complication: Several containers have the remnants of biohazard symbols on them.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Take 448 metric tons of cobalt from Kiyosu to Sebastopol — Employer: Unknown — Complication: En route scanners pick up the wreckage of a ship floating in space.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Take 87 metric tons of technical apparatus from Burgos to Bhiwandi — Employer: Biomate (corp) — Complication: The cargo turns out to be trafficking victims hidden in the crates.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Take 285 metric tons of UNDISCLOSED from Phoenixia to Vogar Signa — Employer: Orion Jokar — Complication: Random members of the crew awaken in the middle of the night to find themselves in the cargo hold.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Take 524 metric tons of spray/dispersing mechanical appliances from Helix to Chizhou — Employer: Jost Dubois — Complication: Malfunctions in the vessel's engines cause delays.</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Take 356 metric tons of pepper (dried/crushed/ground) from Palladia to Phoenixia — Employer: Neuria (corp) — Complication: One container is shaped radically different than all the rest.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Take 461 metric tons of monument/building stones, and art from Richmond to Vega's Belt — Employer: Irella El-Haddad — Complication: The cargo is too heavy for the loading equipment causing a delayed departure.</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Take 34 metric tons of electrical resistors from Luther to Prometheus — Employer: Unknown — Complication: A mysterious woman contacts the crew and offers more money if they take the cargo to her instead of delivering it.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Take 40 metric tons of carnival items and magic tricks from Narvik Poord to New Tasmania — Employer: Hellman Cháng — Complication: Massive solar flare occurs as the ship approaches the destination system.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Take 375 metric tons of UNDISCLOSED from Ermoupoli to Durham Cole — Employer: Neptunetix (corp) — Complication: Several containers seem to bulge out at the sides growing larger during the journey.</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Take 213 metric tons of miscellaneous furniture from Lawton Ardmore to Xinyi — Employer: Unknown — Complication: At the destination, the cargo bay door is stuck shut.</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Take 55 metric tons of refrigerators and freezers from Uoke to Loki — Employer: Talkbotics (corp) — Complication: En route a dead body is discovered in the cargo.</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Take 444 metric tons of plastic tubes, pipes, and fittings from Republic to New Paris — Employer: Datics (corp) — Complication: Docking clap malfunction makes it impossible to offload the cargo until they are repaired.</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Take 84 metric tons of miscellaneous machinery from Callahan Zou to Tuli Oti — Employer: Socian Analytics (corp) — Complication: FTL drive malfunction leaves the ship stranded in interstellar space until repairs are done.</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Take 217 metric tons of hydrogen and rare gasses from Sükhbaatar to Gnagua KMM — Employer: Sobrantes (corp) — Complication: Sealant leak causes malfunctions in the cargo storage systems.</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Take 25 metric tons of material removal machine tools from Excelsior Springs to Shaki Aberdeen — Employer: Mantik (corp) — Complication: The employer claims the shipment is late no matter when it is delivered.</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Take 30 metric tons of unmanufactured tobacco and tobacco waste from Belmont Free to Victoria — Employer: Glycloud (corp) — Complication: The ship experiences power fluctuations slowing the journey to the destination.</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Take 445 metric tons of liquid/gas checking instruments from Phorbas to Bixby — Employer: Hyeptic (corp) — Complication: Power converter on the fritz causing the voyage to be delayed.</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Take 317 metric tons of deburr/sharpen/grind machine tools from Troy to Masi-Manimba — Employer: Intellisphere (corp) — Complication: Self-declared freedom fighters intercept the vessel and demand the cargo.</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Take 124 metric tons of UNDISCLOSED from Arcadia to Enyo — Employer: ZeroG Dynamics (corp) — Complication: At the destination a unit of heavily armed soldiers arrives and demands to search the cargo.</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Take 175 metric tons of cold-rolled iron or non-alloy steel products from Stavropol to Newcastle — Employer: Zenith Jaafar — Complication: The employer informs the crew at the last moment that four passengers will be coming along for the voyage.</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Take 7 metric tons of women's clothing from Chimalhuacán to Inverness Soar — Employer: Richa York — Complication: At the destination, the cargo is subject to a thorough inspection that may take a couple of days.</td>
+</tr>
+<tr>
+<td>32</td>
+<td>Take 191 metric tons of printing machinery from Cabeiro to Leto Prime — Employer: Clonix (corp) — Complication: After the bulk of the cargo is loaded another container arrives that looks different than the others.</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Take 79 metric tons of hydrogen, and rare gasses from Orozco to Dazhbog — Employer: Bystran Lehmann — Complication: A container leak begins poisoning the vessel's atmosphere.</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Take 99 metric tons of red meat offal from Bellona to Montes Claros — Employer: XenoCorp (corp) — Complication: Regardless of the cargo containers' environmental controls the cargo smells foul.</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Take 19 metric tons of electric sound/visual signal bells or alarms from Camden to Waldron — Employer: Chito Corra — Complication: While unloading, a group of bounty hunters arrives looking for the employer.</td>
+</tr>
+<tr>
+<td>36</td>
+<td>Take 215 metric tons of spray/dispersing mechanical appliances from Leto Prime to Juazeiro — Employer: Yasuhiro Jasha — Complication: An electromagnetic pulse possibly damages some of the cargo.</td>
+</tr>
+<tr>
+<td>37</td>
+<td>Take 87 metric tons of miscellaneous heterocyclics from New Jerusalem to Stavropol — Employer: Kosens (corp) — Complication: One container is vastly heavier than all the rest.</td>
+</tr>
+<tr>
+<td>38</td>
+<td>Take 18 metric tons of electromechanical domestic appliances from Lincoln to Bloom Theta — Employer: Minnie Dio — Complication: En route the ship passes through an uncharted dust cloud.</td>
+</tr>
+<tr>
+<td>39</td>
+<td>Take 3 metric tons of footwear (textile) from Baza to Edgewater — Employer: Oylstone (corp) — Complication: Microfilament fractures appear in the hull during the voyage.</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Take 135 metric tons of non-organic scents used for industrial manufacturing from Otrera to Plutus — Employer: Spiromic (corp) — Complication: A container leak fills the ship with strange odors.</td>
+</tr>
+<tr>
+<td>41</td>
+<td>Take 6 metric tons of chemicals used in electronics from Araraquara to Sihui — Employer: Raymond Reynolds — Complication: Cosmic radiation interferes with the ship's systems during the journey.</td>
+</tr>
+<tr>
+<td>42</td>
+<td>Take 225 metric tons of UNDISCLOSED from Calypso to Ahone II — Employer: Nerys Riley — Complication: During the voyage, the crew begins having paranoid delusions that seem to always involve the cargo hold in some way.</td>
+</tr>
+<tr>
+<td>43</td>
+<td>Take 133 metric tons of piston engine parts from Suur Tõll to New Berlin — Employer: Unknown — Complication: A commando team is hidden within the containers, and while en route, they emerge and try to take over the ship.</td>
+</tr>
+<tr>
+<td>44</td>
+<td>Take 10 metric tons of cyclic hydrocarbons from Satara Blud to Granger's World — Employer: Paquito Zarander — Complication: Strange vapors begin coming from the cargo containers mid-voyage.</td>
+</tr>
+<tr>
+<td>45</td>
+<td>Take 423 metric tons of acrylic polymers from Newcastle to Zangilan — Employer: NebulaTech (corp) — Complication: En route, scanners pick up the presence of organisms in the cargo containers.</td>
+</tr>
+<tr>
+<td>46</td>
+<td>Take 500 metric tons of saturated acyclic monoacids from Ugajin to Mwaro — Employer: Scaza (corp) — Complication: The arrival of the cargo to the vessel is delayed by 1D4 days.</td>
+</tr>
+<tr>
+<td>47</td>
+<td>Take 562 metric tons of molding boxes/base from Rapti to Sheree — Employer: NeoCore (corp) — Complication: One container seems to be making odd noises.</td>
+</tr>
+<tr>
+<td>48</td>
+<td>Take 76 metric tons of air or vacuum pumps from Turiacus to Deadhorse — Employer: Unknown — Complication: At the drop point two groups show up and claim ownership of the cargo.</td>
+</tr>
+<tr>
+<td>49</td>
+<td>Take 86 metric tons of telecommunication receivers from Nagpur Indigo to Indalo — Employer: Thion Bell — Complication: As the ship enters the destination star system it receives a distress call.</td>
+</tr>
+<tr>
+<td>50</td>
+<td>Take 263 metric tons of miscellaneous engines, and motors from Galileo to Manchester — Employer: Unknown — Complication: The crew is contacted by a lawyer stating the cargo actually belongs to a client of theirs.</td>
+</tr>
+<tr>
+<td>51</td>
+<td>Take 224 metric tons of palm oil from Mělník to Quirin — Employer: Sarck (corp) — Complication: Scanners indicate the cargo is infested with nanites.</td>
+</tr>
+<tr>
+<td>52</td>
+<td>Take 290 metric tons of UNDISCLOSED from Kasenga B to Durango — Employer: Jelan Wilkerson — Complication: The cargo containers seem to rearrange themselves at odd intervals.</td>
+</tr>
+<tr>
+<td>53</td>
+<td>Take 5 metric tons of printed books, and brochures from Polemos to Kharkiv — Employer: Ranna Suzuki — Complication: The cargo reeks of filth and the ship's life support has a difficult time filtering the smell.</td>
+</tr>
+<tr>
+<td>54</td>
+<td>Take 24 metric tons of whole fish (fresh) from Belzoni Beta to Kaposvár — Employer: Unknown — Complication: At the destination, the crew is told to wait a few days before pick-up can be made.</td>
+</tr>
+<tr>
+<td>55</td>
+<td>Take 264 metric tons of UNDISCLOSED from Inverness Soar to Dercetius — Employer: Unknown — Complication: Halfway through the voyage the cargo containers begin melting giving off noxious foams and acid puddles.</td>
+</tr>
+<tr>
+<td>56</td>
+<td>Take 512 metric tons of tea (including flavored) from Kilmichael Newton to Rhea IV — Employer: Xi Volkman Inc. (corp) — Complication: The employer also includes several containers that house dog- like animals.</td>
+</tr>
+<tr>
+<td>57</td>
+<td>Take 35 metric tons of glass bottles, flasks, jars, and pots from Independence Core to Resheph One — Employer: Krosssystem (corp) — Complication: The ship's life support systems begin to malfunction and the crew needs to stop somewhere close for repairs.</td>
+</tr>
+<tr>
+<td>58</td>
+<td>Take 80 metric tons of cases, handbags, and wallets from Turiacus to Ngozi — Employer: Envios (corp) — Complication: The quickest trade route is blocked to political turmoil.</td>
+</tr>
+<tr>
+<td>59</td>
+<td>Take 32 metric tons of electric water heaters and hairdryers from Torreón to Kingfisher — Employer: Checo Sarkin — Complication: The spaceport at the destination is backlogged; they say it may take a day or two until the ship can dock.</td>
+</tr>
+<tr>
+<td>60</td>
+<td>Take 400 metric tons of precious/semi-precious stones (unstrung) from Queensland Forge to Truman — Employer: Cesaria Ando — Complication: En route scanners pick up a dumped cargo floating in space.</td>
+</tr>
+<tr>
+<td>61</td>
+<td>Take 85 metric tons of fresh or chilled beef from Jehanabad to Barling — Employer: Faith Kirk — Complication: Refrigeration units begin to malfunction.</td>
+</tr>
+<tr>
+<td>62</td>
+<td>Take 405 metric tons of ball, and roller bearings from Asahi to Queensland Forge — Employer: Vertido (corp) — Complication: Containers break open flooding the vessel with tiny ball bearings.</td>
+</tr>
+<tr>
+<td>63</td>
+<td>Take 1 metric ton of oscilloscopes, and spectrum analyzers from Port Elizabeth to Blackwater — Employer: Unknown — Complication: Subharmonic distortion throws the ship off course near a black hole.</td>
+</tr>
+<tr>
+<td>64</td>
+<td>Take 431 metric tons of measuring/testing machines from Castalia to Karura — Employer: Chorin (corp) — Complication: An unknown spatial anomaly causes some of the cargo to warp and bend.</td>
+</tr>
+<tr>
+<td>65</td>
+<td>Take 37 metric tons of polyacetal/ether/carbonates from Zurn X to Aguascalientes — Employer: Unknown — Complication: Halfway through the journey, the cargo begins to leak.</td>
+</tr>
+<tr>
+<td>66</td>
+<td>Take 598 metric tons of polycarboxylic acids from Epiphron to Tyrellia — Employer: Unknown — Complication: Several cargo containers bear the logos of different corporations.</td>
+</tr>
+<tr>
+<td>67</td>
+<td>Take 220 metric tons of temperature-change machines from Saint Asaph to New Congo — Employer: Unknown — Complication: Contraband is stashed among the cargo.</td>
+</tr>
+<tr>
+<td>68</td>
+<td>Take 509 metric tons of bovine/equine rawhides, and skins from Mami Wata to Rigel IV — Employer: Sobrantes (corp) — Complication: Freak ion cloud blocks most direct trade route.</td>
+</tr>
+<tr>
+<td>69</td>
+<td>Take 73 metric tons of wine from Ahone II to Paden Beau — Employer: Sarah Benson — Complication: Space pirates attack while en route.</td>
+</tr>
+<tr>
+<td>70</td>
+<td>Take 237 metric tons of apricots, cherries, peaches, nectarines, and plums from Celaeno to Mariupol Prime — Employer: Alastrina Zelaya — Complication: Upon arrival, the crew notices what appears to be mold on some of the cargo.</td>
+</tr>
+<tr>
+<td>71</td>
+<td>Take 442 metric tons of computers and optical readers from Stavropol to Richmond Scone — Employer: Emma Bythesea — Complication: Scanners pick up a transmission being sent from somewhere among the cargo.</td>
+</tr>
+<tr>
+<td>72</td>
+<td>Take 596 metric tons of UNDISCLOSED from Mengzhou to Xinyi — Employer: Harman Uchida — Complication: Anyone who works near the cargo containers exhibits signs of intoxication.</td>
+</tr>
+<tr>
+<td>73</td>
+<td>Take 13 metric tons of electro-medical equipment from Nindara Rim to Bethlehem — Employer: Unknown — Complication: Cargo has tell-tale signs of being stolen.</td>
+</tr>
+<tr>
+<td>74</td>
+<td>Take 69 metric tons of phone system devices from Sallis 9 to Eupora — Employer: Unknown — Complication: Strange transmissions are picked up originating from the cargo.</td>
+</tr>
+<tr>
+<td>75</td>
+<td>Take 443 metric tons of radioactive chemical elements from Stillwater to Hezuo Six — Employer: Keyan Lài — Complication: The cargo seems to be interfering with the navigational systems.</td>
+</tr>
+<tr>
+<td>76</td>
+<td>Take 439 metric tons of coal tar oils from Wuxi El Husseiniya to Marzanna — Employer: Unknown — Complication: The employer inexplicably offers a bonus for &quot;no issues&quot; during the voyage.</td>
+</tr>
+<tr>
+<td>77</td>
+<td>Take 53 metric tons of niobium/zirconium ore concentrate from Vincennes 7 to Ioannina — Employer: Paragon (corp) — Complication: The cargo is late arriving at the loading dock throwing off the employer's timetable.</td>
+</tr>
+<tr>
+<td>78</td>
+<td>Take 399 metric tons of medical apparatus from Haldus to Inverness Soar — Employer: Hyperloop Technologies (corp) — Complication: The safest trade route is currently blocked by a comet requiring rerouting through less safe routes.</td>
+</tr>
+<tr>
+<td>79</td>
+<td>Take 64 metric tons of processed petroleum oils from York to Wolverhampton — Employer: Tung-mei Daou — Complication: While cargo is being loaded the ship is minorly damaged.</td>
+</tr>
+<tr>
+<td>80</td>
+<td>Take 42 metric tons of rough wood from Kasenga B to Book — Employer: Zhang Enterprises (corp) — Complication: Anomalous power signature detected en route.</td>
+</tr>
+<tr>
+<td>81</td>
+<td>Take 72 metric tons of perfumes and toilet waters from Fomalhaut II to Jovian VIII — Employer: Unknown — Complication: Cargo manifest blocked by hackers demanding a ransom to release it.</td>
+</tr>
+<tr>
+<td>82</td>
+<td>Take 82 metric tons of printed circuits from Draconis to New Trinidad — Employer: Benjamin Atreides — Complication: The employer wishes security robots to accompany the shipment.</td>
+</tr>
+<tr>
+<td>83</td>
+<td>Take 263 metric tons of electrical resistors from Amritsar to Orionis — Employer: Helix Enterprises (corp) — Complication: The destination planet is being blockaded by hostile forces.</td>
+</tr>
+<tr>
+<td>84</td>
+<td>Take 8 metric tons of chromium ore concentrate from Eilat to Naples — Employer: Anton Conner — Complication: Employer claims to only have half of the original fee available to pay the party.</td>
+</tr>
+<tr>
+<td>85</td>
+<td>Take 19 metric tons of platinum (unwrought) from Rapa Nui to Melton — Employer: Waylon Takada — Complication: The employer springs a long list of demands on the crew right at departure.</td>
+</tr>
+<tr>
+<td>86</td>
+<td>Take 96 metric tons of blood fractions (including antisera) from Lviv Home to Mělník — Employer: Ritwika Sargent — Complication: Alarms sound signaling the cargo is contaminated.</td>
+</tr>
+<tr>
+<td>87</td>
+<td>Take 75 metric tons of SkinBond sutures and special pharmaceutical goods from Lod to Juliette's World — Employer: Unknown — Complication: Several armed guards are to accompany the cargo to the destination.</td>
+</tr>
+<tr>
+<td>88</td>
+<td>Take 373 metric tons of men's shirts (not knit or crochet) from Kryvyi Rih to Kasenga B — Employer: Celestial Systems (corp) — Complication: The ship is plagued with a computer virus during the voyage.</td>
+</tr>
+<tr>
+<td>89</td>
+<td>Take 17 metric tons of X-ray equipment from Kangiten to Ngozi — Employer: Yingtai Mbadinuju — Complication: En route the ship picks up signals that could be alien in origin.</td>
+</tr>
+<tr>
+<td>90</td>
+<td>Take 20 metric tons of ethylene polymers from Sopron to Caesar — Employer: Sabharwal (corp) — Complication: The cargo begins to smoke during the voyage.</td>
+</tr>
+<tr>
+<td>91</td>
+<td>Take 97 metric tons of radar and radio communication items fromYangjiang IV to Gangtok — Employer: Unknown — Complication: A heavily-armed vessel approaches the ship and demands they drop any and all cargo or they will be fired upon.</td>
+</tr>
+<tr>
+<td>92</td>
+<td>Take 413 metric tons of electrical capacitors from Sirius IX to Valturia — Employer: Unknown — Complication: Scanners pick up what seems to be one container giving off a faint human life sign.</td>
+</tr>
+<tr>
+<td>93</td>
+<td>Take 138 metric tons of integrated circuits from Jirkov to Veszprém — Employer: Vizon (corp) — Complication: En route, one of the containers begins to freeze and ice grows on its surface.</td>
+</tr>
+<tr>
+<td>94</td>
+<td>Take 237 metric tons of UNDISCLOSED from Guadalupe to Hamilton — Employer: Orion Innovations (corp) — Complication: Once the cargo is brought onboard the crew members experience burning watering eyes for the whole voyage</td>
+</tr>
+<tr>
+<td>95</td>
+<td>Take 131 metric tons of optical fiber cables, sheets, and plates from Dangun to Newcastle — Employer: Cybor Systems (corp) — Complication: During the journey, something breaks out of one cargo container leaving a slimy eggshell behind.</td>
+</tr>
+<tr>
+<td>96</td>
+<td>Take 39 metric tons of phenols/phenol-alcohols from Goshen to Nergal — Employer: Lancer Girardon — Complication: The sublight engines overheat while exiting the orbit of the first planet and need to cool before the ship can go FTL.</td>
+</tr>
+<tr>
+<td>97</td>
+<td>Take 23 metric tons of malt beer from Monticello to Paarl — Employer: Callista Maruyama — Complication: The FTL drive drops the ship into the middle of an asteroid unexpectedly.</td>
+</tr>
+<tr>
+<td>98</td>
+<td>Take 526 metric tons of copper from Pyxis to Xanthe III — Employer: Unknown — Complication: The cargo may be causing interference with the vessel's magnetic fields or shields.</td>
+</tr>
+<tr>
+<td>99</td>
+<td>Take 518 metric tons of malt beer from Vega's Belt to Chasca — Employer: Biobox (corp) — Complication: Tiny drunk humanoid aliens are discovered sloppily singing near one container.</td>
+</tr>
+<tr>
+<td>100</td>
+<td>Take 28 metric tons of synthetic yarn and woven fabrics from Malangwa to Nergal — Employer: Adelric Orailus — Complication: Employer demands background checks on all crew members.</td>
+</tr>
+</tbody>
+</table>
+</div>
+  </main>
+</div>
+<script src="../../../site.js"></script>
+</body>
+</html>

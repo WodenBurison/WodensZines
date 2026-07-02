@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casinos and Hotels · Woden&#39;s Adventures</title>
+<meta name="description" content="An Ironsworn: Starforged solo playthrough">
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+<div class="topbar">
+  <a class="topbar-title" href="../../../">Woden&#39;s Adventures</a>
+  <button class="hamburger" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-tagline">An Ironsworn: Starforged solo playthrough</div>
+    <ul class="nav-list">
+      <li><a class="nav-link" href="../../../">Home / Sessions</a></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Characters</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../characters/woden/">Woden</a></li></ul></li><li class="nav-folder nav-collapsed"><button class="nav-folder-toggle" type="button">Custom Content</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Activities and Reasons</button><ul class="nav-sublist"><li><a class="nav-link" href="../../activities-and-reasons/npc-crew-shore-leave-activities/">NPC Crew Shore Leave Activities</a></li><li><a class="nav-link" href="../../activities-and-reasons/reasons-a-pc-is-absent/">Reasons a PC is Absent</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Adventure Ideas and Side Jobs</button><ul class="nav-sublist"><li><a class="nav-link" href="../../adventure-ideas-and-side-jobs/adventure-ideas/">Adventure Ideas</a></li><li><a class="nav-link" href="../../adventure-ideas-and-side-jobs/side-jobs/">Side Jobs</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Cargo</button><ul class="nav-sublist"><li><a class="nav-link" href="../../cargo/bulk-cargo/">Bulk Cargo</a></li><li><a class="nav-link" href="../../cargo/cargo-runs/">Cargo Runs</a></li><li><a class="nav-link" href="../../cargo/cargo-weight/">Cargo Weight</a></li><li><a class="nav-link" href="../../cargo/personal-and-small-items-in-a-cargo-hold/">Personal and Small Items in a Cargo Hold</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Encounters and Discoveries</button><ul class="nav-sublist"><li><a class="nav-link" href="../../encounters-and-discoveries/asteroid-belt-encounters/">Asteroid Belt Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/desert-planet-encounters/">Desert Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/events/">Events</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/ice-planet-encounters/">Ice Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/jungle-planet-encounters/">Jungle Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/lab-experiment-encounters/">Lab Experiment Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/news-chatter/">News Chatter</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/ocean-planet-encounters/">Ocean Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/ravaged-research-facility/">Ravaged Research Facility</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/space-complications-and-encounters/">Space Complications and Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/spaceship-mechanical-problems/">Spaceship Mechanical Problems</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/spatial-anomalies/">Spatial Anomalies</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/star-system-exploration-discoveries/">Star System Exploration Discoveries</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/urban-encounters-and-complications/">Urban Encounters and Complications</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/volcanic-planet-encounters/">Volcanic Planet Encounters</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Fields of Study</button><ul class="nav-sublist"><li><a class="nav-link" href="../../fields-of-study/agriculture/">Agriculture</a></li><li><a class="nav-link" href="../../fields-of-study/architecture/">Architecture</a></li><li><a class="nav-link" href="../../fields-of-study/business/">Business</a></li><li><a class="nav-link" href="../../fields-of-study/divinity/">Divinity</a></li><li><a class="nav-link" href="../../fields-of-study/education/">Education</a></li><li><a class="nav-link" href="../../fields-of-study/engineering-fields/">Engineering Fields</a></li><li><a class="nav-link" href="../../fields-of-study/family-and-consumer-science/">Family and Consumer Science</a></li><li><a class="nav-link" href="../../fields-of-study/formal-sciences/">Formal Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/human-physical-performance/">Human Physical Performance</a></li><li><a class="nav-link" href="../../fields-of-study/humanities/">Humanities</a></li><li><a class="nav-link" href="../../fields-of-study/journalism-and-communications/">Journalism and Communications</a></li><li><a class="nav-link" href="../../fields-of-study/law/">Law</a></li><li><a class="nav-link" href="../../fields-of-study/library-studies/">Library Studies</a></li><li><a class="nav-link" href="../../fields-of-study/medicinal-sciences/">Medicinal Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/military-sciences/">Military Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/natural-sciences/">Natural Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/psychic-abilities/">Psychic Abilities</a></li><li><a class="nav-link" href="../../fields-of-study/public-administration/">Public Administration</a></li><li><a class="nav-link" href="../../fields-of-study/social-sciences/">Social Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/transportation/">Transportation</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Items and Things</button><ul class="nav-sublist"><li><a class="nav-link" href="../../items-and-things/book-titles/">Book Titles</a></li><li><a class="nav-link" href="../../items-and-things/bounty-board/">Bounty Board</a></li><li><a class="nav-link" href="../../items-and-things/computer-files/">Computer Files</a></li><li><a class="nav-link" href="../../items-and-things/fictional-alloys/">Fictional Alloys</a></li><li><a class="nav-link" href="../../items-and-things/fictional-infectious-diseases/">Fictional Infectious Diseases</a></li><li><a class="nav-link" href="../../items-and-things/fictional-medications/">Fictional Medications</a></li><li><a class="nav-link" href="../../items-and-things/fictional-spices/">Fictional Spices</a></li><li><a class="nav-link" href="../../items-and-things/fictional-trade-goods-and-animals/">Fictional Trade Goods and Animals</a></li><li><a class="nav-link" href="../../items-and-things/illegal-drugs/">Illegal Drugs</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-biology-lab/">Items in a Biology Lab</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-chemical-lab/">Items in a Chemical Lab</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-crashed-cargo-spaceship/">Items in a Crashed Cargo Spaceship</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-cybernetics-clinic/">Items in a Cybernetics Clinic</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-desk/">Items in a Desk</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-freighter-cockpit/">Items in a Freighter Cockpit</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-governmental-office/">Items in a Governmental Office</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-lab-directors-office/">Items in a Lab Directors Office</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-ship-captain-quarters/">Items in a Ship Captain Quarters</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-warehouse/">Items in a Warehouse</a></li><li><a class="nav-link" href="../../items-and-things/metals/">Metals</a></li><li><a class="nav-link" href="../../items-and-things/military-medals-and-decorations/">Military Medals and Decorations</a></li><li><a class="nav-link" href="../../items-and-things/poisonous-plants/">Poisonous Plants</a></li><li><a class="nav-link" href="../../items-and-things/types-of-planets/">Types of Planets</a></li><li><a class="nav-link" href="../../items-and-things/types-of-stars/">Types of Stars</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Names</button><ul class="nav-sublist"><li><a class="nav-link" href="../../names/alien-names/">Alien Names</a></li><li><a class="nav-link" href="../../names/bar-names/">Bar Names</a></li><li><a class="nav-link" href="../../names/city-names/">City Names</a></li><li><a class="nav-link" href="../../names/corporation-names/">Corporation Names</a></li><li><a class="nav-link" href="../../names/drink-names/">Drink Names</a></li><li><a class="nav-link" href="../../names/human-female-names/">Human Female Names</a></li><li><a class="nav-link" href="../../names/human-male-names/">Human Male Names</a></li><li><a class="nav-link" href="../../names/human-surnames/">Human Surnames</a></li><li><a class="nav-link" href="../../names/planet-names/">Planet Names</a></li><li><a class="nav-link" href="../../names/ship-names/">Ship Names</a></li><li><a class="nav-link" href="../../names/space-station-names/">Space Station Names</a></li><li><a class="nav-link" href="../../names/spaceport-names/">Spaceport Names</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Places</button><ul class="nav-sublist"><li><a class="nav-link nav-active" href="./">Casinos and Hotels</a></li><li><a class="nav-link" href="../spaceport-bar-rumors/">Spaceport Bar Rumors</a></li><li><a class="nav-link" href="../unexplored-planets/">Unexplored Planets</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Subtables</button><ul class="nav-sublist"><li><a class="nav-link" href="../../subtables/alien-names-1/">Alien Names 1</a></li><li><a class="nav-link" href="../../subtables/alien-names-2/">Alien Names 2</a></li><li><a class="nav-link" href="../../subtables/bar-names-1/">Bar Names 1</a></li><li><a class="nav-link" href="../../subtables/bar-names-2/">Bar Names 2</a></li><li><a class="nav-link" href="../../subtables/book-titles-1/">Book Titles 1</a></li><li><a class="nav-link" href="../../subtables/book-titles-2/">Book Titles 2</a></li><li><a class="nav-link" href="../../subtables/bulk-cargo-1/">Bulk Cargo 1</a></li><li><a class="nav-link" href="../../subtables/bulk-cargo-2/">Bulk Cargo 2</a></li><li><a class="nav-link" href="../../subtables/bulk-cargo-3/">Bulk Cargo 3</a></li><li><a class="nav-link" href="../../subtables/cargo-runs-1/">Cargo Runs 1</a></li><li><a class="nav-link" href="../../subtables/cargo-runs-2/">Cargo Runs 2</a></li><li><a class="nav-link" href="../../subtables/city-names-1/">City Names 1</a></li><li><a class="nav-link" href="../../subtables/city-names-2/">City Names 2</a></li><li><a class="nav-link" href="../../subtables/city-names-3/">City Names 3</a></li><li><a class="nav-link" href="../../subtables/city-names-4/">City Names 4</a></li><li><a class="nav-link" href="../../subtables/codes-1/">Codes 1</a></li><li><a class="nav-link" href="../../subtables/codes-2/">Codes 2</a></li><li><a class="nav-link" href="../../subtables/corporation-names-1/">Corporation Names 1</a></li><li><a class="nav-link" href="../../subtables/corporation-names-2/">Corporation Names 2</a></li><li><a class="nav-link" href="../../subtables/divinity-1/">Divinity 1</a></li><li><a class="nav-link" href="../../subtables/divinity-2/">Divinity 2</a></li><li><a class="nav-link" href="../../subtables/engineering-fields-1/">Engineering Fields 1</a></li><li><a class="nav-link" href="../../subtables/engineering-fields-2/">Engineering Fields 2</a></li><li><a class="nav-link" href="../../subtables/formal-sciences-1/">Formal Sciences 1</a></li><li><a class="nav-link" href="../../subtables/formal-sciences-2/">Formal Sciences 2</a></li><li><a class="nav-link" href="../../subtables/human-female-names-1/">Human Female Names 1</a></li><li><a class="nav-link" href="../../subtables/human-female-names-2/">Human Female Names 2</a></li><li><a class="nav-link" href="../../subtables/human-female-names-3/">Human Female Names 3</a></li><li><a class="nav-link" href="../../subtables/human-female-names-4/">Human Female Names 4</a></li><li><a class="nav-link" href="../../subtables/human-male-names-1/">Human Male Names 1</a></li><li><a class="nav-link" href="../../subtables/human-male-names-2/">Human Male Names 2</a></li><li><a class="nav-link" href="../../subtables/human-male-names-3/">Human Male Names 3</a></li><li><a class="nav-link" href="../../subtables/human-male-names-4/">Human Male Names 4</a></li><li><a class="nav-link" href="../../subtables/human-surnames-1/">Human Surnames 1</a></li><li><a class="nav-link" href="../../subtables/human-surnames-2/">Human Surnames 2</a></li><li><a class="nav-link" href="../../subtables/human-surnames-3/">Human Surnames 3</a></li><li><a class="nav-link" href="../../subtables/human-surnames-4/">Human Surnames 4</a></li><li><a class="nav-link" href="../../subtables/humanities-1/">Humanities 1</a></li><li><a class="nav-link" href="../../subtables/humanities-2/">Humanities 2</a></li><li><a class="nav-link" href="../../subtables/humanities-3/">Humanities 3</a></li><li><a class="nav-link" href="../../subtables/journalism-and-communications-1/">Journalism and Communications 1</a></li><li><a class="nav-link" href="../../subtables/journalism-and-communications-2/">Journalism and Communications 2</a></li><li><a class="nav-link" href="../../subtables/military-sciences-1/">Military Sciences 1</a></li><li><a class="nav-link" href="../../subtables/military-sciences-2/">Military Sciences 2</a></li><li><a class="nav-link" href="../../subtables/natural-sciences-1/">Natural Sciences 1</a></li><li><a class="nav-link" href="../../subtables/natural-sciences-2/">Natural Sciences 2</a></li><li><a class="nav-link" href="../../subtables/natural-sciences-3/">Natural Sciences 3</a></li><li><a class="nav-link" href="../../subtables/planet-names-1/">Planet Names 1</a></li><li><a class="nav-link" href="../../subtables/planet-names-2/">Planet Names 2</a></li><li><a class="nav-link" href="../../subtables/planet-names-3/">Planet Names 3</a></li><li><a class="nav-link" href="../../subtables/planet-names-4/">Planet Names 4</a></li><li><a class="nav-link" href="../../subtables/planet-names-5/">Planet Names 5</a></li><li><a class="nav-link" href="../../subtables/planet-names-6/">Planet Names 6</a></li><li><a class="nav-link" href="../../subtables/ship-names-1/">Ship Names 1</a></li><li><a class="nav-link" href="../../subtables/ship-names-2/">Ship Names 2</a></li><li><a class="nav-link" href="../../subtables/ship-names-3/">Ship Names 3</a></li><li><a class="nav-link" href="../../subtables/ship-names-4/">Ship Names 4</a></li><li><a class="nav-link" href="../../subtables/ship-transponder-info-1/">Ship Transponder Info 1</a></li><li><a class="nav-link" href="../../subtables/ship-transponder-info-2/">Ship Transponder Info 2</a></li><li><a class="nav-link" href="../../subtables/ship-transponder-info-3/">Ship Transponder Info 3</a></li><li><a class="nav-link" href="../../subtables/ship-transponder-info-4/">Ship Transponder Info 4</a></li><li><a class="nav-link" href="../../subtables/social-sciences-1/">Social Sciences 1</a></li><li><a class="nav-link" href="../../subtables/social-sciences-2/">Social Sciences 2</a></li><li><a class="nav-link" href="../../subtables/social-sciences-3/">Social Sciences 3</a></li><li><a class="nav-link" href="../../subtables/social-sciences-4/">Social Sciences 4</a></li><li><a class="nav-link" href="../../subtables/space-station-names-1/">Space Station Names 1</a></li><li><a class="nav-link" href="../../subtables/space-station-names-2/">Space Station Names 2</a></li><li><a class="nav-link" href="../../subtables/spaceport-names-1/">Spaceport Names 1</a></li><li><a class="nav-link" href="../../subtables/spaceport-names-2/">Spaceport Names 2</a></li><li><a class="nav-link" href="../../subtables/technobabble-1/">Technobabble 1</a></li><li><a class="nav-link" href="../../subtables/technobabble-2/">Technobabble 2</a></li><li><a class="nav-link" href="../../subtables/unexplored-planets-1/">Unexplored Planets 1</a></li><li><a class="nav-link" href="../../subtables/unexplored-planets-2/">Unexplored Planets 2</a></li><li><a class="nav-link" href="../../subtables/unexplored-planets-3/">Unexplored Planets 3</a></li><li><a class="nav-link" href="../../subtables/unexplored-planets-4/">Unexplored Planets 4</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Technobabble</button><ul class="nav-sublist"><li><a class="nav-link" href="../../technobabble/codes/">Codes</a></li><li><a class="nav-link" href="../../technobabble/technobabble/">Technobabble</a></li><li><a class="nav-link" href="../../technobabble/technobabble-phrases/">Technobabble Phrases</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Vessels</button><ul class="nav-sublist"><li><a class="nav-link" href="../../vessels/derelicts/">Derelicts</a></li><li><a class="nav-link" href="../../vessels/escape-pods/">Escape Pods</a></li><li><a class="nav-link" href="../../vessels/ship-transponder-info/">Ship Transponder Info</a></li><li><a class="nav-link" href="../../vessels/space-stations/">Space Stations</a></li></ul></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Locations</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">1 Main Map</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../locations/1-main-map/the-forge/">The Forge</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">3 Outlands</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Kalidas Maw</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Planets</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/planets/centurion/">Centurion</a></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/planets/holland/">Holland</a></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/planets/san-luis-potos/">San Luis Potosí</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Settlements</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Beacon</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Places</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/beacon/places/stellartron/">StellarTron</a></li></ul></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/beacon/beacon/">Beacon</a></li></ul></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/concord/">Concord</a></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/lodestar/">Lodestar</a></li></ul></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/kalidas-maw/">Kalidas Maw</a></li></ul></li></ul></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Lore</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Connections Worksheet</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../lore/connections-worksheet/isla-nakayama/">Isla Nakayama</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Factions</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../lore/factions/hunters-of-the-golden-alliance/">Hunters of the Golden Alliance</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">NPCs</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../lore/npcs/tindra-companion/">Tindra (Companion)</a></li></ul></li><li><a class="nav-link" href="../../../lore/galactic-standard-time/">Galactic Standard Time</a></li><li><a class="nav-link" href="../../../lore/quest-starters/">Quest Starters</a></li><li><a class="nav-link" href="../../../lore/truths/">Truths</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Progress</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../progress/bg-vow-find-a-new-precursor-species/">BG Vow Find a new precursor species</a></li><li><a class="nav-link" href="../../../progress/ct-isla-nakayama/">CT Isla Nakayama</a></li></ul></li>
+    </ul>
+  </nav>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <main class="content">
+    <header class="page-header">
+    <h1>Casinos and Hotels</h1>
+    
+  </header><div class="prose"><table>
+<thead>
+<tr>
+<th>dice: 1d100</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>The Gran Canaria — Info: high class, hundreds of rooms, corporate-owned — Secret: A rogue intel agent is hiding at the resort.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Payload — Info: middle class, dozens of rooms, privately owned — Secret: A rare art collection is hidden in secret meeting places throughout the hotel.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>The Oasis — Info: high class, hundreds of rooms, corporate-owned — Secret: An expensive space yacht is being held in a secret hangar as collateral for a VIP's huge gambling debt.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Off-World — Info: high class, thousands of rooms, privately owned — Secret: Features underground robot gladiator fights.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Velvet Flower Casino — Info: low class, dozens of rooms, privately owned (organized crime) — Secret: Tours of a hidden history of a gambling museum, only available for high-rollers.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Shooting Star — Info: middle class, thousands of rooms, privately owned — Secret: About ten percent of the gamblers on the floor are paid to pass information about the guests to the owners.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Junkyard — Info: middle class, dozens of rooms, privately owned — Secret: An underground bunker for the owner and their family.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Black Hole Casino — Info: low class, dozens of rooms, privately owned — Secret: It has a secret drink menu for those in the know.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Chiang Khan Palace — Info: middle class, dozens of rooms, privately owned (organized crime) — Secret: Lavish hidden hotel and conference rooms for high-rollers.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Mega Wins — Info: low class, hundreds of rooms, privately owned — Secret: The owner is a former drug kingpin trying to go straight.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Redshift — Info: low class, hundreds of rooms, privately owned — Secret: The main vault holds stolen crown jewels from an ancient monarchy.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Jade Griffin Casino — Info: high class, dozens of rooms, privately owned — Secret: The owners keep a library of rare books, most acquired through dubious means.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Matera Casino and Hotel — Info: high class, dozens of rooms, privately owned — Secret: Houses illegal digital gambling servers in a massive underground bunker.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>The Meridian — Info: high class, dozens of rooms, corporate-owned — Secret: Funding a scientist who is trying to combine the DNA of various creatures into a new hybrid.</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Khanom Nebula Casino and Resort — Info: low class, dozens of rooms, privately owned (organized crime) — Secret: A powerful information broker using the resort as a base of operations.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Pole Star — Info: low class, dozens of rooms, privately owned — Secret: Vast network of tunnels run under the complex.</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Mendoza Fawks — Info: high class, thousands of rooms, privately owned (organized crime) — Secret: The owner is secretly the head of a drug cartel.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Portofino Resort — Info: middle class, thousands of rooms, corporate-owned — Secret: A complex scheme of bribing local officials keeps the casino open despite its many safety violations.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Crown Casino, Resort, and Spa — Info: middle class, hundreds of rooms, privately owned (organized crime) — Secret: Actually owned by a secretive cult.</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Mammoth Oaks — Info: low class, dozens of rooms, corporate-owned — Secret: The owners are setting up a cryptocurrency scheme.</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Sapphire Star Casino — Info: middle class, thousands of rooms, corporate-owned — Secret: Illegally collecting guest data and selling it.</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Dirtsiders — Info: middle class, dozens of rooms, corporate-owned — Secret: A group planning the illegal colonization of a nearby planet is secretly meeting at the resort.</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Diamond Palace and Resort — Info: middle class, thousands of rooms, corporate-owned — Secret: Actually owned by a foreign government barred from operating in this system.</td>
+</tr>
+<tr>
+<td>24</td>
+<td>The Island — Info: high class, hundreds of rooms, corporate-owned — Secret: The staff is actually all forced labor.</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Glorious Sands Casino — Info: high class, dozens of rooms, privately owned — Secret: An off-the-books poker tournament is held in secret once a year.</td>
+</tr>
+<tr>
+<td>26</td>
+<td>The Positano — Info: middle class, thousands of rooms, corporate-owned — Secret: As a cost-cutting measure, the ownership recently purchased alcohol that is contaminated.</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Casino Myrnam — Info: low class, dozens of rooms, corporate-owned — Secret: Serves as a cover for a forgery ring.</td>
+</tr>
+<tr>
+<td>28</td>
+<td>The Milky Way Club — Info: middle class, hundreds of rooms, privately owned (organized crime) — Secret: Hiding several high-profile organized crime figures.</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Mittenwald — Info: high class, dozens of rooms, privately owned (organized crime) — Secret: An uneasy meeting ground for several rival gangs.</td>
+</tr>
+<tr>
+<td>30</td>
+<td>The La Rioja — Info: middle class, thousands of rooms, privately owned (organized crime) — Secret: A major heist attempt will take place soon, involving mercs and hackers attacking computers and the complex.</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Supernova — Info: middle class, dozens of rooms, privately owned — Secret: Most gambling machines are rigged in favor of the house, violating the law.</td>
+</tr>
+<tr>
+<td>32</td>
+<td>The Light Year — Info: high class, dozens of rooms, corporate-owned — Secret: Planning a theme park addition with cloned variations of existing animals.</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Ormskirk — Info: low class, hundreds of rooms, privately owned (organized crime) — Secret: About to go bankrupt because of the owner's gambling problem.</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Magellanic Cloud — Info: low class, hundreds of rooms, corporate-owned — Secret: Supporting rebels' movements on several planets with diverted funds.</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Casino King — Info: high class, hundreds of rooms, privately owned (organized crime) — Secret: A group planning an asteroid mining heist is meeting at the hotel.</td>
+</tr>
+<tr>
+<td>36</td>
+<td>Deuterium — Info: middle class, dozens of rooms, privately owned — Secret: Multiple safe rooms reserved only for well-known mobsters that frequent the casino.</td>
+</tr>
+<tr>
+<td>37</td>
+<td>The Phetchaburi — Info: high class, hundreds of rooms, privately owned — Secret: The resort is actually run by a rogue AI.</td>
+</tr>
+<tr>
+<td>38</td>
+<td>Cantabria Sol — Info: high class, thousands of rooms, corporate-owned — Secret: A rival corp is trying a hostile takeover.</td>
+</tr>
+<tr>
+<td>39</td>
+<td>Zero-G Resort — Info: middle class, dozens of rooms, privately owned — Secret: Provides safe haven for space pirates.</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Solar Winds Casino and Resort — Info: low class, thousands of rooms, privately owned — Secret: Covert agents frequent the establishment to meet with contacts or gather information.</td>
+</tr>
+<tr>
+<td>41</td>
+<td>The Sweetwater — Info: low class, thousands of rooms, privately owned (organized crime) — Secret: Pirates are planning to raid the casino.</td>
+</tr>
+<tr>
+<td>42</td>
+<td>The Love of Money — Info: low class, hundreds of rooms, privately owned — Secret: The owners are blackmailing several VIPs with large gambling debts.</td>
+</tr>
+<tr>
+<td>43</td>
+<td>The Outpost — Info: low class, thousands of rooms, privately owned (organized crime) — Secret: Drugs certain patrons and then influences them to commit crimes that benefit the resort.</td>
+</tr>
+<tr>
+<td>44</td>
+<td>Stardust — Info: high class, hundreds of rooms, privately owned — Secret: Serves as a hub for a sector- wide data smuggling operation.</td>
+</tr>
+<tr>
+<td>45</td>
+<td>Solar Gold Lodge and Casino — Info: high class, thousands of rooms, corporate-owned — Secret: A ring of bootleggers is using the resort as a distribution hub.</td>
+</tr>
+<tr>
+<td>46</td>
+<td>Guadalupe Xi — Info: low class, thousands of rooms, corporate-owned — Secret: Currently hiring a large number of mercenaries.</td>
+</tr>
+<tr>
+<td>47</td>
+<td>Manarola-Normandy — Info: high class, hundreds of rooms, corporate-owned — Secret: A group of gamblers are flooding the floor with counterfeit casino chips.</td>
+</tr>
+<tr>
+<td>48</td>
+<td>Morning Star — Info: middle class, thousands of rooms, privately owned (organized crime) — Secret: Home to an underground fight club.</td>
+</tr>
+<tr>
+<td>49</td>
+<td>The Hawaiian — Info: middle class, hundreds of rooms, privately owned (organized crime) — Secret: The ownership is engaged in a whisper campaign stirring up discontentment with the local authorities.</td>
+</tr>
+<tr>
+<td>50</td>
+<td>Big Shots — Info: low class, thousands of rooms, privately owned — Secret: Home to an animal and wildlife trafficking ring.</td>
+</tr>
+<tr>
+<td>51</td>
+<td>Goldilocks Zone — Info: high class, dozens of rooms, privately owned (organized crime) — Secret: The establishment is a money laundering operation for organized crime.</td>
+</tr>
+<tr>
+<td>52</td>
+<td>Space Station 13 — Info: low class, dozens of rooms, privately owned (organized crime) — Secret: A secluded atrium where high-rollers can relax.</td>
+</tr>
+<tr>
+<td>53</td>
+<td>Starless — Info: middle class, thousands of rooms, privately owned (organized crime) — Secret: Bounty hunters have been meeting at the resort recently.</td>
+</tr>
+<tr>
+<td>54</td>
+<td>Tsurui Casino — Info: low class, thousands of rooms, privately owned — Secret: Underneath the building is a huge warehouse, storing contraband seized from guests.</td>
+</tr>
+<tr>
+<td>55</td>
+<td>Pujon Kidul Resort — Info: middle class, thousands of rooms, corporate-owned — Secret: Every person entering is secretly biometrically scanned.</td>
+</tr>
+<tr>
+<td>56</td>
+<td>Planet X — Info: low class, dozens of rooms, privately owned — Secret: An artifact dealer has set up shop unbeknownst to the owners.</td>
+</tr>
+<tr>
+<td>57</td>
+<td>Parsecs — Info: middle class, hundreds of rooms, privately owned — Secret: The owners are part of an ancient order that seeks to manipulate governments and events.</td>
+</tr>
+<tr>
+<td>58</td>
+<td>Queen of Hearts — Info: low class, hundreds of rooms, privately owned (organized crime) — Secret: An infamous art thief is using the resort as a base.</td>
+</tr>
+<tr>
+<td>59</td>
+<td>Wang Nam Khiao — Info: high class, hundreds of rooms, privately owned (organized crime) — Secret: Built above an illegal lab housing viruses and toxins.</td>
+</tr>
+<tr>
+<td>60</td>
+<td>Lucky Row — Info: middle class, hundreds of rooms, privately owned — Secret: Holds annual illegal spaceship race.</td>
+</tr>
+<tr>
+<td>61</td>
+<td>The Standard — Info: high class, dozens of rooms, privately owned — Secret: Hackers have tapped into the establishment's computers and are stealing data.</td>
+</tr>
+<tr>
+<td>62</td>
+<td>Casino Kingdom — Info: high class, thousands of rooms, corporate-owned — Secret: Funds a terrorist group.</td>
+</tr>
+<tr>
+<td>63</td>
+<td>Cosmic Casino — Info: high class, hundreds of rooms, privately owned — Secret: A hacker group is operating out of the hotel and slyly seeking clients.</td>
+</tr>
+<tr>
+<td>64</td>
+<td>The Water Lily Palace — Info: low class, hundreds of rooms, corporate-owned — Secret: An illegal cryptocurrency mining facility is housed in a shielded location.</td>
+</tr>
+<tr>
+<td>65</td>
+<td>Cosmic Ray Club — Info: low class, hundreds of rooms, privately owned (organized crime) — Secret: Two rival space pirate leaders are planning to meet there to try to end hostilities.</td>
+</tr>
+<tr>
+<td>66</td>
+<td>Ciudad Evita Resort and Hotel — Info: middle class, thousands of rooms, corporate-owned — Secret: An annual customer appreciation week of special events is actually a cover for a huge physical money transfer.</td>
+</tr>
+<tr>
+<td>67</td>
+<td>Amethyst Globe Casino — Info: high class, thousands of rooms, corporate-owned — Secret: The ownership is using gambling debts to get a famous singer to perform for free.</td>
+</tr>
+<tr>
+<td>68</td>
+<td>Comets — Info: middle class, thousands of rooms, corporate-owned — Secret: Employs a local gang to run off and harass protesters.</td>
+</tr>
+<tr>
+<td>69</td>
+<td>The Venado — Info: low class, hundreds of rooms, corporate-owned — Secret: The staff is planning a data heist targeting a rival resort.</td>
+</tr>
+<tr>
+<td>70</td>
+<td>Lucky Stars — Info: high class, thousands of rooms, privately owned (organized crime) — Secret: High- level diplomats are planning negotiations at the resort soon.</td>
+</tr>
+<tr>
+<td>71</td>
+<td>The Luebeck — Info: middle class, thousands of rooms, privately owned (organized crime) — Secret: Several guests have recently gone missing, but the casino is keeping it quiet.</td>
+</tr>
+<tr>
+<td>72</td>
+<td>Nova Line Casino — Info: low class, hundreds of rooms, corporate-owned — Secret: For a fee (a very high fee) a person can receive a new face and identity.</td>
+</tr>
+<tr>
+<td>73</td>
+<td>Castelmezzano — Info: low class, thousands of rooms, privately owned — Secret: The main owner is a disgraced politician using an alias.</td>
+</tr>
+<tr>
+<td>74</td>
+<td>The Multiverse — Info: middle class, thousands of rooms, corporate-owned — Secret: Actually a cover for an elaborate gun-running operation.</td>
+</tr>
+<tr>
+<td>75</td>
+<td>Red Ruby's — Info: middle class, hundreds of rooms, privately owned — Secret: Holds an annual illegal martial arts tournament where the fights are to the death.</td>
+</tr>
+<tr>
+<td>76</td>
+<td>Freefall — Info: low class, dozens of rooms, privately owned (organized crime) — Secret: The establishment has video and sound recorders in every room including restrooms.</td>
+</tr>
+<tr>
+<td>77</td>
+<td>Youngstown Resort — Info: low class, dozens of rooms, privately owned (organized crime) — Secret: Houses an illegal animal fighting arena.</td>
+</tr>
+<tr>
+<td>78</td>
+<td>Bella Vista Casino — Info: middle class, thousands of rooms, corporate-owned — Secret: Houses an illegal data center that is secretly owned by a huge corporation.</td>
+</tr>
+<tr>
+<td>79</td>
+<td>Dark Matter Casino — Info: low class, hundreds of rooms, privately owned (organized crime) — Secret: Illegal animal races are held on a secret track.</td>
+</tr>
+<tr>
+<td>80</td>
+<td>Aces and Eights Casino — Info: low class, dozens of rooms, corporate-owned — Secret: A black market for stolen spaceship parts.</td>
+</tr>
+<tr>
+<td>81</td>
+<td>Lucky Blue Casino — Info: high class, thousands of rooms, privately owned — Secret: The planetary government covertly holds an ownership position.</td>
+</tr>
+<tr>
+<td>82</td>
+<td>Hole in the Wall — Info: high class, dozens of rooms, privately owned — Secret: An elaborate system to keep gamblers on the floor is employed.</td>
+</tr>
+<tr>
+<td>83</td>
+<td>Space/Time Casino — Info: middle class, dozens of rooms, privately owned (organized crime) — Secret: A disgruntled scientist staying at the resort is seeking to sell secret technology to the highest bidder.</td>
+</tr>
+<tr>
+<td>84</td>
+<td>The Asteroid Belt — Info: high class, hundreds of rooms, corporate-owned — Secret: An entire floor is hidden and used only for high-rollers.</td>
+</tr>
+<tr>
+<td>85</td>
+<td>Wanderstar — Info: low class, hundreds of rooms, privately owned — Secret: The owners are planning to hire mercenaries to attack a rival casino.</td>
+</tr>
+<tr>
+<td>86</td>
+<td>The Astral Club — Info: high class, hundreds of rooms, corporate-owned — Secret: Currently for sale.</td>
+</tr>
+<tr>
+<td>87</td>
+<td>The Aragon — Info: low class, dozens of rooms, privately owned — Secret: A mob boss is using the hotel as a base of operations unbeknownst to the owners.</td>
+</tr>
+<tr>
+<td>88</td>
+<td>Captain's — Info: middle class, dozens of rooms, privately owned (organized crime) — Secret: An illegal cloning facility beneath the resort is attempting to replace high-profile guests with clones.</td>
+</tr>
+<tr>
+<td>89</td>
+<td>Java Jones — Info: middle class, hundreds of rooms, privately owned (organized crime) — Secret: A crime syndicate is skimming profits to fund illegal activities.</td>
+</tr>
+<tr>
+<td>90</td>
+<td>Lightning Strike — Info: high class, thousands of rooms, privately owned (organized crime) — Secret: Funding a goon squad to break up any attempts at worker unionization.</td>
+</tr>
+<tr>
+<td>91</td>
+<td>The Nagiso — Info: high class, thousands of rooms, privately owned (organized crime) — Secret: A sophisticated surveillance system monitors gamblers' every move on the floor.</td>
+</tr>
+<tr>
+<td>92</td>
+<td>Rockets — Info: high class, dozens of rooms, corporate-owned — Secret: Hosts an annual underground arms dealer convention.</td>
+</tr>
+<tr>
+<td>93</td>
+<td>Broken Moon — Info: low class, thousands of rooms, privately owned (organized crime) — Secret: Covert trade negotiations are underway.</td>
+</tr>
+<tr>
+<td>94</td>
+<td>Toba Samosir — Info: low class, dozens of rooms, privately owned (organized crime) — Secret: Employees are planning a walkout.</td>
+</tr>
+<tr>
+<td>95</td>
+<td>Parallel Universe — Info: low class, hundreds of rooms, privately owned (organized crime) — Secret: There will be an assassination attempt on a VIP soon.</td>
+</tr>
+<tr>
+<td>96</td>
+<td>Wandflower — Info: high class, dozens of rooms, privately owned — Secret: Human trafficking hub.</td>
+</tr>
+<tr>
+<td>97</td>
+<td>Interstellar Casino — Info: high class, thousands of rooms, corporate-owned — Secret: Underneath the building is an illegal terraforming lab.</td>
+</tr>
+<tr>
+<td>98</td>
+<td>The Asteroid — Info: middle class, hundreds of rooms, privately owned (organized crime) — Secret: The hotel is a link in a complicated drug smuggling ring.</td>
+</tr>
+<tr>
+<td>99</td>
+<td>Triangulum — Info: middle class, hundreds of rooms, corporate-owned — Secret: The principal owner is wanted for murder in another star system.</td>
+</tr>
+<tr>
+<td>100</td>
+<td>Spacer's Rest — Info: middle class, dozens of rooms, privately owned (organized crime) — Secret: Houses illegal munitions in the sub-basement.</td>
+</tr>
+</tbody>
+</table>
+</div>
+  </main>
+</div>
+<script src="../../../site.js"></script>
+</body>
+</html>

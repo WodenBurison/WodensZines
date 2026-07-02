@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adventure Ideas · Woden&#39;s Adventures</title>
+<meta name="description" content="An Ironsworn: Starforged solo playthrough">
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+<div class="topbar">
+  <a class="topbar-title" href="../../../">Woden&#39;s Adventures</a>
+  <button class="hamburger" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-tagline">An Ironsworn: Starforged solo playthrough</div>
+    <ul class="nav-list">
+      <li><a class="nav-link" href="../../../">Home / Sessions</a></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Characters</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../characters/woden/">Woden</a></li></ul></li><li class="nav-folder nav-collapsed"><button class="nav-folder-toggle" type="button">Custom Content</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Activities and Reasons</button><ul class="nav-sublist"><li><a class="nav-link" href="../../activities-and-reasons/npc-crew-shore-leave-activities/">NPC Crew Shore Leave Activities</a></li><li><a class="nav-link" href="../../activities-and-reasons/reasons-a-pc-is-absent/">Reasons a PC is Absent</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Adventure Ideas and Side Jobs</button><ul class="nav-sublist"><li><a class="nav-link nav-active" href="./">Adventure Ideas</a></li><li><a class="nav-link" href="../side-jobs/">Side Jobs</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Cargo</button><ul class="nav-sublist"><li><a class="nav-link" href="../../cargo/bulk-cargo/">Bulk Cargo</a></li><li><a class="nav-link" href="../../cargo/cargo-runs/">Cargo Runs</a></li><li><a class="nav-link" href="../../cargo/cargo-weight/">Cargo Weight</a></li><li><a class="nav-link" href="../../cargo/personal-and-small-items-in-a-cargo-hold/">Personal and Small Items in a Cargo Hold</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Encounters and Discoveries</button><ul class="nav-sublist"><li><a class="nav-link" href="../../encounters-and-discoveries/asteroid-belt-encounters/">Asteroid Belt Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/desert-planet-encounters/">Desert Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/events/">Events</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/ice-planet-encounters/">Ice Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/jungle-planet-encounters/">Jungle Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/lab-experiment-encounters/">Lab Experiment Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/news-chatter/">News Chatter</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/ocean-planet-encounters/">Ocean Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/ravaged-research-facility/">Ravaged Research Facility</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/space-complications-and-encounters/">Space Complications and Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/spaceship-mechanical-problems/">Spaceship Mechanical Problems</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/spatial-anomalies/">Spatial Anomalies</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/star-system-exploration-discoveries/">Star System Exploration Discoveries</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/urban-encounters-and-complications/">Urban Encounters and Complications</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/volcanic-planet-encounters/">Volcanic Planet Encounters</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Fields of Study</button><ul class="nav-sublist"><li><a class="nav-link" href="../../fields-of-study/agriculture/">Agriculture</a></li><li><a class="nav-link" href="../../fields-of-study/architecture/">Architecture</a></li><li><a class="nav-link" href="../../fields-of-study/business/">Business</a></li><li><a class="nav-link" href="../../fields-of-study/divinity/">Divinity</a></li><li><a class="nav-link" href="../../fields-of-study/education/">Education</a></li><li><a class="nav-link" href="../../fields-of-study/engineering-fields/">Engineering Fields</a></li><li><a class="nav-link" href="../../fields-of-study/family-and-consumer-science/">Family and Consumer Science</a></li><li><a class="nav-link" href="../../fields-of-study/formal-sciences/">Formal Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/human-physical-performance/">Human Physical Performance</a></li><li><a class="nav-link" href="../../fields-of-study/humanities/">Humanities</a></li><li><a class="nav-link" href="../../fields-of-study/journalism-and-communications/">Journalism and Communications</a></li><li><a class="nav-link" href="../../fields-of-study/law/">Law</a></li><li><a class="nav-link" href="../../fields-of-study/library-studies/">Library Studies</a></li><li><a class="nav-link" href="../../fields-of-study/medicinal-sciences/">Medicinal Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/military-sciences/">Military Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/natural-sciences/">Natural Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/psychic-abilities/">Psychic Abilities</a></li><li><a class="nav-link" href="../../fields-of-study/public-administration/">Public Administration</a></li><li><a class="nav-link" href="../../fields-of-study/social-sciences/">Social Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/transportation/">Transportation</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Items and Things</button><ul class="nav-sublist"><li><a class="nav-link" href="../../items-and-things/book-titles/">Book Titles</a></li><li><a class="nav-link" href="../../items-and-things/bounty-board/">Bounty Board</a></li><li><a class="nav-link" href="../../items-and-things/computer-files/">Computer Files</a></li><li><a class="nav-link" href="../../items-and-things/fictional-alloys/">Fictional Alloys</a></li><li><a class="nav-link" href="../../items-and-things/fictional-infectious-diseases/">Fictional Infectious Diseases</a></li><li><a class="nav-link" href="../../items-and-things/fictional-medications/">Fictional Medications</a></li><li><a class="nav-link" href="../../items-and-things/fictional-spices/">Fictional Spices</a></li><li><a class="nav-link" href="../../items-and-things/fictional-trade-goods-and-animals/">Fictional Trade Goods and Animals</a></li><li><a class="nav-link" href="../../items-and-things/illegal-drugs/">Illegal Drugs</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-biology-lab/">Items in a Biology Lab</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-chemical-lab/">Items in a Chemical Lab</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-crashed-cargo-spaceship/">Items in a Crashed Cargo Spaceship</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-cybernetics-clinic/">Items in a Cybernetics Clinic</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-desk/">Items in a Desk</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-freighter-cockpit/">Items in a Freighter Cockpit</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-governmental-office/">Items in a Governmental Office</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-lab-directors-office/">Items in a Lab Directors Office</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-ship-captain-quarters/">Items in a Ship Captain Quarters</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-warehouse/">Items in a Warehouse</a></li><li><a class="nav-link" href="../../items-and-things/metals/">Metals</a></li><li><a class="nav-link" href="../../items-and-things/military-medals-and-decorations/">Military Medals and Decorations</a></li><li><a class="nav-link" href="../../items-and-things/poisonous-plants/">Poisonous Plants</a></li><li><a class="nav-link" href="../../items-and-things/types-of-planets/">Types of Planets</a></li><li><a class="nav-link" href="../../items-and-things/types-of-stars/">Types of Stars</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Names</button><ul class="nav-sublist"><li><a class="nav-link" href="../../names/alien-names/">Alien Names</a></li><li><a class="nav-link" href="../../names/bar-names/">Bar Names</a></li><li><a class="nav-link" href="../../names/city-names/">City Names</a></li><li><a class="nav-link" href="../../names/corporation-names/">Corporation Names</a></li><li><a class="nav-link" href="../../names/drink-names/">Drink Names</a></li><li><a class="nav-link" href="../../names/human-female-names/">Human Female Names</a></li><li><a class="nav-link" href="../../names/human-male-names/">Human Male Names</a></li><li><a class="nav-link" href="../../names/human-surnames/">Human Surnames</a></li><li><a class="nav-link" href="../../names/planet-names/">Planet Names</a></li><li><a class="nav-link" href="../../names/ship-names/">Ship Names</a></li><li><a class="nav-link" href="../../names/space-station-names/">Space Station Names</a></li><li><a class="nav-link" href="../../names/spaceport-names/">Spaceport Names</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Places</button><ul class="nav-sublist"><li><a class="nav-link" href="../../places/casinos-and-hotels/">Casinos and Hotels</a></li><li><a class="nav-link" href="../../places/spaceport-bar-rumors/">Spaceport Bar Rumors</a></li><li><a class="nav-link" href="../../places/unexplored-planets/">Unexplored Planets</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Subtables</button><ul class="nav-sublist"><li><a class="nav-link" href="../../subtables/alien-names-1/">Alien Names 1</a></li><li><a class="nav-link" href="../../subtables/alien-names-2/">Alien Names 2</a></li><li><a class="nav-link" href="../../subtables/bar-names-1/">Bar Names 1</a></li><li><a class="nav-link" href="../../subtables/bar-names-2/">Bar Names 2</a></li><li><a class="nav-link" href="../../subtables/book-titles-1/">Book Titles 1</a></li><li><a class="nav-link" href="../../subtables/book-titles-2/">Book Titles 2</a></li><li><a class="nav-link" href="../../subtables/bulk-cargo-1/">Bulk Cargo 1</a></li><li><a class="nav-link" href="../../subtables/bulk-cargo-2/">Bulk Cargo 2</a></li><li><a class="nav-link" href="../../subtables/bulk-cargo-3/">Bulk Cargo 3</a></li><li><a class="nav-link" href="../../subtables/cargo-runs-1/">Cargo Runs 1</a></li><li><a class="nav-link" href="../../subtables/cargo-runs-2/">Cargo Runs 2</a></li><li><a class="nav-link" href="../../subtables/city-names-1/">City Names 1</a></li><li><a class="nav-link" href="../../subtables/city-names-2/">City Names 2</a></li><li><a class="nav-link" href="../../subtables/city-names-3/">City Names 3</a></li><li><a class="nav-link" href="../../subtables/city-names-4/">City Names 4</a></li><li><a class="nav-link" href="../../subtables/codes-1/">Codes 1</a></li><li><a class="nav-link" href="../../subtables/codes-2/">Codes 2</a></li><li><a class="nav-link" href="../../subtables/corporation-names-1/">Corporation Names 1</a></li><li><a class="nav-link" href="../../subtables/corporation-names-2/">Corporation Names 2</a></li><li><a class="nav-link" href="../../subtables/divinity-1/">Divinity 1</a></li><li><a class="nav-link" href="../../subtables/divinity-2/">Divinity 2</a></li><li><a class="nav-link" href="../../subtables/engineering-fields-1/">Engineering Fields 1</a></li><li><a class="nav-link" href="../../subtables/engineering-fields-2/">Engineering Fields 2</a></li><li><a class="nav-link" href="../../subtables/formal-sciences-1/">Formal Sciences 1</a></li><li><a class="nav-link" href="../../subtables/formal-sciences-2/">Formal Sciences 2</a></li><li><a class="nav-link" href="../../subtables/human-female-names-1/">Human Female Names 1</a></li><li><a class="nav-link" href="../../subtables/human-female-names-2/">Human Female Names 2</a></li><li><a class="nav-link" href="../../subtables/human-female-names-3/">Human Female Names 3</a></li><li><a class="nav-link" href="../../subtables/human-female-names-4/">Human Female Names 4</a></li><li><a class="nav-link" href="../../subtables/human-male-names-1/">Human Male Names 1</a></li><li><a class="nav-link" href="../../subtables/human-male-names-2/">Human Male Names 2</a></li><li><a class="nav-link" href="../../subtables/human-male-names-3/">Human Male Names 3</a></li><li><a class="nav-link" href="../../subtables/human-male-names-4/">Human Male Names 4</a></li><li><a class="nav-link" href="../../subtables/human-surnames-1/">Human Surnames 1</a></li><li><a class="nav-link" href="../../subtables/human-surnames-2/">Human Surnames 2</a></li><li><a class="nav-link" href="../../subtables/human-surnames-3/">Human Surnames 3</a></li><li><a class="nav-link" href="../../subtables/human-surnames-4/">Human Surnames 4</a></li><li><a class="nav-link" href="../../subtables/humanities-1/">Humanities 1</a></li><li><a class="nav-link" href="../../subtables/humanities-2/">Humanities 2</a></li><li><a class="nav-link" href="../../subtables/humanities-3/">Humanities 3</a></li><li><a class="nav-link" href="../../subtables/journalism-and-communications-1/">Journalism and Communications 1</a></li><li><a class="nav-link" href="../../subtables/journalism-and-communications-2/">Journalism and Communications 2</a></li><li><a class="nav-link" href="../../subtables/military-sciences-1/">Military Sciences 1</a></li><li><a class="nav-link" href="../../subtables/military-sciences-2/">Military Sciences 2</a></li><li><a class="nav-link" href="../../subtables/natural-sciences-1/">Natural Sciences 1</a></li><li><a class="nav-link" href="../../subtables/natural-sciences-2/">Natural Sciences 2</a></li><li><a class="nav-link" href="../../subtables/natural-sciences-3/">Natural Sciences 3</a></li><li><a class="nav-link" href="../../subtables/planet-names-1/">Planet Names 1</a></li><li><a class="nav-link" href="../../subtables/planet-names-2/">Planet Names 2</a></li><li><a class="nav-link" href="../../subtables/planet-names-3/">Planet Names 3</a></li><li><a class="nav-link" href="../../subtables/planet-names-4/">Planet Names 4</a></li><li><a class="nav-link" href="../../subtables/planet-names-5/">Planet Names 5</a></li><li><a class="nav-link" href="../../subtables/planet-names-6/">Planet Names 6</a></li><li><a class="nav-link" href="../../subtables/ship-names-1/">Ship Names 1</a></li><li><a class="nav-link" href="../../subtables/ship-names-2/">Ship Names 2</a></li><li><a class="nav-link" href="../../subtables/ship-names-3/">Ship Names 3</a></li><li><a class="nav-link" href="../../subtables/ship-names-4/">Ship Names 4</a></li><li><a class="nav-link" href="../../subtables/ship-transponder-info-1/">Ship Transponder Info 1</a></li><li><a class="nav-link" href="../../subtables/ship-transponder-info-2/">Ship Transponder Info 2</a></li><li><a class="nav-link" href="../../subtables/ship-transponder-info-3/">Ship Transponder Info 3</a></li><li><a class="nav-link" href="../../subtables/ship-transponder-info-4/">Ship Transponder Info 4</a></li><li><a class="nav-link" href="../../subtables/social-sciences-1/">Social Sciences 1</a></li><li><a class="nav-link" href="../../subtables/social-sciences-2/">Social Sciences 2</a></li><li><a class="nav-link" href="../../subtables/social-sciences-3/">Social Sciences 3</a></li><li><a class="nav-link" href="../../subtables/social-sciences-4/">Social Sciences 4</a></li><li><a class="nav-link" href="../../subtables/space-station-names-1/">Space Station Names 1</a></li><li><a class="nav-link" href="../../subtables/space-station-names-2/">Space Station Names 2</a></li><li><a class="nav-link" href="../../subtables/spaceport-names-1/">Spaceport Names 1</a></li><li><a class="nav-link" href="../../subtables/spaceport-names-2/">Spaceport Names 2</a></li><li><a class="nav-link" href="../../subtables/technobabble-1/">Technobabble 1</a></li><li><a class="nav-link" href="../../subtables/technobabble-2/">Technobabble 2</a></li><li><a class="nav-link" href="../../subtables/unexplored-planets-1/">Unexplored Planets 1</a></li><li><a class="nav-link" href="../../subtables/unexplored-planets-2/">Unexplored Planets 2</a></li><li><a class="nav-link" href="../../subtables/unexplored-planets-3/">Unexplored Planets 3</a></li><li><a class="nav-link" href="../../subtables/unexplored-planets-4/">Unexplored Planets 4</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Technobabble</button><ul class="nav-sublist"><li><a class="nav-link" href="../../technobabble/codes/">Codes</a></li><li><a class="nav-link" href="../../technobabble/technobabble/">Technobabble</a></li><li><a class="nav-link" href="../../technobabble/technobabble-phrases/">Technobabble Phrases</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Vessels</button><ul class="nav-sublist"><li><a class="nav-link" href="../../vessels/derelicts/">Derelicts</a></li><li><a class="nav-link" href="../../vessels/escape-pods/">Escape Pods</a></li><li><a class="nav-link" href="../../vessels/ship-transponder-info/">Ship Transponder Info</a></li><li><a class="nav-link" href="../../vessels/space-stations/">Space Stations</a></li></ul></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Locations</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">1 Main Map</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../locations/1-main-map/the-forge/">The Forge</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">3 Outlands</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Kalidas Maw</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Planets</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/planets/centurion/">Centurion</a></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/planets/holland/">Holland</a></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/planets/san-luis-potos/">San Luis Potosí</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Settlements</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Beacon</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Places</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/beacon/places/stellartron/">StellarTron</a></li></ul></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/beacon/beacon/">Beacon</a></li></ul></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/concord/">Concord</a></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/lodestar/">Lodestar</a></li></ul></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/kalidas-maw/">Kalidas Maw</a></li></ul></li></ul></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Lore</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Connections Worksheet</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../lore/connections-worksheet/isla-nakayama/">Isla Nakayama</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Factions</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../lore/factions/hunters-of-the-golden-alliance/">Hunters of the Golden Alliance</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">NPCs</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../lore/npcs/tindra-companion/">Tindra (Companion)</a></li></ul></li><li><a class="nav-link" href="../../../lore/galactic-standard-time/">Galactic Standard Time</a></li><li><a class="nav-link" href="../../../lore/quest-starters/">Quest Starters</a></li><li><a class="nav-link" href="../../../lore/truths/">Truths</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Progress</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../progress/bg-vow-find-a-new-precursor-species/">BG Vow Find a new precursor species</a></li><li><a class="nav-link" href="../../../progress/ct-isla-nakayama/">CT Isla Nakayama</a></li></ul></li>
+    </ul>
+  </nav>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <main class="content">
+    <header class="page-header">
+    <h1>Adventure Ideas</h1>
+    
+  </header><div class="prose"><table>
+<thead>
+<tr>
+<th>dice: 1d100</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Help law enforcement raid a slaver compound — Possible complications: A. Most of the law enforcement are actually cowards and leave the players to do most of the dangerous stuff. B. The slavers get wind of the operation and are fully prepared to defend themselves. C. The slavers use the slaves as human shields. D. The slavers have an informant in the ranks of the law enforcement. E. The slavers have used psychological techniques to condition some of the slaves into fighting against the players and law enforcement. F. The compound is riddled with secret passages and escape routes.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Work security for a traveling zoo — Possible complications: A. One of the creatures is the result of secret genetic experiments and possesses powerful but latent abilities. B. One of the creatures is unknowingly carrying a dangerous pathogen. Other animals and employees begin to fall ill or start acting strangely. C. The creatures in the zoo are accidentally exposed to a substance which increases their intelligence and strength. Are they now also sentient? D. A rival zoo attempts to sabotage the zoo or steal its exhibits. E. The players uncover evidence that the zoo is actually a front for an exotic and rare creature smuggling operation. F. One creature finds a way to communicate to you that it is sentient and needs help freeing itself from captivity.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Rescue an asteroid mining facility from raiders — Possible complications: A. The materials being mined are highly toxic, and the raiders have already damaged many of the safety systems in their raiding activities. B. The raiders are of a strange, alien race that ingests the mined material and then uses it as a weapon. C. The miners have had to barricade themselves in, and communications have been destroyed. The party needs to find a way to reach the miners or, at the very least, communicate with them. D. The raiders actually have a justifiable reason for their actions. The mining facility's activities are harming a civilization that lives deep within the asteroid, and the civilization is fighting back in self-defense.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Transport a mechanic team to a broken-down ship — Possible complications: A. The life-support systems are quickly deteriorating. B. The ship's occupants, while in need of help, are known to be suspicious and sometimes violent towards outsiders. C. The ship is in the middle of a war zone. D. The quickest route to the ship involves going through hazardous regions of space. E. Pirates have also discovered the ship and are en route as well. F. The mechanics need a particular substance or tool to get the ship running again.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Transport monks to their new monastery — Possible complications: A. The monks are carrying secret knowledge or a powerful relic that others are interested in obtaining. B. The monks are deeply spiritual and have bizarre customs that sometimes even inhibit the players from getting the monks to their destination. C. There is a group of religious zealots who have vowed to destroy the monks' order. D. The monks are found to actually be a dangerous cult that is bent on universal domination. E. The players must travel through dangerous territory such as a war zone or pirate-controlled space.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Transport a participant to a planet for a competition — Possible complications: A. The participant is injured en route to the competition. B. Rivals attempt to injure the participant before they compete. C. The participant is accused of illegal activity which disqualifies them from the competition. Their name must be cleared first. D. Rivals attempt to disable the players' ship to keep the participant from arriving. E. Once on the planet, the players discover that a teammate of the competitor has gone mysteriously missing, which would disqualify the whole team. F. The participant's essential equipment has been stolen. G. The participant is actually a spy with nefarious purposes. H. Upon arrival, the players learn that the competition rules have changed, and the competition is now played to the death.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Work security for a celebrity wedding — Possible complications: A. The bride is a bridezilla who is insistent on having everything be perfect by making everybody jump through ridiculous hoops (such as hiding weapons in cakes) for the wedding to go just as she envisions it. B. A scorned lover hacks the system to play spiteful music during the ceremony. However, the hacking also compromises the security systems put in place. C. The paparazzi and interstellar fan club try to infiltrate the wedding. D. The players find out about a plot to assassinate a prominent official attending the wedding. E. A space-time anomaly opens up in the center of the wedding cake, and the entire event is drawn in. F. A terrorist group plans to storm the wedding and hold prestigious guests as hostages until their demands are met.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Investigate a distress beacon in space — Possible complications: A. It's a trap. The beacon is only there to lure unsuspecting ships to be plundered by pirates. B. It's a trap. A space-faring creature mimics the pulse of the beacon and then captures and feeds on the ship's energy. C. It's a trap. Slavers use the beacon to draw ships to them to capture ships, cargo, and humans. D. The distress beacon was put out by a previously unknown alien species. The aliens picked it up on their travels and activated it without knowing what it was. They are from a distant system and cannot communicate with the party. E. The distress beacon leads to an eerie, seemingly empty, derelict ship that is so ancient, it should not have any power left to put out a signal. F. A hostile ship is also coming to investigate the beacon. G. The distress beacon comes from a ship whose life support systems are just about to fail catastrophically. H. A malfunctioning AI activated the beacon but sees all who approach as hostile ships that need to be destroyed.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Deliver food and supplies to a colony — Possible complications: A. Pirates or bandits hope to plunder the supplies. B. The native alien species is hostile to the colony and seeks to sabotage the endeavor. C. A rival colony seeks to take the supplies for themselves. D. Space phenomena hamper the journey. E. The ship cannot land due to strange and violent storms.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Fake the death of a crime lord — Possible complications: A. The reasons that the crime lord wants their death faked will cause harm to innocent lives. B. The faked death must be very public and very convincing. C. The crime lord needs their rival to be there to witness the &quot;death.&quot; D. Their rival discovers the plot and offers the party a large sum to actually kill the crime lord.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Escort a scientist through a dangerous region on an ocean planet — Possible complications: A. This region of the ocean has a thick layer of ice and other materials that block communication with the outside world. B. Many dangerous creatures lurk in this region. C. The scientist is eccentric and keeps on insisting on detours to explore new and mysterious depths. D. The ocean has strange currents that cause the ship to be pushed off course. E. There are microscopic materials in the ocean that mess with the ship's navigation instruments. F. Supplies and resources become limited on the perilous journey. G. An antagonistic underwater civilization attacks. H. The scientist wants to observe a particular phenomenon that is time-sensitive.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Investigate a ship adrift in space — Possible complications: A. The ship is full of refugees, and the systems are about to completely fail. B. The ship carried a plague that has now infected the players. C. The ship was an ambush trap set by pirates. D. The party finds identical versions of themselves on the ship.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Work security for a crime lord's wedding — Possible complications: A. The bride of the crime lord is carrying a gun and seems a little testy at times. B. The bride is the crime lord, and a rival gang plans to crash the party and kidnap the groom. C. The bride is wearing a famous necklace for the wedding, and everybody and their brother knows what price they could get for it on the black market. D. The family of the crime lord is all invited. But there are many rivalries and grudges within the family that could erupt into violence. E. A bounty hunter has gotten wind of the celebration and plans to collect the bounty on the crime lord's head.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Deliver books to a library — Possible complications: A. The library is located on a remote planet or in a remote galaxy. B. The library is located in a dangerous area such as a war zone, a gang-controlled city, or an area infested with pirates. C. The books are extremely rare and valuable, attracting the attention of unscrupulous organizations hoping to relieve the party of their cargo. D. The books contain sensitive information and therefore must pass through a lot of bureaucratic red tape to reach their destination. E. The library director is obsessed with paperwork and regulations, and they make the party jump through a bunch of ridiculous hoops to deliver the books. F. The books contain dangerous knowledge, which puts the players into an ethical dilemma.</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Hunt a dangerous animal pack in an urban area — Possible complications: A. The animals are incredibly intelligent and adapt quickly to any methods used against them. B. Curious onlookers put themselves in danger of being attacked. C. The creatures are using old underground passages and sewers to evade capture. D. The animals are sentient and claim this area was their habitat before the city was built.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Explore a desert planet with a team of scientists — Possible complications: A. Sand beings can shape-shift to mimic other living things, including members of the team and party. B. The team discovers a sand that causes burns when touched, and there is a sandstorm blowing toward everyone. C. The ship lands and immediately sinks in the sand. D. There is a spy among the scientists bent on sabotaging the mission.</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Smuggle slaves off a core world to freedom — Possible complications: A. The slaves have a distinctive look that differentiates them from the free population of the core world. A clever disguise will be needed to not arouse suspicion. B. Robust border controls ensure that the players will be facing checkpoints, inspections, and random searches until they reach the rim worlds. C. The slaves have a tracking technology affixed to them that must be disabled before the operation can proceed. D. The players will need to find a place where the freed persons can set up a new life safely.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Break a minor crime lord out of prison — Possible complications: A. The government has hired highly trained mercenaries to guard the prisoner. B. The players discover that the crime boss is more heinous than they realized, which raises ethical questions about the operation. C. The players must pay an exorbitant bribe to get the boss out of prison. D. The crime lord is soon to be transferred or executed. E. The crime lord is incredibly large and unable to move on their own. F. A rival group tries to kidnap the crime lord from the players after the breakout. G. The imprisonment was just a setup to get the players to come to the area. H. Once freed, the crime lord betrays the players and attempts to steal their ship.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Assassinate a crime boss — Possible complications: A. The crime boss allows no one near them unless their trust is gained first. B. The assassination attempt must be done remotely because the crime boss is completely unapproachable. C. A highly specialized, highly trained bodyguard is constantly with the crime boss. D. The crime boss is a master puppeteer who has kept their own identity expertly hidden. E. A power vacuum will ensue if the boss is assassinated. F. The government is actually the evil entity and is trying to get the party to assassinate a freedom fighter by labeling them a crime lord.</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Steal a freighter from an impound facility — Possible complications: A. The facility is labyrinthine with many convoluted passages and dead ends. B. The facility has state-of-the-art security measures including new types of encryption, surveillance, and AI guards. C. There is a dampening field over the whole facility, preventing any vehicle or ship from starting until the field is disabled. D. Your party discovers mechanical issues as soon as they try to power up the freighter. E. The freighter is going to be transferred soon, so the party must act quickly. F. The facility is old and decrepit. Jammed doors, broken elevators, and confused AI inhibit the party's mission. G. There is a hidden tracking device on the target freighter. H. Someone else is also trying to steal the same freighter.</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Deliver supplies to a struggling university — Possible complications: A. The supplies are extremely valuable, attracting the attention of pirates and bandits. B. The supplies contain secret information that certain governments want. C. The supplies are going to the science and technology department and are highly volatile. D. There is civil unrest in the city, and it looks like a riot is just about to break out. E. The students are protesting and have created a blockade.</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Collect data from an abandoned research facility — Possible complications: A. The data is difficult to retrieve from the crumbling infrastructure and could be easily damaged in the retrieval. B. The research facility was abandoned because one of its more dangerous test subjects got out and is now roaming the abandoned corridors. C. A rogue AI fiercely guards the facility and all its secrets. D. Strange anomalies or dimensional/ time rifts threaten the players.</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Smuggle weapons to freedom fighters — Possible complications: A. Weapons acquisition is heavily controlled by the governing authorities. B. The only available weapons must be acquired through the black market. C. The freedom fighters are in an extremely remote and/or hostile location. D. The reliability of the freedom fighters to meet up is questionable. E. The is a limited window of time to get the much-needed weapons to the freedom fighters.</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Kidnap a diplomat — Possible complications: A. The players only have a short window of time when the diplomat will be in the ideal position to be kidnapped. B. One of the players has a personal connection to the diplomat, making it difficult for them to see the mission through. C. The diplomat is heavily guarded. D. The kidnapping has unintended consequences, such as starting a war. E. The diplomat actually knew about the plot all along and allowed the players to kidnap them. The players find themselves in a plot masterminded by the diplomat. F. The diplomat's country organizes a rescue.</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Negotiate a peace treaty — Possible complications: A. There has been a long history of animosity between the groups, which often leads to physical altercations. B. Deep cultural differences cause the groups to be easily offended by the other. C. Extremists on each side use terrorism, sabotage, propaganda, and/or fake news to get their way. D. The negotiations center around a vital and limited resource. E. The threat of total and world-encompassing war hangs over the negotiations.</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Help the child of a murdered prospector protect their planetary claim — Possible complications: A. The child is required to maintain certain aspects of the land such as a habitation or a cultivated plot of ground to fulfill government requirements to keep the land. B. A valuable resource is discovered on the land, and thieves are interested in taking it for themselves. C. Prospectors known as &quot;Land Bandits&quot; are trying to intimidate the child into giving up the claim. D. A powerful corporation is trying to take the land away from the child by legal gymnastics and bribes. E. The murder was tied to a family feud, and now the party has become embroiled in acts of revenge and power struggles.</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Investigate the mysterious death of a diplomat — Possible complications: A. The cause of death is unknown. The body has no marks, and the labs show no foreign substances within the body. B. Those closest to the diplomat are not forthcoming with information. C. This diplomat was the key negotiator for serious talks between two very volatile groups. D. Rumors start swirling that the diplomat was secretly a notorious crime lord.</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Steal valuable data from a space station — Possible complications: A. The space station is protected by a strange alien race with unusual abilities. B. The information is stored in such a way that it will self-destruct shortly after it has been taken from its source. So the data must be transferred quickly, or all will be lost. C. An unforeseen power glitch threatens to compromise the heist. D. The station is currently hosting a large and luxurious gala, attended by the galaxy's richest and most famous inhabitants.</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Find the pleasure yacht of a missing celebrity — Possible complications: A. Bounty hunters are also seeking the yacht. B. The celebrity has organized his own disappearance as an elaborate game to get people to follow his clues, like some sort of twisted scavenger hunt. C. The spouse of the celebrity has not been very forthcoming when questioned. D. The players find out that the celebrity has recently shown interest in the occult.</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Resolve a hostage situation — Possible complications: A. The hostage-takers' demands are very specific and nearly impossible to fulfill. B. The hostage situation is taking place in a government facility housing sensitive or dangerous materials. The government plans to lead a military strike if the situation is not resolved soon. C. The instigators have strapped explosives to the hostages. D. One of the hostages is the child of a crime lord, who is mounting their own rescue attempt that will likely kill the other hostages.</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Investigate a politician's disappearance — Possible complications: A. Not only has the politician disappeared, but their residence has mysteriously vanished from its prominent spot in the city. Everyone is baffled as to how a building could just disappear. B. People closest to the politician seemed to have forgotten the existence of the politician. C. A mysterious message with a clue was mailed to the spouse of the politician. D. A note turns up in the politician's own handwriting, but it seems to be nonsensical. E. As the investigation continues, the politician's dark history is revealed.</td>
+</tr>
+<tr>
+<td>32</td>
+<td>Participate in a gambling tournament — Possible complications: A. The players discover that the competition is rigged. B. The players must find a way to raise enough money to enter the tournament. C. The tournament is sponsored by a crime lord, and the tournament is rife with unscrupulous croupiers. D. The stakes are very high. Those who sign up know that their very life could be on the line.</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Help set up a medical clinic on a rim world — Possible complications: A. The rim world is home to a diverse group of alien peoples, so the clinic must be ready with a variety of medications, instruments, and other resources. B. This rim world is primitive and lacks the resources to support a proper clinic. C. The locals are suspicious of medical intervention. Some are even violently opposed to it. D. While setting up the clinic, a health crisis erupts.</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Deliver raw materials to a colony — Possible complications: A. The raw materials are infested with a strange and mischievous lifeform. B. Upon arrival, the colony says that they did not request said materials and refuse to pay. C. Upon arrival, the colonists claim that the raw materials are actually an illegal substance and try to take the materials without paying for them and arrest the players. D. The materials are very valuable but also very volatile. If word gets out that the ship is transporting this material, pirates will come out of every seedy system in the galaxy.</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Ambush slavers on a rim world — Possible complications: A. The slaver group is much larger than the players were led to believe. B. During the ambush, some of the captives rise up and help with the fight, but others are too young or frightened and need protection during the conflict. C. The slavers ambush the players first because someone informed on the players. D. The slavers activate a distress beacon, and reinforcements are on the way.</td>
+</tr>
+<tr>
+<td>36</td>
+<td>Transport and help establish missionaries on a rim world — Possible complications: A. The missionaries want to aid an ailing people, but the resources and infrastructure are limited on the planet. B. The missionaries are not well-equipped to protect themselves from danger because they are pacifists. They need to be convinced that it is necessary to have weapons. They also need to be trained on how to use them. C. The missionaries are well-meaning but do not understand the cultures of the rim world. D. Some factions welcome the missionaries, but some violently oppose them. E. The missionaries are there to care for patients during an outbreak but must protect themselves. F. The missionaries accidentally brought a disease to the planet and caused a pandemic. G. The missionaries are not what they seem. It is actually just a front to manipulate factions on the rim world for the benefit of a powerful but mysterious group.</td>
+</tr>
+<tr>
+<td>37</td>
+<td>Compete in a virtual reality competition — Possible complications: A. The players find their minds trapped in virtual space. B. The competition seems to be causing people's actual bodies to die of shock if they are killed in the game. C. A rogue AI is attempting to control the outcome of the competition for its own ends. D. The whole game was designed by an evil corporation to gain control of people's minds to make them do their bidding.</td>
+</tr>
+<tr>
+<td>38</td>
+<td>Warn law enforcement spaceships of an ambush — Possible complications: A. Hackers have disrupted the communications, so a physical ship must be sent to warn them. B. There is a traitor amid the law enforcement who convinces them to mistrust your warning. C. Though the party knows of the ambush, they don't know where it is located. D. The ambushers claim to be freedom fighters and that the law enforcement is corrupt.</td>
+</tr>
+<tr>
+<td>39</td>
+<td>Participate in a legal space race — Possible complications: A. The competition is fierce with many skilled and ruthless competitors. B. A group comes in and tries to claim that the whole race is actually illegal. C. The race incorporates a dangerous obstacle course that includes hazards like solar flares, strange nebulous clouds, asteroid evading, and ion storms. D. The players must find a powerful corporation or prominent individual to sponsor them. The corporation or person demands something in return or imposes an unexpected condition for their sponsorship. E. Rumors fly that someone is cheating by adding illegal technology to their ship. F. Someone has rigged the race so that the players' ship is likely to lose, unless they find out about it first and use their ingenuity to beat the now unfair odds.</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Transport a celebrity to a sci-fi convention — Possible complications: A. An imposter has kidnapped the real celebrity and taken their place. B. The bodyguard and manager got delayed, and now the players find themselves managing adoring fans, paparazzi, and pushy journalists. C. Wrong information was given, and the party delivers the celebrity to a fantasy convention instead. D. A fight breaks out over a nerdy disagreement that had been fermenting in the weeks leading up to the convention. E. The celebrity is eccentric and exacting. They demand particular foods and special arrangements for sleeping.</td>
+</tr>
+<tr>
+<td>41</td>
+<td>Deliver cadavers to a medical school — Possible complications: A. The transportation of the cadavers attracts the attention of body snatchers intent on intercepting the party and taking the cadavers for their own purposes. B. Transporting the bodies requires specialized equipment, especially if dealing with multiple alien species. C. The cadavers have identifying marks that can be discovered by the party. These marks connect the cadavers with a conspiracy. D. The cause of death for the bodies is mysterious and leads to the discovery of heinous schemes surrounding the acquisition of the bodies.</td>
+</tr>
+<tr>
+<td>42</td>
+<td>Settle a dispute between two rival gangs on a rim-world — Possible complications: A. The gangs' hatred for one another stems from deep-seated convictions based on religious dogma. B. The rival gangs' cultures and moral codes are complicated to navigate for an outsider. C. The dispute revolves around an essential and limited resource like water, food, or an important component of a medication or fuel. D. &quot;Vultures&quot; are circling. A corrupt government/crime ring/powerful alien corporation is looking for a way to exploit this conflict.</td>
+</tr>
+<tr>
+<td>43</td>
+<td>Gather herbs from various planets for a celebrity chef — Possible complications: A. Aggressive insect-like creatures guard one of the herbs. B. One of the herbs is critically endangered, and harvesting it could take away from its chance for survival. C. One of the herbs viciously defends itself. D. A particular herb is being over-harvested, which is compromising the entire ecosystem. E. A particular flower only blooms on rare occasions for a short length of time, so the players must hurry.</td>
+</tr>
+<tr>
+<td>44</td>
+<td>Board a disabled slaver ship, free the slaves, and tow the ship to the proper authorities — Possible complications: A. The slaves have already started revolting, and the players come into an extremely chaotic situation. B. Some of the slaver crew hides among the baggage, ready to pounce. C. Other vessels affiliated with the slavers give chase. The slavers are holding a small group of slaves as hostages and are demanding safe passage. D. Collusion is uncovered between the authorities and the slavers when the characters reach the port.</td>
+</tr>
+<tr>
+<td>45</td>
+<td>Infiltrate a corrupt corporation — Possible complications: A. The corporation has installed the latest in surveillance technology. B. The players' only way to infiltrate the corporation is to impersonate people who are high up on the corporate ladder. C. Infiltrating the corporation uncovers a twist, such as a strong ally of the players actually working for the evil corporation. D. Infiltrating the corporation will involve hurting, kidnapping, and threatening innocent people.</td>
+</tr>
+<tr>
+<td>46</td>
+<td>Plant explosives in a space station — Possible complications: A. Security is very sophisticated and includes things like laser grids, motion sensors, AI guards, traps, and encoded doors. B. The players must place the explosives before a particular event happens in the space station. C. The players must ensure that the innocent civilians are off the space station before the bomb goes off. D. The players must disguise themselves and keep from arousing suspicion. E. A religious group of highly trained fighters has been hired to protect the space station. F. Another group arrives at the space station with their own secret agenda, interfering with the operation.</td>
+</tr>
+<tr>
+<td>47</td>
+<td>Salvage an ancient ship near a black hole — Possible complications: A. The ship is near the event horizon and must either be pulled away from it or be salvaged quickly. B. Another object is falling into the black hole and is sending off dangerous amounts of radiation. C. Getting too near the black hole can cause extreme time dilation, which can affect the characters. D. Unbeknownst to the characters, the ancient ship still has a fully functional automated self-defense system.</td>
+</tr>
+<tr>
+<td>48</td>
+<td>Volunteer for a scientific experiment for an exorbitant amount of money — Possible complications: A. The party find themselves psychically linked to each other after the experiment. B. The experiment starts to cause the collapse of the scientific systems because one member of the party is highly unusual. C. The party has all temporarily turned purple, and the scientists refuse to pay up. D. The scientists have switched the party members' brains with each other. E. All the members of the party now exhibit a deadly fear of noodles.</td>
+</tr>
+<tr>
+<td>49</td>
+<td>Kidnap a celebrity — Possible complications: A. The celebrity has hired a team of master fighters to guard them. B. The celebrity actually has a secret power that the characters do not know about. C. The celebrity is kidnapped by someone else before the characters can get to them. D. The celebrity can manipulate the emotions of those around them.</td>
+</tr>
+<tr>
+<td>50</td>
+<td>Join an expedition to explore the cave systems of a newly discovered planet — Possible complications: A. The air in the caves is highly toxic and corrosive. Specialized suits must be worn and only last for a short time. B. A creature living in the caves is capturing members of the team and dragging them off for unknown reasons. C. An earthquake causes a cave-in and separates members of the expedition. D. An underground lake emits a strange gas that causes everyone to hallucinate.</td>
+</tr>
+<tr>
+<td>51</td>
+<td>Escort a traveling space circus through a dangerous region of space — Possible complications: A. One of the performers has injured themselves and needs someone to take their place in the circus act. B. The circus is actually a group of spies who travel around gathering information for a nefarious government or corporation. C. The circus animals escape and wreak havoc on the ship. D. Pirates attack the ship, looking for a valuable item the circus uses in its performances.</td>
+</tr>
+<tr>
+<td>52</td>
+<td>Participate in an illegal space race — Possible complications: A. The police are informed on the day of the race and crack down on the competition. B. One of the competitors is known for being exceedingly reckless and dangerous to all other competitors. C. There is a plot to sabotage the players' ship/racing vehicle. D. There is a plot to fix the race and share the winnings among the conspirators. E. The competitors are pulled through a portal/wormhole/space-time anomaly, which is the beginning of a completely different adventure.</td>
+</tr>
+<tr>
+<td>53</td>
+<td>Explore a strange nebula — Possible complications: A. The nebula conceals a large and dangerous creature. B. The nebula is made of strange particles that cause the party to experience time differently. C. The nebula is the hiding place for a dangerous pirate outpost. D. The laws of physics seem to behave differently in the nebula. E. The nebula causes the worst of the players' natures to come out in their interactions.</td>
+</tr>
+<tr>
+<td>54</td>
+<td>Escort a scientist through a dangerous region on an ice planet — Possible complications: A. Ice storms and blizzards materialize without warning posing great danger to the characters and the scientist. B. The scientist's equipment is extremely fragile and must be transported with great care. C. The party must travel by cavern whenever possible as travel via the surface causes harm by exposure in a matter of hours. D. Fierce creatures attack the party. E. The planet's surface is extremely unstable. Collapsing glaciers, avalanches, ice quakes, and shifting ice sheets make maps completely useless. F. Unbeknownst to the players, a band of outlaws is hiding out near the scientist's destination. G. Communication is disrupted by the extreme weather and temperature of the planet.</td>
+</tr>
+<tr>
+<td>55</td>
+<td>Transport a diplomat to a colony — Possible complications: A. Some oppose the colony and plan to assassinate the diplomat en route. B. The colony is located in a physically or politically dangerous place. C. The diplomat has actually been kidnapped and replaced with a body double, who plans to sabotage the relations between the colony and the diplomat's government. D. Through the work of saboteurs or a natural disaster, the party loses all communication with the colony.</td>
+</tr>
+<tr>
+<td>56</td>
+<td>Investigate rumors of rebellion — Possible complications: A. The rebellion is a sophisticated network of secretive cells that do not even know each other's real identities. B. As the investigation continues, it is discovered that higher-ups in the corporation/government are actually inciting the people to rebellion for their own gain. C. A close friend or faithful ally actually has ties to the rebellion. D. The party must get to the bottom of it before the corporation/government takes drastic actions. E. The players face a moral dilemma as they conclude that the rebellion is fighting for a just cause.</td>
+</tr>
+<tr>
+<td>57</td>
+<td>Make contact with an unknown fleet approaching a settlement world — Possible complications: A. The fleet is made up of refugees who are distrustful of outsiders. B. The individuals carry a highly infectious plague. C. The fleet is composed of generation ships that have traveled centuries if not eons, and now distinct cultures have arisen on each vessel. D. The fleet is from outside the galaxy, and the beings only communicate with methods unknown to the party.</td>
+</tr>
+<tr>
+<td>58</td>
+<td>Rescue a minor celebrity from pirates — Possible complications: A. The celebrity attempts to rescue themselves without the party's help. B. The celebrity decides to join the pirates. C. The players discover that the celebrity is actually the child of the pirate captain. D. The pirates make an impossible demand for the release of the celebrity.</td>
+</tr>
+<tr>
+<td>59</td>
+<td>Investigate unidentified space debris — Possible complications: A. The debris is actually an ancient intelligent artifact that can reassemble itself if given energy. B. A strange pathogen clings to the debris. C. Probing the debris will cause a space anomaly. D. Going into the debris field causes the players to hallucinate with visions of the ancient civilization from which the debris originated. E. If the debris is reassembled, it will create a portal. F. The debris is from a ship destroyed by a hostile. The hostiles are still hiding among the debris. G. The debris is the players' own ship from the future or a different reality.</td>
+</tr>
+<tr>
+<td>60</td>
+<td>Evacuate animals from a dying planet — Possible complications: A. Finding a suitable planet to re-establish the animals is proving difficult, either because the animals would not survive in their new home or would become a dominant species, disrupting the ecosystem of the host planet. B. The animals are difficult to find and capture in their native surroundings. C. Poachers and their traps complicate the operation. D. The players must coordinate with locals on both planets and expert xenobiologists during the transition. E. Ensuring the health and survival of the animals during the transportation process is a delicate and complex endeavor. F. The animals have a disease that could wreak havoc upon the host planet. G. The characters face opposition from corporations, governments, or local populations on the host planet.</td>
+</tr>
+<tr>
+<td>61</td>
+<td>Relocate an endangered species — Possible complications: A. The planet's environment is harsh, and its flora and fauna are dangerous. B. The species is a well-known element of a vital medicine. Several powerful groups are fighting to get it. C. There is concern that the species may endanger the ecosystem of its host planet. D. The species is going to face total extinction very soon because a large corporation is planning to destroy its habitat to build its new facility. Time is of the essence. E. The species is actually sentient and also extremely ancient. It wants to fade out of existence.</td>
+</tr>
+<tr>
+<td>62</td>
+<td>Assassinate a corrupt diplomat — Possible complications: A. The diplomat was once an assassin themselves and knows all the tricks of the trade. Therefore, the only way to get near the diplomat is to gain their trust. B. The diplomat has a well-trained bodyguard that must be dealt with. C. Assassinating this individual may destabilize an already volatile environment. D. The diplomat has the ability to sense when they are in danger.</td>
+</tr>
+<tr>
+<td>63</td>
+<td>Travel to a distant planet to collect sensitive scientific research — Possible complications: A. The planet has just been encompassed in a war. B. When the party arrives, they discover the &quot;sensitive scientific research&quot; is a small child who has been tampered with by the scientists. C. A rival scientific corporation will stop at nothing to get at the research, and a transfer is an opportune time to steal it. D. The research must be stored in a particular way and have a power source connected to it at all times, or it will be ruined.</td>
+</tr>
+<tr>
+<td>64</td>
+<td>Deliver medicine to a colony experiencing an epidemic — Possible complications: A. The people are desperate and mob the ship as soon as it arrives. B. The supplies are limited, and the characters must make difficult decisions on who gets the medicine. C. The epidemic is in a war zone. D. The medicine is incredibly valuable and likely to be stolen if the characters are not careful. E. A group that wants to see the colony further destabilized attempts to sabotage the delivery. F. The medication must be kept cold at all times, and the colony is on a torrid planet.</td>
+</tr>
+<tr>
+<td>65</td>
+<td>Steal a family heirloom from a noble's mansion — Possible complications: A. For surveillance, the noble has purchased a small army of clones.Each has a neural implant that connects them, so that they act as one super organism. B. The heirloom is contained in a chamber that is connected to a network of chambers that can be rearranged into different configurations. The other chambers are filled with deadly puzzles and booby traps. C. The heirloom is said to be a strange alien artifact with mysterious powers that may benefit or destroy the holder. D. The safe where the heirloom is kept requires a retinal scan that cannot be faked.</td>
+</tr>
+<tr>
+<td>66</td>
+<td>Capture a minor crime boss and bring him to justice — Possible complications: A. The crime boss could have powerful connections within the city, star system, galaxy, etc. B. The crime boss practically has a miniature army of bodyguards, henchmen, and informants. C. The crime boss has a heavily fortified hideout that the players must infiltrate. D. The players face the dilemma of turning the crime boss over to corrupt authorities or taking on the role of vigilantes.</td>
+</tr>
+<tr>
+<td>67</td>
+<td>Explore a living ship — Possible complications: A. The ship has &quot;antibodies&quot; that attack the players. B. The ship attempts to make the party a part of the ship itself. C. The ship attempts to communicate, causing pain or hallucinations. D. The ship is pregnant and needs the party's help to give birth.</td>
+</tr>
+<tr>
+<td>68</td>
+<td>Salvage a space shipwreck on an ocean planet — Possible complications: A. The wreck has occurred on a part of the planet where the ocean is teeming with hostile creatures. B. The shipwreck will soon sink to the depths and be out of reach of the players. C. Other salvagers are racing to the wreck to stake their claim. D. The ship's self-destruct will be activated if the ship is moved.</td>
+</tr>
+<tr>
+<td>69</td>
+<td>Collect donations for a charity — Possible complications: A. Space pirates get wind of the endeavor and organize a heist. B. The charity is actually a front for a criminal organization, which plans to use the money for darker purposes. C. The money needs to be brought to the recipients as soon as possible, but the way leads through a war zone. D. A powerful and telepathic entity decides to mess with the players as they try to accomplish their goal. E. An eccentric individual donates a strange and cumbersome object that the players are forced to use their skills and intelligence to handle.</td>
+</tr>
+<tr>
+<td>70</td>
+<td>Exterminate an invasive species — Possible complications: A. The invasive species is so interwoven into its host ecosystem that it cannot be easily exterminated without damaging the native plants and animals. B. The invasive species fights back with great ferocity. C. The invasive species is intelligent and devious. It tries to convince the players and others that it belongs in this environment and that the native species are actually the enemies. D. The species rapidly replaces itself if attacked. E. Vital infrastructure has been compromised by the invasive species. F. The players face an ethical dilemma because the species is sentient. Its original home has also been destroyed, so it has no other home but the host planet. G. While the species is invasive, it also provides an important medicine to the people in that sector. Therefore, many are calling for it to be controlled rather than exterminated.</td>
+</tr>
+<tr>
+<td>71</td>
+<td>Escort a scientist through a dangerous region on a jungle planet — Possible complications: A. The scientist is actually wanted on several other planets for dangerous experiments done on fragile jungle ecosystems. B. The jungle is home to a tiny creature that can burrow into an unsuspecting victim, take over their brain, and control them to do its bidding. C. An ancient civilization living on the planet refuses to let the scientist into crucial parts of the jungle. D. A large corporation has been stripping the jungle of its resources. Soon there will be nothing left to study.</td>
+</tr>
+<tr>
+<td>72</td>
+<td>Infiltrate research facility on a remote moon to retrieve a prototype weapon — Possible complications: A. The weapon has an integrated AI that uses it to defend itself from theft. B. The research facility has many unusual and novel systems with which to protect itself. C. The facility is labyrinthine, and the location of the weapon is unknown. D. The weather on the moon is unpredictable and dangerous.</td>
+</tr>
+<tr>
+<td>73</td>
+<td>Sell trade goods on a rim world — Possible complications: A. The locals on the rim worlds are suspicious and trigger-happy. B. A crime syndicate tries to bully the players into paying exorbitant fees. C. Rim world raiders are always looking to grab unsuspecting traders and sell them as slaves on the black market. D. Governments are often unstable on rim worlds and will change hands (and rules) without notice.</td>
+</tr>
+<tr>
+<td>74</td>
+<td>Suppress a rebellion on a rim world — Possible complications: A. The players sympathize with the rebels as some of their grievances are valid. B. The rebellion has political hostages. C. The players must navigate a complex political situation involving factions that are only tenuously united. D. Civilians are aiding and housing the insurgents. E. Other groups seek to profit from the chaos. F. The rebellion was incited by a rogue AI/evil political faction/alien crime cartel which infiltrated the population and spread lies for its own nefarious purposes.</td>
+</tr>
+<tr>
+<td>75</td>
+<td>Help a colony fend off slavers — Possible complications: A. The slavers have managed to capture a small group of children belonging to the colony and are using them to manipulate the colony into trading them for adult &quot;volunteers.&quot; B. The slavers have destroyed some of the supply chains of the colony, which forces small groups out into the open as they scavenge for food. C. There is a spy among the colonists feeding information to the slavers. D. All the colonists are pacifists and will not help with the defense of the colony.</td>
+</tr>
+<tr>
+<td>76</td>
+<td>Investigate the disappearance of a colonist — Possible complications: A. The colonist had gotten mixed up with a criminal organization. B. The colonist was kidnapped by evil scientists who planned to do experiments on their victim. C. Tension surrounding the disappearance leads to possible violence among the other colonists. D. The disappearance sets off a crisis because that particular colonist was essential to the well- being/survival of the colony. E. The missing colonist is a child who seems to display &quot;strange abilities.&quot;</td>
+</tr>
+<tr>
+<td>77</td>
+<td>Start a rebellion on a rim world — Possible complications: A. The people are heavily monitored by AI- bugged living, working, and public spaces. Informants are everywhere. B. The government's propaganda machine misleads much of the population. C. To keep the people under their control, the regime uses brutal physical punishments, concentration/labor camps, public executions, and threats directed toward family members. D. Factions who are willing to join a rebellion have different goals for when the current regime is overthrown. E. The people are prisoners on their own world. Ships coming to and from the planet are heavily monitored and guarded. Few of the populace are trained in how to pilot them. F. All weapons are kept in secure facilities.</td>
+</tr>
+<tr>
+<td>78</td>
+<td>Help a colony defeat a group of pirates — Possible complications: A. The pirates have their headquarters on a heavily fortified base on a remote planet. B. Some of the leaders in the government have long been conspiring with the pirates and lining their pockets with the benefits of this &quot;arrangement.&quot; C. The pirates have a sophisticated intelligence network and monitor what is happening on the planets within their sphere of influence. D. The pirates have taken hostages. E. The colony lacks trained individuals and weaponry to take on the pirate horde. Someone has to train and equip them. F. The players must infiltrate the pirates and gain their trust. Then they can discover the pirates's plans and create a counteroffensive.</td>
+</tr>
+<tr>
+<td>79</td>
+<td>Smuggle a controlled substance to a core planet — Possible complications: A. The substance spills in the cargo bay/storage area and is now causing damage to the ship. B. Some creature has stowed away in the shipment and is consuming the substance. C. The core planet has a trained creature that can detect the controlled substance with one of its senses. D. Inspections are thorough and scanners can detect almost anything. E. A rival group doesn't want you taking a bite out of their profits. F. The substance is prone to spontaneous combustion if mishandled or jostled. G. The players must pay a bribe to officials to get the goods in.</td>
+</tr>
+<tr>
+<td>80</td>
+<td>Fake the death of a celebrity — Possible complications: A. The paparazzi follows the celebrity everywhere making it tricky to pull off the scheme. B. A rival faction tries to sabotage the players' plans. C. The players are pulled into a deeper conspiracy after faking the death. D. The celebrity insists they must &quot;perish in a heroic way.&quot;</td>
+</tr>
+<tr>
+<td>81</td>
+<td>Explore a planet covered in crystalline structures — Possible complications: A. The crystal planet is guarded by crystalline sentient beings. B. The crystals actually absorb memories, causing the crew members to forget crucial things over time. The only way to get them back is to find a way of destroying the crystals containing their memories. C. A civilization living there uses the crystals to focus their psychic ability and control the weak-minded. D. Poachers are stealing the valuable crystals at a rate that will soon destroy the planet.</td>
+</tr>
+<tr>
+<td>82</td>
+<td>Investigate a spatial anomaly — Possible complications: A. Rift-like gravitational waves threaten to tear the ship apart. B. A disruption in time throws the players into a different era. C. A strange trans-dimensional creature attempts to communicate with the crew but causes disruptions in the workings of the ship. D. The players are thrown into a trance-like state where they experience things beyond this reality. Meanwhile, no one is driving the ship.</td>
+</tr>
+<tr>
+<td>83</td>
+<td>Help a loan shark collect money in exchange for a favor — Possible complications: A. The players face a moral dilemma when they encounter poverty-stricken debtors who will suffer greatly if forced to pay back the loan at that time. B. Other loan sharks want the debtors to pay them first and sabotage the party's efforts. C. The loan shark is found to be a part of a serious crime network, and the players are now suspected by the authorities to also be connected to the cartel. D. One of the debtors has a personal connection with a player.</td>
+</tr>
+<tr>
+<td>84</td>
+<td>Transport colonists to their new home — Possible complications: A. En route to the colony, the spacecraft loses all means of propulsion. B. The ship transporting the colonists mysteriously veers off course. C. Pirates attack the ship. D. A faction that is against the building of this colony sabotages the ship. E. An unusual disease infects the passengers. F. The colonists don't actually have permission to go to the new location, but they don't tell the players. G. A child is left behind or a child is lost on the transport ship.</td>
+</tr>
+<tr>
+<td>85</td>
+<td>Work security for high-stakes peace negotiations — Possible complications: A. An assassin has infiltrated the campus and has disguised themself as staff. B. A cyber-attack is launched by hackers from a terrorist organization causing surveillance, security, and communication to go down. One of these terrorists plans to kidnap a high-ranking official. C. A rival empire perceives the negotiations as a threat to its interests and uses its military might to intimidate those attending the peace talks. D. Terrorists plan a direct attack on the building hosting the negotiations. E. Because of past grievances and disagreements, delegates from opposing parties refuse to be in the same room together.</td>
+</tr>
+<tr>
+<td>86</td>
+<td>Participate in a hunting contest — Possible complications: A. The contest will attract hunters from around the system. Some of them are more dangerous (and certainly more unscrupulous) than the creatures being hunted. B. The competition will take place on a range of planets, each with its own fickle weather and dangerous beast. C. A large corporation sponsoring one of the big-name hunters is planning to sabotage other competitors' chances of winning the contest. D. The corporation sponsoring the party turns out to be a front for a large criminal organization.</td>
+</tr>
+<tr>
+<td>87</td>
+<td>Establish a listening outpost near a pirate compound — Possible complications: A. Security is multi-layered at the pirate compound. The players must get past sensors, security codes, drones, and guards to set up their outpost. B. The outpost is to be located in a town near the pirates' compound. The pirates frequent this town, so the players must go about incognito as they establish the listening outpost. C. The outpost must be physically disguised to not arouse suspicion. D. Finding a location is proving difficult because the pirates heavily patrol a large radius around their compound. E. A pirate raid occurs near the listening station, and the players face a moral dilemma on whether they should blow their cover to help the innocent or stay hidden to preserve the mission.</td>
+</tr>
+<tr>
+<td>88</td>
+<td>Ambush a space pirate ship — Possible complications: A. The space pirates have learned of the ambush and are sending a decoy ship. The real ship will come after the players board the decoy. B. The players must find a good place to ambush the pirates. C. The pirates have innocent captives aboard their ship. D. The pirates have just made a deal with another pirate faction, and their combined forces are more than the would-be ambushers had planned to take on.</td>
+</tr>
+<tr>
+<td>89</td>
+<td>Deliver water to a desert planet — Possible complications: A. A sandstorm interferes with the navigation systems on the ship. B. Water bandits devise a plot to take the water as soon as the players land. C. Native animals can sense water over long distances and can be very aggressive and creative when it comes to getting water. D. A rival group comes to fight for the water.</td>
+</tr>
+<tr>
+<td>90</td>
+<td>Deliver supplies to a monastery — Possible complications: A. The players cannot land near the monastery due to its precarious location such as a mountain cliff, a tiny island, a dense jungle, or underwater. B. Ancient mystic guardians protect the monastery and desire to test the worthiness of the players. C. The supplies are strange and mystical, making strange sounds in the night, glowing faintly, or disappearing and reappearing somewhere else on the ship. D. The monks distrust the shipment and believe it is part of a plot to destroy the monastery.</td>
+</tr>
+<tr>
+<td>91</td>
+<td>Evacuate colonists from a dying planet — Possible complications: A. Frequent earthquakes complicate the process. B. Resources are incredibly scarce, and native fauna have become more aggressive in their attempts to get resources. C. One particular faction doesn't want outside help because they are afraid it will weaken their influence and power. D. Infrastructure is in shambles, complicating the evacuation. E. Social class systems are creating tension as the upper classes demand to be first. F. The planet is deteriorating very quickly, and some might not be saved.</td>
+</tr>
+<tr>
+<td>92</td>
+<td>Plant explosives on a slaver ship — Possible complications: A. The slaver ship is heavily guarded with the latest in surveillance technology. B. The ship will only be docked for a short time, and it is the only chance to smuggle the explosives aboard. C. The slave ship unexpectedly picked up a small group of slaves. These people need to be evacuated before the ship explodes. D. The slavers' families, including young children, are onboard causing a moral dilemma for the party.</td>
+</tr>
+<tr>
+<td>93</td>
+<td>Hunt down poachers on a rim world — Possible complications: A. The poachers have multiple hide-outs and secret tunnels to avoid detection. B. The poachers are organized and plan to put up a fight. C. Poachers pay unscrupulous politicians to subvert the party's efforts to hunt them. D. The poachers claim the substance they are poaching is vital to making a medicine, which will stop a plague on their homeworld.</td>
+</tr>
+<tr>
+<td>94</td>
+<td>Rescue a merchant ship from pirates — Possible complications: A. The pirates have organized a boarding party who are armed to the teeth. B. The pirates disable the ship, which sends it careening off course toward an impending disaster. C. Upon arrival, the party finds out that there is an even larger pirate fleet lying in ambush. D. The pirates hold the passengers hostage and make outrageous demands for their release. E. The pirates rig the vessel with explosives. F. The captain of the ship is actually in league with the pirate captain and betrays the party and the rest of the crew.</td>
+</tr>
+<tr>
+<td>95</td>
+<td>Transport a diplomat to a warzone — Possible complications: A. The party must cross a battlefield, avoiding attacks, mines, and blockades. B. The infrastructure of the area has been compromised, making travel both difficult and perilous. C. Time is of the essence or the whole undertaking will be for naught. D. Desperate refugees need immediate help. If the players stop to help the refugees, it may put their mission in jeopardy. E. The diplomat and all the members of the party will need to go incognito.</td>
+</tr>
+<tr>
+<td>96</td>
+<td>Steal a famous chef's secret recipe — Possible complications: A. There are several recipe books. Each has a version of every important recipe the chef has ever created. But only one recipe per book is the correct recipe. B. The recipe is written in code. C. The recipe box is a puzzle box. D. The chef sleeps with the recipe book in one hand and a gun in the other.</td>
+</tr>
+<tr>
+<td>97</td>
+<td>Join an expedition to a planet to meet a previously unknown civilization — Possible complications: A. The characters get kidnapped by members of the civilization. B. A misunderstanding causes both groups to resort to taking up arms. C. The civilization insists on sending one of its own with the party to learn both the language and the culture. D. Due to a cultural misunderstanding, a team member inadvertently marries a member of the civilization.</td>
+</tr>
+<tr>
+<td>98</td>
+<td>Participate in a space battle between law enforcement and pirates — Possible complications: A. The pirates have a new weapon that must be taken down to even the odds of the battle. B. The battle is located in a perilous region of space such as a dense asteroid field, the edge of a black hole, or a mysterious nebula. C. The pirates are using boarding parties to capture and commandeer law enforcement ships. D. There are civilians or critical infrastructure located in the midst of the battle. E. The pirates vastly outnumber the law enforcement. F. The pirates are using a virtually impenetrable command ship as their central hub.</td>
+</tr>
+<tr>
+<td>99</td>
+<td>Escort a pirate ship to their base as part of a ransom deal — Possible complications: A. The ransom is a farce, and the pirates plan to attack the players' ship as soon as they are near their base. B. The pirate base has been unexpectedly taken over by a rival pirate gang. C. The pirates have no intention of surrendering the ransomed item or person once they reach the safety of their base. D. There is a mutiny amongst the pirate crew during the journey.</td>
+</tr>
+<tr>
+<td>100</td>
+<td>Hunt a giant animal on a distant planet — Possible complications: A. The entire planet consists of giant- sized flora and fauna. The party members are the size of rabbits compared to the world around them. B. The animal has previously unknown abilities, such as invisibility, an impenetrable hide, or heat vision. C. The players will not be able to successfully hunt for the animal until they consult with local experts on its behavior, the terrain, and any dangers they may face. D. The party finds out that this animal has been eating people in the surrounding area, so they must hurry and are unable to gather the appropriate supplies. They must rely on their skills and wit. E. The area where the animal is located is known to have particular dangers such as earthquakes, miasmas, or explosive storms. F. Ethical issues arise when the party discovers that the animal is critically endangered, important to the ecosystem, intelligent and sentient, or a parent. G. The creature only appears during certain seasonal events, so the party only has a limited time to find it.</td>
+</tr>
+</tbody>
+</table>
+</div>
+  </main>
+</div>
+<script src="../../../site.js"></script>
+</body>
+</html>

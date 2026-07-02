@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unexplored Planets 4 · Woden&#39;s Adventures</title>
+<meta name="description" content="An Ironsworn: Starforged solo playthrough">
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+<div class="topbar">
+  <a class="topbar-title" href="../../../">Woden&#39;s Adventures</a>
+  <button class="hamburger" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-tagline">An Ironsworn: Starforged solo playthrough</div>
+    <ul class="nav-list">
+      <li><a class="nav-link" href="../../../">Home / Sessions</a></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Characters</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../characters/woden/">Woden</a></li></ul></li><li class="nav-folder nav-collapsed"><button class="nav-folder-toggle" type="button">Custom Content</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Activities and Reasons</button><ul class="nav-sublist"><li><a class="nav-link" href="../../activities-and-reasons/npc-crew-shore-leave-activities/">NPC Crew Shore Leave Activities</a></li><li><a class="nav-link" href="../../activities-and-reasons/reasons-a-pc-is-absent/">Reasons a PC is Absent</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Adventure Ideas and Side Jobs</button><ul class="nav-sublist"><li><a class="nav-link" href="../../adventure-ideas-and-side-jobs/adventure-ideas/">Adventure Ideas</a></li><li><a class="nav-link" href="../../adventure-ideas-and-side-jobs/side-jobs/">Side Jobs</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Cargo</button><ul class="nav-sublist"><li><a class="nav-link" href="../../cargo/bulk-cargo/">Bulk Cargo</a></li><li><a class="nav-link" href="../../cargo/cargo-runs/">Cargo Runs</a></li><li><a class="nav-link" href="../../cargo/cargo-weight/">Cargo Weight</a></li><li><a class="nav-link" href="../../cargo/personal-and-small-items-in-a-cargo-hold/">Personal and Small Items in a Cargo Hold</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Encounters and Discoveries</button><ul class="nav-sublist"><li><a class="nav-link" href="../../encounters-and-discoveries/asteroid-belt-encounters/">Asteroid Belt Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/desert-planet-encounters/">Desert Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/events/">Events</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/ice-planet-encounters/">Ice Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/jungle-planet-encounters/">Jungle Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/lab-experiment-encounters/">Lab Experiment Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/news-chatter/">News Chatter</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/ocean-planet-encounters/">Ocean Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/ravaged-research-facility/">Ravaged Research Facility</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/space-complications-and-encounters/">Space Complications and Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/spaceship-mechanical-problems/">Spaceship Mechanical Problems</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/spatial-anomalies/">Spatial Anomalies</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/star-system-exploration-discoveries/">Star System Exploration Discoveries</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/urban-encounters-and-complications/">Urban Encounters and Complications</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/volcanic-planet-encounters/">Volcanic Planet Encounters</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Fields of Study</button><ul class="nav-sublist"><li><a class="nav-link" href="../../fields-of-study/agriculture/">Agriculture</a></li><li><a class="nav-link" href="../../fields-of-study/architecture/">Architecture</a></li><li><a class="nav-link" href="../../fields-of-study/business/">Business</a></li><li><a class="nav-link" href="../../fields-of-study/divinity/">Divinity</a></li><li><a class="nav-link" href="../../fields-of-study/education/">Education</a></li><li><a class="nav-link" href="../../fields-of-study/engineering-fields/">Engineering Fields</a></li><li><a class="nav-link" href="../../fields-of-study/family-and-consumer-science/">Family and Consumer Science</a></li><li><a class="nav-link" href="../../fields-of-study/formal-sciences/">Formal Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/human-physical-performance/">Human Physical Performance</a></li><li><a class="nav-link" href="../../fields-of-study/humanities/">Humanities</a></li><li><a class="nav-link" href="../../fields-of-study/journalism-and-communications/">Journalism and Communications</a></li><li><a class="nav-link" href="../../fields-of-study/law/">Law</a></li><li><a class="nav-link" href="../../fields-of-study/library-studies/">Library Studies</a></li><li><a class="nav-link" href="../../fields-of-study/medicinal-sciences/">Medicinal Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/military-sciences/">Military Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/natural-sciences/">Natural Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/psychic-abilities/">Psychic Abilities</a></li><li><a class="nav-link" href="../../fields-of-study/public-administration/">Public Administration</a></li><li><a class="nav-link" href="../../fields-of-study/social-sciences/">Social Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/transportation/">Transportation</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Items and Things</button><ul class="nav-sublist"><li><a class="nav-link" href="../../items-and-things/book-titles/">Book Titles</a></li><li><a class="nav-link" href="../../items-and-things/bounty-board/">Bounty Board</a></li><li><a class="nav-link" href="../../items-and-things/computer-files/">Computer Files</a></li><li><a class="nav-link" href="../../items-and-things/fictional-alloys/">Fictional Alloys</a></li><li><a class="nav-link" href="../../items-and-things/fictional-infectious-diseases/">Fictional Infectious Diseases</a></li><li><a class="nav-link" href="../../items-and-things/fictional-medications/">Fictional Medications</a></li><li><a class="nav-link" href="../../items-and-things/fictional-spices/">Fictional Spices</a></li><li><a class="nav-link" href="../../items-and-things/fictional-trade-goods-and-animals/">Fictional Trade Goods and Animals</a></li><li><a class="nav-link" href="../../items-and-things/illegal-drugs/">Illegal Drugs</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-biology-lab/">Items in a Biology Lab</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-chemical-lab/">Items in a Chemical Lab</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-crashed-cargo-spaceship/">Items in a Crashed Cargo Spaceship</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-cybernetics-clinic/">Items in a Cybernetics Clinic</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-desk/">Items in a Desk</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-freighter-cockpit/">Items in a Freighter Cockpit</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-governmental-office/">Items in a Governmental Office</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-lab-directors-office/">Items in a Lab Directors Office</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-ship-captain-quarters/">Items in a Ship Captain Quarters</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-warehouse/">Items in a Warehouse</a></li><li><a class="nav-link" href="../../items-and-things/metals/">Metals</a></li><li><a class="nav-link" href="../../items-and-things/military-medals-and-decorations/">Military Medals and Decorations</a></li><li><a class="nav-link" href="../../items-and-things/poisonous-plants/">Poisonous Plants</a></li><li><a class="nav-link" href="../../items-and-things/types-of-planets/">Types of Planets</a></li><li><a class="nav-link" href="../../items-and-things/types-of-stars/">Types of Stars</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Names</button><ul class="nav-sublist"><li><a class="nav-link" href="../../names/alien-names/">Alien Names</a></li><li><a class="nav-link" href="../../names/bar-names/">Bar Names</a></li><li><a class="nav-link" href="../../names/city-names/">City Names</a></li><li><a class="nav-link" href="../../names/corporation-names/">Corporation Names</a></li><li><a class="nav-link" href="../../names/drink-names/">Drink Names</a></li><li><a class="nav-link" href="../../names/human-female-names/">Human Female Names</a></li><li><a class="nav-link" href="../../names/human-male-names/">Human Male Names</a></li><li><a class="nav-link" href="../../names/human-surnames/">Human Surnames</a></li><li><a class="nav-link" href="../../names/planet-names/">Planet Names</a></li><li><a class="nav-link" href="../../names/ship-names/">Ship Names</a></li><li><a class="nav-link" href="../../names/space-station-names/">Space Station Names</a></li><li><a class="nav-link" href="../../names/spaceport-names/">Spaceport Names</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Places</button><ul class="nav-sublist"><li><a class="nav-link" href="../../places/casinos-and-hotels/">Casinos and Hotels</a></li><li><a class="nav-link" href="../../places/spaceport-bar-rumors/">Spaceport Bar Rumors</a></li><li><a class="nav-link" href="../../places/unexplored-planets/">Unexplored Planets</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Subtables</button><ul class="nav-sublist"><li><a class="nav-link" href="../alien-names-1/">Alien Names 1</a></li><li><a class="nav-link" href="../alien-names-2/">Alien Names 2</a></li><li><a class="nav-link" href="../bar-names-1/">Bar Names 1</a></li><li><a class="nav-link" href="../bar-names-2/">Bar Names 2</a></li><li><a class="nav-link" href="../book-titles-1/">Book Titles 1</a></li><li><a class="nav-link" href="../book-titles-2/">Book Titles 2</a></li><li><a class="nav-link" href="../bulk-cargo-1/">Bulk Cargo 1</a></li><li><a class="nav-link" href="../bulk-cargo-2/">Bulk Cargo 2</a></li><li><a class="nav-link" href="../bulk-cargo-3/">Bulk Cargo 3</a></li><li><a class="nav-link" href="../cargo-runs-1/">Cargo Runs 1</a></li><li><a class="nav-link" href="../cargo-runs-2/">Cargo Runs 2</a></li><li><a class="nav-link" href="../city-names-1/">City Names 1</a></li><li><a class="nav-link" href="../city-names-2/">City Names 2</a></li><li><a class="nav-link" href="../city-names-3/">City Names 3</a></li><li><a class="nav-link" href="../city-names-4/">City Names 4</a></li><li><a class="nav-link" href="../codes-1/">Codes 1</a></li><li><a class="nav-link" href="../codes-2/">Codes 2</a></li><li><a class="nav-link" href="../corporation-names-1/">Corporation Names 1</a></li><li><a class="nav-link" href="../corporation-names-2/">Corporation Names 2</a></li><li><a class="nav-link" href="../divinity-1/">Divinity 1</a></li><li><a class="nav-link" href="../divinity-2/">Divinity 2</a></li><li><a class="nav-link" href="../engineering-fields-1/">Engineering Fields 1</a></li><li><a class="nav-link" href="../engineering-fields-2/">Engineering Fields 2</a></li><li><a class="nav-link" href="../formal-sciences-1/">Formal Sciences 1</a></li><li><a class="nav-link" href="../formal-sciences-2/">Formal Sciences 2</a></li><li><a class="nav-link" href="../human-female-names-1/">Human Female Names 1</a></li><li><a class="nav-link" href="../human-female-names-2/">Human Female Names 2</a></li><li><a class="nav-link" href="../human-female-names-3/">Human Female Names 3</a></li><li><a class="nav-link" href="../human-female-names-4/">Human Female Names 4</a></li><li><a class="nav-link" href="../human-male-names-1/">Human Male Names 1</a></li><li><a class="nav-link" href="../human-male-names-2/">Human Male Names 2</a></li><li><a class="nav-link" href="../human-male-names-3/">Human Male Names 3</a></li><li><a class="nav-link" href="../human-male-names-4/">Human Male Names 4</a></li><li><a class="nav-link" href="../human-surnames-1/">Human Surnames 1</a></li><li><a class="nav-link" href="../human-surnames-2/">Human Surnames 2</a></li><li><a class="nav-link" href="../human-surnames-3/">Human Surnames 3</a></li><li><a class="nav-link" href="../human-surnames-4/">Human Surnames 4</a></li><li><a class="nav-link" href="../humanities-1/">Humanities 1</a></li><li><a class="nav-link" href="../humanities-2/">Humanities 2</a></li><li><a class="nav-link" href="../humanities-3/">Humanities 3</a></li><li><a class="nav-link" href="../journalism-and-communications-1/">Journalism and Communications 1</a></li><li><a class="nav-link" href="../journalism-and-communications-2/">Journalism and Communications 2</a></li><li><a class="nav-link" href="../military-sciences-1/">Military Sciences 1</a></li><li><a class="nav-link" href="../military-sciences-2/">Military Sciences 2</a></li><li><a class="nav-link" href="../natural-sciences-1/">Natural Sciences 1</a></li><li><a class="nav-link" href="../natural-sciences-2/">Natural Sciences 2</a></li><li><a class="nav-link" href="../natural-sciences-3/">Natural Sciences 3</a></li><li><a class="nav-link" href="../planet-names-1/">Planet Names 1</a></li><li><a class="nav-link" href="../planet-names-2/">Planet Names 2</a></li><li><a class="nav-link" href="../planet-names-3/">Planet Names 3</a></li><li><a class="nav-link" href="../planet-names-4/">Planet Names 4</a></li><li><a class="nav-link" href="../planet-names-5/">Planet Names 5</a></li><li><a class="nav-link" href="../planet-names-6/">Planet Names 6</a></li><li><a class="nav-link" href="../ship-names-1/">Ship Names 1</a></li><li><a class="nav-link" href="../ship-names-2/">Ship Names 2</a></li><li><a class="nav-link" href="../ship-names-3/">Ship Names 3</a></li><li><a class="nav-link" href="../ship-names-4/">Ship Names 4</a></li><li><a class="nav-link" href="../ship-transponder-info-1/">Ship Transponder Info 1</a></li><li><a class="nav-link" href="../ship-transponder-info-2/">Ship Transponder Info 2</a></li><li><a class="nav-link" href="../ship-transponder-info-3/">Ship Transponder Info 3</a></li><li><a class="nav-link" href="../ship-transponder-info-4/">Ship Transponder Info 4</a></li><li><a class="nav-link" href="../social-sciences-1/">Social Sciences 1</a></li><li><a class="nav-link" href="../social-sciences-2/">Social Sciences 2</a></li><li><a class="nav-link" href="../social-sciences-3/">Social Sciences 3</a></li><li><a class="nav-link" href="../social-sciences-4/">Social Sciences 4</a></li><li><a class="nav-link" href="../space-station-names-1/">Space Station Names 1</a></li><li><a class="nav-link" href="../space-station-names-2/">Space Station Names 2</a></li><li><a class="nav-link" href="../spaceport-names-1/">Spaceport Names 1</a></li><li><a class="nav-link" href="../spaceport-names-2/">Spaceport Names 2</a></li><li><a class="nav-link" href="../technobabble-1/">Technobabble 1</a></li><li><a class="nav-link" href="../technobabble-2/">Technobabble 2</a></li><li><a class="nav-link" href="../unexplored-planets-1/">Unexplored Planets 1</a></li><li><a class="nav-link" href="../unexplored-planets-2/">Unexplored Planets 2</a></li><li><a class="nav-link" href="../unexplored-planets-3/">Unexplored Planets 3</a></li><li><a class="nav-link nav-active" href="./">Unexplored Planets 4</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Technobabble</button><ul class="nav-sublist"><li><a class="nav-link" href="../../technobabble/codes/">Codes</a></li><li><a class="nav-link" href="../../technobabble/technobabble/">Technobabble</a></li><li><a class="nav-link" href="../../technobabble/technobabble-phrases/">Technobabble Phrases</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Vessels</button><ul class="nav-sublist"><li><a class="nav-link" href="../../vessels/derelicts/">Derelicts</a></li><li><a class="nav-link" href="../../vessels/escape-pods/">Escape Pods</a></li><li><a class="nav-link" href="../../vessels/ship-transponder-info/">Ship Transponder Info</a></li><li><a class="nav-link" href="../../vessels/space-stations/">Space Stations</a></li></ul></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Locations</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">1 Main Map</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../locations/1-main-map/the-forge/">The Forge</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">3 Outlands</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Kalidas Maw</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Planets</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/planets/centurion/">Centurion</a></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/planets/holland/">Holland</a></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/planets/san-luis-potos/">San Luis Potosí</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Settlements</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Beacon</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Places</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/beacon/places/stellartron/">StellarTron</a></li></ul></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/beacon/beacon/">Beacon</a></li></ul></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/concord/">Concord</a></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/lodestar/">Lodestar</a></li></ul></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/kalidas-maw/">Kalidas Maw</a></li></ul></li></ul></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Lore</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Connections Worksheet</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../lore/connections-worksheet/isla-nakayama/">Isla Nakayama</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Factions</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../lore/factions/hunters-of-the-golden-alliance/">Hunters of the Golden Alliance</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">NPCs</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../lore/npcs/tindra-companion/">Tindra (Companion)</a></li></ul></li><li><a class="nav-link" href="../../../lore/galactic-standard-time/">Galactic Standard Time</a></li><li><a class="nav-link" href="../../../lore/quest-starters/">Quest Starters</a></li><li><a class="nav-link" href="../../../lore/truths/">Truths</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Progress</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../progress/bg-vow-find-a-new-precursor-species/">BG Vow Find a new precursor species</a></li><li><a class="nav-link" href="../../../progress/ct-isla-nakayama/">CT Isla Nakayama</a></li></ul></li>
+    </ul>
+  </nav>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <main class="content">
+    <header class="page-header">
+    <h1>Unexplored Planets 4</h1>
+    
+  </header><div class="prose"><table>
+<thead>
+<tr>
+<th>dice: 1d100</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>8107 Annika - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Tantite, Silver, Akimotoite, Iron</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Morix 507 - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Plattnerite</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6029 Bernardina - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Topaz</td>
+</tr>
+<tr>
+<td>4</td>
+<td>7803 Luginbuhl - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Rhodonite, Scheelite, Pyrite, Calcite, Albite</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Koda Q5S - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Columbite, Arfvedsonite, Siderite, Petalite</td>
+</tr>
+<tr>
+<td>6</td>
+<td>1633 Zelima - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Allargentum, Antimony, Jaffeite, Kegelite</td>
+</tr>
+<tr>
+<td>7</td>
+<td>6705 Cuno - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Quartz, Sillimanite, Scheelite, Zoisite</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Struna UIC - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Zhanghengite, Nichromite</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Maree 9R5 - Initial Long Range Scan Data: Life signs detected, No technology detected, Possible deposits of Arsenopyrite, Hematite, Xenotime, Nacrite</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Naxa 5V7 - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Celestine, Sperrylite, Uranophane, Kyanite, Kryzhanovskite</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Jalda K5R - Initial Long Range Scan Data: Life signs detected, Technology detected, Possible deposits of Chromite, Lanthanite, Fluocerite, Magnesiohulsite</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Croxum G09 - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Arfvedsonite, Augite, Albite, Pentlandite</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Astri JG8 - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Sodalite, Glaucophane, Ferrosilite, Staurolite</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Coria CH1 - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Argyrodite, Fingerite, Seamanite, Tin</td>
+</tr>
+<tr>
+<td>15</td>
+<td>2186 Kira - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Nickel, Nichromite, Cyrilovite, Thermonatrite</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Torix 79K - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Lanarkite, Iranite, Tetradymite</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Domia V - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Chlormayenite, Trona, Copper, Petalite, Emmonsite</td>
+</tr>
+<tr>
+<td>18</td>
+<td>1609 Tata - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Cornwallite, Devilline, Motukoreaite</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Eurydice 6V - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Analcime, Fluorapatite, Jarosite, Tantalite</td>
+</tr>
+<tr>
+<td>20</td>
+<td>3577 Ninina - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Nahcolite</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Rangipo R0N - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Dolomite, Siderite, Rhodochrosite</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Navin U7 - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Carnallite, Sphene, Mottramite, Jouravskite, Chalcosiderite</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Churn U645 - Initial Long Range Scan Data: Life signs detected, Technology detected, Possible deposits of Galena, Leucophanite, Uranopilite, Chaoite</td>
+</tr>
+<tr>
+<td>24</td>
+<td>2825 Tanina - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Gypsum, Fluellite, Vanadiocarpholite, Lansfordite, Nepheline, Nuragheite, Romeite</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Phade N07O - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Pyrargyrite, Nepheline, Zinnwaldite, Bismuth, Goslarite, Iron</td>
+</tr>
+<tr>
+<td>26</td>
+<td>1200 Rita - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Feldspar</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Syon Y5 - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Dypingite, Calcioancylite, Helvite, Nioboaeschynite-(Y)</td>
+</tr>
+<tr>
+<td>28</td>
+<td>1950 Meta - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Niningerite, Bismuthinite</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Walsingham V - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Tapiolite, Carrollite, Calaverite</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Griri JO8 - Initial Long Range Scan Data: Life signs detected, No technology detected, Possible deposits of Diamond, Chatkalite, Iron, Ankerite, Tungsten, Gold</td>
+</tr>
+<tr>
+<td>31</td>
+<td>2952 Theresia - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Charoite, Santite, Titanium</td>
+</tr>
+<tr>
+<td>32</td>
+<td>4148 Natalie - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Wavellite, Oldhamite, Diamond, Livingstonite</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Voth RB4T - Initial Long Range Scan Data: Life signs detected, Technology detected, Possible deposits of Plumbogummite, Campigliaite, Polybasite, Hydroboracite, Tungsten</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Prya U2C - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Anhydrite, Sulfur, Lepidolite, Olivine, Chromite</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Lynne Q01 - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Rhodonite, Rhodochrosite, Calcite, Pentlandite</td>
+</tr>
+<tr>
+<td>36</td>
+<td>Bronoe 4ET - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Cyanotrichite, Krennerite, Patrónite, Bowieite</td>
+</tr>
+<tr>
+<td>37</td>
+<td>Strippe 2U1N - Initial Long Range Scan Data: Life signs detected, No technology detected, Possible deposits of Ferrogedrite, Patrónite, Heptasartorite, Zunyite, Rheniite, Jadeite, Fluorcaphite</td>
+</tr>
+<tr>
+<td>38</td>
+<td>Doreatha W1 - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Hematite, Wulfenite, Lanthanite, Cuprosklodowskite</td>
+</tr>
+<tr>
+<td>39</td>
+<td>Rikia W95 - Initial Long Range Scan Data: Life signs detected, Technology detected, Possible deposits of Quartz, Descloizite, Gerhardtite, Karibibite, Cuproroméite</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Odelette 7G - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Jadeite, Kyanite, Rhodonite, Zincite</td>
+</tr>
+<tr>
+<td>41</td>
+<td>Zalika K4S - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Covellite, Manganite, Eudialyte, Coffinite, Thalcusite</td>
+</tr>
+<tr>
+<td>42</td>
+<td>Xivona F72 - Initial Long Range Scan Data: Life signs detected, Technology detected, Possible deposits of Calcioandyrobertsite, Ferrilotharmeyerite, Celestobarite, Trimerite</td>
+</tr>
+<tr>
+<td>43</td>
+<td>361 Etheridgea - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Andersonite, Cadwaladerite, Xenophyllite, Kampfite</td>
+</tr>
+<tr>
+<td>44</td>
+<td>7239 Olga - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Proustite, Eucairite, Anglesite, Heterogenite</td>
+</tr>
+<tr>
+<td>45</td>
+<td>1954 Ricouxa - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Azurite</td>
+</tr>
+<tr>
+<td>46</td>
+<td>Merth 0T6 - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Hedenbergite, Rosickýite, Cerussite, Aenigmatite, Arcubisite, Ruizite, Kogarkoite</td>
+</tr>
+<tr>
+<td>47</td>
+<td>15 Christa - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Mooihoekite, Struvite, Cuprosklodowskite</td>
+</tr>
+<tr>
+<td>48</td>
+<td>Tarat G32 - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Phillipsite, Staurolite, Quartz, Aragonite, Fassaite</td>
+</tr>
+<tr>
+<td>49</td>
+<td>1665 Sabine - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Acanthite, Andradite, Silver, Aleksite</td>
+</tr>
+<tr>
+<td>50</td>
+<td>Quilan D29 - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Nitratine, Alumohydrocalcite, Schairerite, Rhabdophane</td>
+</tr>
+<tr>
+<td>51</td>
+<td>Yessa 2QZ - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Chrysoberyl, Amblygonite, Scholzite, Thadeuite</td>
+</tr>
+<tr>
+<td>52</td>
+<td>Tira K72 - Initial Long Range Scan Data: Life signs detected, No technology detected, Possible deposits of Picropharmacolite, Taramellite, Cupropearceite</td>
+</tr>
+<tr>
+<td>53</td>
+<td>Julie D6G - Initial Long Range Scan Data: Life signs detected, Technology detected, Possible deposits of Barite, Calcite, Cerussite, Linarite</td>
+</tr>
+<tr>
+<td>54</td>
+<td>Drarvis O27F - Initial Long Range Scan Data: Life signs detected, No technology detected, Possible deposits of Eskolaite</td>
+</tr>
+<tr>
+<td>55</td>
+<td>Svana K9X - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Hematite, Pyroxmangite, Zinnwaldite, Cuprite</td>
+</tr>
+<tr>
+<td>56</td>
+<td>Dippe 8OFM - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Zinclipscombite, Cavansite, Cabriite, Neptunite</td>
+</tr>
+<tr>
+<td>57</td>
+<td>Bapus 3E7W - Initial Long Range Scan Data: Life signs detected, Technology detected, Possible deposits of Chlorite, Chambersite</td>
+</tr>
+<tr>
+<td>58</td>
+<td>Quila K60 - Initial Long Range Scan Data: Life signs detected, No technology detected, Possible deposits of Chrysocolla, Erythrite, Roxbyite, Todorokite, Traskite</td>
+</tr>
+<tr>
+<td>59</td>
+<td>Zerina HJ5 - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Staurolite, Chabazite, Taramite, Millerite</td>
+</tr>
+<tr>
+<td>60</td>
+<td>Kiri 0F - Initial Long Range Scan Data: Life signs detected, No technology detected, Possible deposits of Celestine, Halite, Leucite, Niter</td>
+</tr>
+<tr>
+<td>61</td>
+<td>678 Elfriede - Initial Long Range Scan Data: Life signs detected, No technology detected, Possible deposits of Aluminium, Hodgkinsonite, Benstonite, Feldspar</td>
+</tr>
+<tr>
+<td>62</td>
+<td>Dreron T74 - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Xitieshanite, Kyanite</td>
+</tr>
+<tr>
+<td>63</td>
+<td>Janiya T4G - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Magnetite, Siderite, Sphalerite, Chromite, Graphite</td>
+</tr>
+<tr>
+<td>64</td>
+<td>Quora 3Z8 - Initial Long Range Scan Data: Life signs detected, Technology detected, Possible deposits of Nickel, Barysilite, Stolzite, Trimerite</td>
+</tr>
+<tr>
+<td>65</td>
+<td>Eustacia F5 - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Siderite, Cordierite, Ussingite, Freibergite, Ganophyllite</td>
+</tr>
+<tr>
+<td>66</td>
+<td>Byblis RZ5 - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Magnetite, Hematite, Ilmenite, Rutile</td>
+</tr>
+<tr>
+<td>67</td>
+<td>Riwo X2 - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Xenotime, Wurtzite, Ilmenite, Copper</td>
+</tr>
+<tr>
+<td>68</td>
+<td>Nukuoro YN2 - Initial Long Range Scan Data: Life signs detected, Technology detected, Possible deposits of Bismuth, Selenium, Tellurium, Copper</td>
+</tr>
+<tr>
+<td>69</td>
+<td>4150 Brigitta - Initial Long Range Scan Data: Life signs detected, Technology detected, Possible deposits of Gold, Tapiolite</td>
+</tr>
+<tr>
+<td>70</td>
+<td>Zephyr 2FJ - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Sphalerite, Chromite, Rutile, Bornite, Danburite</td>
+</tr>
+<tr>
+<td>71</td>
+<td>641 Bathilde - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Benitoite, Fluorcanasite</td>
+</tr>
+<tr>
+<td>72</td>
+<td>Fasiulla M9C - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Anhydrite, Gypsum, Halite</td>
+</tr>
+<tr>
+<td>73</td>
+<td>1248 Santa - Initial Long Range Scan Data: Life signs detected, No technology detected, Possible deposits of Eveite</td>
+</tr>
+<tr>
+<td>74</td>
+<td>Grov 5H5 - Initial Long Range Scan Data: Life signs detected, Technology detected, Possible deposits of Abernathyite, Scorzalite, Meridianiite, Palygorskite, Andalusite, Arseniosiderite</td>
+</tr>
+<tr>
+<td>75</td>
+<td>Fawna 1E9 - Initial Long Range Scan Data: Life signs detected, Technology detected, Possible deposits of Pyrolusite, Vesuvianite, Titanite, Cassiterite, Bixbyite, Rhodochrosite</td>
+</tr>
+<tr>
+<td>76</td>
+<td>8323 Monica - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Jordanite, Sapphirine</td>
+</tr>
+<tr>
+<td>77</td>
+<td>Lion 790 - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Seligmannite, Yugawaralite, Syngenite, Alunogen, Carminite</td>
+</tr>
+<tr>
+<td>78</td>
+<td>2091 Alice - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Tachyhydrite</td>
+</tr>
+<tr>
+<td>79</td>
+<td>3405 Tercidina - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Miargyrite, Keyite, Cancrinite, Greifensteinite</td>
+</tr>
+<tr>
+<td>80</td>
+<td>430 Emita - Initial Long Range Scan Data: Life signs detected, Technology detected, Possible deposits of Köttigite, Duftite, Baumhauerite, Hydroboracite</td>
+</tr>
+<tr>
+<td>81</td>
+<td>1624 Eva - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Macaulayite, Gold, Diadochite</td>
+</tr>
+<tr>
+<td>82</td>
+<td>Maasym X1C - Initial Long Range Scan Data: Life signs detected, No technology detected, Possible deposits of Lapis Lazuli, Turquoise, Chrysocolla</td>
+</tr>
+<tr>
+<td>83</td>
+<td>Hansel J9M - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Dolomite, Olivine, Kyanite, Pyrolusite, Plumbojarosite</td>
+</tr>
+<tr>
+<td>84</td>
+<td>Kahlil 492C - Initial Long Range Scan Data: Life signs detected, Technology detected, Possible deposits of Lepidolite, Pollucite, Petalite, Amblygonite</td>
+</tr>
+<tr>
+<td>85</td>
+<td>Strilia CGE - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Titanium</td>
+</tr>
+<tr>
+<td>86</td>
+<td>6499 Josefa - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Emmonsite, Hermannjahnite, Stellerite, Murdochite</td>
+</tr>
+<tr>
+<td>87</td>
+<td>Chiea ZBO - Initial Long Range Scan Data: Life signs detected, Technology detected, Possible deposits of Gypsum</td>
+</tr>
+<tr>
+<td>88</td>
+<td>Phichi 8OC - Initial Long Range Scan Data: Life signs detected, No technology detected, Possible deposits of Oneillite, Ferropericlase, Polydymite</td>
+</tr>
+<tr>
+<td>89</td>
+<td>3684 Erniuqing - Initial Long Range Scan Data: Life signs detected, No technology detected, Possible deposits of Talc, Heazlewoodite, Erythrite, Columbite, Magnesio-riebeckite, Realgar, Smithsonite</td>
+</tr>
+<tr>
+<td>90</td>
+<td>Aiwatani 587P - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Uranium, Thorium, Phosphates, Rare Earth Elements</td>
+</tr>
+<tr>
+<td>91</td>
+<td>Cora 6L - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Tungsten, Alacránite, Chlorocalcite</td>
+</tr>
+<tr>
+<td>92</td>
+<td>3883 Janina - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Domeykite, Moschellandsbergite, Silver, Copiapite, Rutile</td>
+</tr>
+<tr>
+<td>93</td>
+<td>Huxley Q7 - Initial Long Range Scan Data: Life signs detected, No technology detected, Possible deposits of Chalcopyrite, Rutile, Chamosite, Siderite, Magnesite, Bixbyite</td>
+</tr>
+<tr>
+<td>94</td>
+<td>Seraphina 69G - Initial Long Range Scan Data: Life signs detected, No technology detected, Possible deposits of Jadeite, Spodumene, Kunzite, Zircon</td>
+</tr>
+<tr>
+<td>95</td>
+<td>Semele T8 - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Cobaltite, Dolomite, Oyelite, Sillimanite</td>
+</tr>
+<tr>
+<td>96</td>
+<td>2376 Adelheid - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Nissonite, Nekrasovite, Bararite</td>
+</tr>
+<tr>
+<td>97</td>
+<td>1275 Vera - Initial Long Range Scan Data: Life signs detected, No technology detected, Possible deposits of Hafnon, Iron, Lazulite, Nissonite</td>
+</tr>
+<tr>
+<td>98</td>
+<td>Hestia 437 - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Wulfenite, Pyrophanite, Hastingsite, Sepiolite, Nambulite</td>
+</tr>
+<tr>
+<td>99</td>
+<td>Baoji 9X1 - Initial Long Range Scan Data: No life signs detected, No technology detected, Possible deposits of Fluorite, Uranophane, Autunite</td>
+</tr>
+<tr>
+<td>100</td>
+<td>Siro C76 - Initial Long Range Scan Data: No life signs detected, Technology detected, Possible deposits of Carnallite, Böhmite, Hapkeite, Perovskite</td>
+</tr>
+</tbody>
+</table>
+</div>
+  </main>
+</div>
+<script src="../../../site.js"></script>
+</body>
+</html>

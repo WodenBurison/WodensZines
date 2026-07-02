@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spaceport Bar Rumors · Woden&#39;s Adventures</title>
+<meta name="description" content="An Ironsworn: Starforged solo playthrough">
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+<div class="topbar">
+  <a class="topbar-title" href="../../../">Woden&#39;s Adventures</a>
+  <button class="hamburger" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-tagline">An Ironsworn: Starforged solo playthrough</div>
+    <ul class="nav-list">
+      <li><a class="nav-link" href="../../../">Home / Sessions</a></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Characters</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../characters/woden/">Woden</a></li></ul></li><li class="nav-folder nav-collapsed"><button class="nav-folder-toggle" type="button">Custom Content</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Activities and Reasons</button><ul class="nav-sublist"><li><a class="nav-link" href="../../activities-and-reasons/npc-crew-shore-leave-activities/">NPC Crew Shore Leave Activities</a></li><li><a class="nav-link" href="../../activities-and-reasons/reasons-a-pc-is-absent/">Reasons a PC is Absent</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Adventure Ideas and Side Jobs</button><ul class="nav-sublist"><li><a class="nav-link" href="../../adventure-ideas-and-side-jobs/adventure-ideas/">Adventure Ideas</a></li><li><a class="nav-link" href="../../adventure-ideas-and-side-jobs/side-jobs/">Side Jobs</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Cargo</button><ul class="nav-sublist"><li><a class="nav-link" href="../../cargo/bulk-cargo/">Bulk Cargo</a></li><li><a class="nav-link" href="../../cargo/cargo-runs/">Cargo Runs</a></li><li><a class="nav-link" href="../../cargo/cargo-weight/">Cargo Weight</a></li><li><a class="nav-link" href="../../cargo/personal-and-small-items-in-a-cargo-hold/">Personal and Small Items in a Cargo Hold</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Encounters and Discoveries</button><ul class="nav-sublist"><li><a class="nav-link" href="../../encounters-and-discoveries/asteroid-belt-encounters/">Asteroid Belt Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/desert-planet-encounters/">Desert Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/events/">Events</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/ice-planet-encounters/">Ice Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/jungle-planet-encounters/">Jungle Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/lab-experiment-encounters/">Lab Experiment Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/news-chatter/">News Chatter</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/ocean-planet-encounters/">Ocean Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/ravaged-research-facility/">Ravaged Research Facility</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/space-complications-and-encounters/">Space Complications and Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/spaceship-mechanical-problems/">Spaceship Mechanical Problems</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/spatial-anomalies/">Spatial Anomalies</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/star-system-exploration-discoveries/">Star System Exploration Discoveries</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/urban-encounters-and-complications/">Urban Encounters and Complications</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/volcanic-planet-encounters/">Volcanic Planet Encounters</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Fields of Study</button><ul class="nav-sublist"><li><a class="nav-link" href="../../fields-of-study/agriculture/">Agriculture</a></li><li><a class="nav-link" href="../../fields-of-study/architecture/">Architecture</a></li><li><a class="nav-link" href="../../fields-of-study/business/">Business</a></li><li><a class="nav-link" href="../../fields-of-study/divinity/">Divinity</a></li><li><a class="nav-link" href="../../fields-of-study/education/">Education</a></li><li><a class="nav-link" href="../../fields-of-study/engineering-fields/">Engineering Fields</a></li><li><a class="nav-link" href="../../fields-of-study/family-and-consumer-science/">Family and Consumer Science</a></li><li><a class="nav-link" href="../../fields-of-study/formal-sciences/">Formal Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/human-physical-performance/">Human Physical Performance</a></li><li><a class="nav-link" href="../../fields-of-study/humanities/">Humanities</a></li><li><a class="nav-link" href="../../fields-of-study/journalism-and-communications/">Journalism and Communications</a></li><li><a class="nav-link" href="../../fields-of-study/law/">Law</a></li><li><a class="nav-link" href="../../fields-of-study/library-studies/">Library Studies</a></li><li><a class="nav-link" href="../../fields-of-study/medicinal-sciences/">Medicinal Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/military-sciences/">Military Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/natural-sciences/">Natural Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/psychic-abilities/">Psychic Abilities</a></li><li><a class="nav-link" href="../../fields-of-study/public-administration/">Public Administration</a></li><li><a class="nav-link" href="../../fields-of-study/social-sciences/">Social Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/transportation/">Transportation</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Items and Things</button><ul class="nav-sublist"><li><a class="nav-link" href="../../items-and-things/book-titles/">Book Titles</a></li><li><a class="nav-link" href="../../items-and-things/bounty-board/">Bounty Board</a></li><li><a class="nav-link" href="../../items-and-things/computer-files/">Computer Files</a></li><li><a class="nav-link" href="../../items-and-things/fictional-alloys/">Fictional Alloys</a></li><li><a class="nav-link" href="../../items-and-things/fictional-infectious-diseases/">Fictional Infectious Diseases</a></li><li><a class="nav-link" href="../../items-and-things/fictional-medications/">Fictional Medications</a></li><li><a class="nav-link" href="../../items-and-things/fictional-spices/">Fictional Spices</a></li><li><a class="nav-link" href="../../items-and-things/fictional-trade-goods-and-animals/">Fictional Trade Goods and Animals</a></li><li><a class="nav-link" href="../../items-and-things/illegal-drugs/">Illegal Drugs</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-biology-lab/">Items in a Biology Lab</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-chemical-lab/">Items in a Chemical Lab</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-crashed-cargo-spaceship/">Items in a Crashed Cargo Spaceship</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-cybernetics-clinic/">Items in a Cybernetics Clinic</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-desk/">Items in a Desk</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-freighter-cockpit/">Items in a Freighter Cockpit</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-governmental-office/">Items in a Governmental Office</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-lab-directors-office/">Items in a Lab Directors Office</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-ship-captain-quarters/">Items in a Ship Captain Quarters</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-warehouse/">Items in a Warehouse</a></li><li><a class="nav-link" href="../../items-and-things/metals/">Metals</a></li><li><a class="nav-link" href="../../items-and-things/military-medals-and-decorations/">Military Medals and Decorations</a></li><li><a class="nav-link" href="../../items-and-things/poisonous-plants/">Poisonous Plants</a></li><li><a class="nav-link" href="../../items-and-things/types-of-planets/">Types of Planets</a></li><li><a class="nav-link" href="../../items-and-things/types-of-stars/">Types of Stars</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Names</button><ul class="nav-sublist"><li><a class="nav-link" href="../../names/alien-names/">Alien Names</a></li><li><a class="nav-link" href="../../names/bar-names/">Bar Names</a></li><li><a class="nav-link" href="../../names/city-names/">City Names</a></li><li><a class="nav-link" href="../../names/corporation-names/">Corporation Names</a></li><li><a class="nav-link" href="../../names/drink-names/">Drink Names</a></li><li><a class="nav-link" href="../../names/human-female-names/">Human Female Names</a></li><li><a class="nav-link" href="../../names/human-male-names/">Human Male Names</a></li><li><a class="nav-link" href="../../names/human-surnames/">Human Surnames</a></li><li><a class="nav-link" href="../../names/planet-names/">Planet Names</a></li><li><a class="nav-link" href="../../names/ship-names/">Ship Names</a></li><li><a class="nav-link" href="../../names/space-station-names/">Space Station Names</a></li><li><a class="nav-link" href="../../names/spaceport-names/">Spaceport Names</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Places</button><ul class="nav-sublist"><li><a class="nav-link" href="../casinos-and-hotels/">Casinos and Hotels</a></li><li><a class="nav-link nav-active" href="./">Spaceport Bar Rumors</a></li><li><a class="nav-link" href="../unexplored-planets/">Unexplored Planets</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Subtables</button><ul class="nav-sublist"><li><a class="nav-link" href="../../subtables/alien-names-1/">Alien Names 1</a></li><li><a class="nav-link" href="../../subtables/alien-names-2/">Alien Names 2</a></li><li><a class="nav-link" href="../../subtables/bar-names-1/">Bar Names 1</a></li><li><a class="nav-link" href="../../subtables/bar-names-2/">Bar Names 2</a></li><li><a class="nav-link" href="../../subtables/book-titles-1/">Book Titles 1</a></li><li><a class="nav-link" href="../../subtables/book-titles-2/">Book Titles 2</a></li><li><a class="nav-link" href="../../subtables/bulk-cargo-1/">Bulk Cargo 1</a></li><li><a class="nav-link" href="../../subtables/bulk-cargo-2/">Bulk Cargo 2</a></li><li><a class="nav-link" href="../../subtables/bulk-cargo-3/">Bulk Cargo 3</a></li><li><a class="nav-link" href="../../subtables/cargo-runs-1/">Cargo Runs 1</a></li><li><a class="nav-link" href="../../subtables/cargo-runs-2/">Cargo Runs 2</a></li><li><a class="nav-link" href="../../subtables/city-names-1/">City Names 1</a></li><li><a class="nav-link" href="../../subtables/city-names-2/">City Names 2</a></li><li><a class="nav-link" href="../../subtables/city-names-3/">City Names 3</a></li><li><a class="nav-link" href="../../subtables/city-names-4/">City Names 4</a></li><li><a class="nav-link" href="../../subtables/codes-1/">Codes 1</a></li><li><a class="nav-link" href="../../subtables/codes-2/">Codes 2</a></li><li><a class="nav-link" href="../../subtables/corporation-names-1/">Corporation Names 1</a></li><li><a class="nav-link" href="../../subtables/corporation-names-2/">Corporation Names 2</a></li><li><a class="nav-link" href="../../subtables/divinity-1/">Divinity 1</a></li><li><a class="nav-link" href="../../subtables/divinity-2/">Divinity 2</a></li><li><a class="nav-link" href="../../subtables/engineering-fields-1/">Engineering Fields 1</a></li><li><a class="nav-link" href="../../subtables/engineering-fields-2/">Engineering Fields 2</a></li><li><a class="nav-link" href="../../subtables/formal-sciences-1/">Formal Sciences 1</a></li><li><a class="nav-link" href="../../subtables/formal-sciences-2/">Formal Sciences 2</a></li><li><a class="nav-link" href="../../subtables/human-female-names-1/">Human Female Names 1</a></li><li><a class="nav-link" href="../../subtables/human-female-names-2/">Human Female Names 2</a></li><li><a class="nav-link" href="../../subtables/human-female-names-3/">Human Female Names 3</a></li><li><a class="nav-link" href="../../subtables/human-female-names-4/">Human Female Names 4</a></li><li><a class="nav-link" href="../../subtables/human-male-names-1/">Human Male Names 1</a></li><li><a class="nav-link" href="../../subtables/human-male-names-2/">Human Male Names 2</a></li><li><a class="nav-link" href="../../subtables/human-male-names-3/">Human Male Names 3</a></li><li><a class="nav-link" href="../../subtables/human-male-names-4/">Human Male Names 4</a></li><li><a class="nav-link" href="../../subtables/human-surnames-1/">Human Surnames 1</a></li><li><a class="nav-link" href="../../subtables/human-surnames-2/">Human Surnames 2</a></li><li><a class="nav-link" href="../../subtables/human-surnames-3/">Human Surnames 3</a></li><li><a class="nav-link" href="../../subtables/human-surnames-4/">Human Surnames 4</a></li><li><a class="nav-link" href="../../subtables/humanities-1/">Humanities 1</a></li><li><a class="nav-link" href="../../subtables/humanities-2/">Humanities 2</a></li><li><a class="nav-link" href="../../subtables/humanities-3/">Humanities 3</a></li><li><a class="nav-link" href="../../subtables/journalism-and-communications-1/">Journalism and Communications 1</a></li><li><a class="nav-link" href="../../subtables/journalism-and-communications-2/">Journalism and Communications 2</a></li><li><a class="nav-link" href="../../subtables/military-sciences-1/">Military Sciences 1</a></li><li><a class="nav-link" href="../../subtables/military-sciences-2/">Military Sciences 2</a></li><li><a class="nav-link" href="../../subtables/natural-sciences-1/">Natural Sciences 1</a></li><li><a class="nav-link" href="../../subtables/natural-sciences-2/">Natural Sciences 2</a></li><li><a class="nav-link" href="../../subtables/natural-sciences-3/">Natural Sciences 3</a></li><li><a class="nav-link" href="../../subtables/planet-names-1/">Planet Names 1</a></li><li><a class="nav-link" href="../../subtables/planet-names-2/">Planet Names 2</a></li><li><a class="nav-link" href="../../subtables/planet-names-3/">Planet Names 3</a></li><li><a class="nav-link" href="../../subtables/planet-names-4/">Planet Names 4</a></li><li><a class="nav-link" href="../../subtables/planet-names-5/">Planet Names 5</a></li><li><a class="nav-link" href="../../subtables/planet-names-6/">Planet Names 6</a></li><li><a class="nav-link" href="../../subtables/ship-names-1/">Ship Names 1</a></li><li><a class="nav-link" href="../../subtables/ship-names-2/">Ship Names 2</a></li><li><a class="nav-link" href="../../subtables/ship-names-3/">Ship Names 3</a></li><li><a class="nav-link" href="../../subtables/ship-names-4/">Ship Names 4</a></li><li><a class="nav-link" href="../../subtables/ship-transponder-info-1/">Ship Transponder Info 1</a></li><li><a class="nav-link" href="../../subtables/ship-transponder-info-2/">Ship Transponder Info 2</a></li><li><a class="nav-link" href="../../subtables/ship-transponder-info-3/">Ship Transponder Info 3</a></li><li><a class="nav-link" href="../../subtables/ship-transponder-info-4/">Ship Transponder Info 4</a></li><li><a class="nav-link" href="../../subtables/social-sciences-1/">Social Sciences 1</a></li><li><a class="nav-link" href="../../subtables/social-sciences-2/">Social Sciences 2</a></li><li><a class="nav-link" href="../../subtables/social-sciences-3/">Social Sciences 3</a></li><li><a class="nav-link" href="../../subtables/social-sciences-4/">Social Sciences 4</a></li><li><a class="nav-link" href="../../subtables/space-station-names-1/">Space Station Names 1</a></li><li><a class="nav-link" href="../../subtables/space-station-names-2/">Space Station Names 2</a></li><li><a class="nav-link" href="../../subtables/spaceport-names-1/">Spaceport Names 1</a></li><li><a class="nav-link" href="../../subtables/spaceport-names-2/">Spaceport Names 2</a></li><li><a class="nav-link" href="../../subtables/technobabble-1/">Technobabble 1</a></li><li><a class="nav-link" href="../../subtables/technobabble-2/">Technobabble 2</a></li><li><a class="nav-link" href="../../subtables/unexplored-planets-1/">Unexplored Planets 1</a></li><li><a class="nav-link" href="../../subtables/unexplored-planets-2/">Unexplored Planets 2</a></li><li><a class="nav-link" href="../../subtables/unexplored-planets-3/">Unexplored Planets 3</a></li><li><a class="nav-link" href="../../subtables/unexplored-planets-4/">Unexplored Planets 4</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Technobabble</button><ul class="nav-sublist"><li><a class="nav-link" href="../../technobabble/codes/">Codes</a></li><li><a class="nav-link" href="../../technobabble/technobabble/">Technobabble</a></li><li><a class="nav-link" href="../../technobabble/technobabble-phrases/">Technobabble Phrases</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Vessels</button><ul class="nav-sublist"><li><a class="nav-link" href="../../vessels/derelicts/">Derelicts</a></li><li><a class="nav-link" href="../../vessels/escape-pods/">Escape Pods</a></li><li><a class="nav-link" href="../../vessels/ship-transponder-info/">Ship Transponder Info</a></li><li><a class="nav-link" href="../../vessels/space-stations/">Space Stations</a></li></ul></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Locations</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">1 Main Map</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../locations/1-main-map/the-forge/">The Forge</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">3 Outlands</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Kalidas Maw</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Planets</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/planets/centurion/">Centurion</a></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/planets/holland/">Holland</a></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/planets/san-luis-potos/">San Luis Potosí</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Settlements</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Beacon</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Places</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/beacon/places/stellartron/">StellarTron</a></li></ul></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/beacon/beacon/">Beacon</a></li></ul></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/concord/">Concord</a></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/lodestar/">Lodestar</a></li></ul></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/kalidas-maw/">Kalidas Maw</a></li></ul></li></ul></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Lore</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Connections Worksheet</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../lore/connections-worksheet/isla-nakayama/">Isla Nakayama</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Factions</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../lore/factions/hunters-of-the-golden-alliance/">Hunters of the Golden Alliance</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">NPCs</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../lore/npcs/tindra-companion/">Tindra (Companion)</a></li></ul></li><li><a class="nav-link" href="../../../lore/galactic-standard-time/">Galactic Standard Time</a></li><li><a class="nav-link" href="../../../lore/quest-starters/">Quest Starters</a></li><li><a class="nav-link" href="../../../lore/truths/">Truths</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Progress</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../progress/bg-vow-find-a-new-precursor-species/">BG Vow Find a new precursor species</a></li><li><a class="nav-link" href="../../../progress/ct-isla-nakayama/">CT Isla Nakayama</a></li></ul></li>
+    </ul>
+  </nav>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <main class="content">
+    <header class="page-header">
+    <h1>Spaceport Bar Rumors</h1>
+    
+  </header><div class="prose"><table>
+<thead>
+<tr>
+<th>dice: 1d100</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A group of separatists have founded a new colony on a nearby planet.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Supposedly there is a distress signal originating in uncharted space but no one wants to risk the trip to investigate.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A colony's food supply was poisoned by a rebel faction, though some say it was just a crop failure but whatever the reason the colony will need food soon.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Word is spreading that a rare metal was discovered in a nearby asteroid belt.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>A passenger liner disappeared en route to a resort world and authorities are baffled.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>A large passenger liner was stolen right out of its space dock.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>A new habitable planet was discovered in a distant sector.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>An imp-like creature was spotted on a space station running about and causing mischief but most think the crew has been isolated there too long.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Several corporations, governments, and individuals are embroiled in a title dispute over lands on a recently settled planet.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>A popular band's tour will soon come to the sector.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Two rival corporations are on the brink of open warfare.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>A large corporation filed for bankruptcy.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>A newly formed consortium is hiring an exploration team to survey a planet.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Ancient ruins discovered on a remote planet.</td>
+</tr>
+<tr>
+<td>15</td>
+<td>A freighter spotted a derelict ship recently but they didn't investigate.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Sentient androids on a remote planet need help but no one is quite sure what the problem is.</td>
+</tr>
+<tr>
+<td>17</td>
+<td>A distant research station issued a distress signal and then the transmission cut off.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>A new station will be built nearby that is said to be the home of a huge supply store and several restaurants.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>A government is looking for smugglers to slip supplies to resistant factions behind enemy lines in a territorial dispute.</td>
+</tr>
+<tr>
+<td>20</td>
+<td>A criminal cartel is said to be blocking several trade routes at the edge of the sector.</td>
+</tr>
+<tr>
+<td>21</td>
+<td>A new nebula-dust harvesting technology was invented and it is said that it will change the whole industry.</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Several sectors have been thrown into turmoil after the kidnapping of a young prince.</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Some spacers are claiming a planet that recently broke apart was intentionally destroyed.</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Supposedly a ship will be carrying an exceedingly rare cargo shipment through the sector, but no one seems to know what it is.</td>
+</tr>
+<tr>
+<td>25</td>
+<td>A war between crime bosses is likely to spill over into the shipping lanes.</td>
+</tr>
+<tr>
+<td>26</td>
+<td>A rim colony was completely wiped out and nobody knows how or why.</td>
+</tr>
+<tr>
+<td>27</td>
+<td>A large transport ship is crippled by a computer virus and is calling for aid.</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Increased spaceport security on a popular planet has visitors speculating that something may be wrong.</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Several governments have pooled their resources to place an extremely large bounty on a cartel boss's head.</td>
+</tr>
+<tr>
+<td>30</td>
+<td>A rogue asteroid is going to hit a populated planet.</td>
+</tr>
+<tr>
+<td>31</td>
+<td>A legendary ghost ship was spotted near a neighboring system.</td>
+</tr>
+<tr>
+<td>32</td>
+<td>A political scandal on a nearby planet has rocked the elite class and sent the population into the streets.</td>
+</tr>
+<tr>
+<td>33</td>
+<td>An ancient plague ship was spotted for the first time in centuries near the sector.</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Shipyard workers trying to unionize and corporate bosses are not happy.</td>
+</tr>
+<tr>
+<td>35</td>
+<td>A new animal species was discovered during a planetary scouting mission and they say it has venom sacks the size of a man's head.</td>
+</tr>
+<tr>
+<td>36</td>
+<td>A new corporation charter was issued for permission to operate in a recently opened sector and rumors say the new corp is on a hiring spree.</td>
+</tr>
+<tr>
+<td>37</td>
+<td>A team of scientists needs help exploring a new planet and rumors say they are paying well but the planet is treacherous.</td>
+</tr>
+<tr>
+<td>38</td>
+<td>A corporation's experimental spacecraft is set for rounds of rigorous tests soon.</td>
+</tr>
+<tr>
+<td>39</td>
+<td>A criminal cartel looking for smugglers for some brazen illicit cargo runs.</td>
+</tr>
+<tr>
+<td>40</td>
+<td>A celebrity was found dead which is nothing new but they say an alien artifact was found on their body.</td>
+</tr>
+<tr>
+<td>41</td>
+<td>A cult is threatening mass suicide once its vessel approaches the event horizon of a black hole.</td>
+</tr>
+<tr>
+<td>42</td>
+<td>A colony needs a new water supply but in the meantime, they are hiring ships to deliver water.</td>
+</tr>
+<tr>
+<td>43</td>
+<td>Supposedly at the edge of charted space, an alien oracle offers prophecies to those who seek its wisdom.</td>
+</tr>
+<tr>
+<td>44</td>
+<td>Charismatic leaders are fomenting revolution on a nearby world.</td>
+</tr>
+<tr>
+<td>45</td>
+<td>Some say that pirates are blockading a remote planet until they are given supplies and valuables.</td>
+</tr>
+<tr>
+<td>46</td>
+<td>The upcoming wedding between two royals is said the be the Wedding of the Century.</td>
+</tr>
+<tr>
+<td>47</td>
+<td>A team of scientists needs a good pilot to observe planetary rings and they are said to be paying well.</td>
+</tr>
+<tr>
+<td>48</td>
+<td>A new freighter model will be released soon and they say it has improved cargo storage.</td>
+</tr>
+<tr>
+<td>49</td>
+<td>A jewel heist on a nearby space station has everyone wondering who could have pulled a feat like that.</td>
+</tr>
+<tr>
+<td>50</td>
+<td>A terraforming project has gone wrong; multiple workers were killed and a horrid rampaging mutated monstrosity was released.</td>
+</tr>
+<tr>
+<td>51</td>
+<td>A mercenary unit is actively recruiting and the rumor is they are going to see action soon.</td>
+</tr>
+<tr>
+<td>52</td>
+<td>An asteroid mining operation is plagued by pirates and no one wants to help.</td>
+</tr>
+<tr>
+<td>53</td>
+<td>The conflict between two warring planets will cause other systems to pick sides and become involved soon.</td>
+</tr>
+<tr>
+<td>54</td>
+<td>A rash of kidnappings on a nearby planet is leading people to believe the government is losing control.</td>
+</tr>
+<tr>
+<td>55</td>
+<td>Odd space debris is making a major trade route hazardous for ships.</td>
+</tr>
+<tr>
+<td>56</td>
+<td>A remote colony infested with strange insects that are devouring their food supply.</td>
+</tr>
+<tr>
+<td>57</td>
+<td>A meteor shower will occur in the sector soon so all navigators better update their charts.</td>
+</tr>
+<tr>
+<td>58</td>
+<td>Several independent trader captains are disputing the ownership of a freighter.</td>
+</tr>
+<tr>
+<td>59</td>
+<td>Ripples in the underground say a new crime boss has stepped up activities in the sector.</td>
+</tr>
+<tr>
+<td>60</td>
+<td>A slave uprising on a remote planet has left thousands dead but authorities are hesitating to intervene.</td>
+</tr>
+<tr>
+<td>61</td>
+<td>A new exosuit will be released on the market soon and it will put thousands out of work.</td>
+</tr>
+<tr>
+<td>62</td>
+<td>Part of the crew and the captives on a slave ship staged a successful mutiny.</td>
+</tr>
+<tr>
+<td>63</td>
+<td>Supposedly a cartel has a device that can bend space-time for personal travel but no one has seen it done personally.</td>
+</tr>
+<tr>
+<td>64</td>
+<td>A new cult has sprung up and its charismatic leader is gathering followers and influence throughout the sector.</td>
+</tr>
+<tr>
+<td>65</td>
+<td>A government looking for independent ships and crews to become privateers.</td>
+</tr>
+<tr>
+<td>66</td>
+<td>An old spacer is telling tales of a utopian planet visited once and that it made all of his dreams come true.</td>
+</tr>
+<tr>
+<td>67</td>
+<td>Trade negotiations are on the verge of collapsing between several systems and corporations.</td>
+</tr>
+<tr>
+<td>68</td>
+<td>Some are saying the crew on a fully loaded trade vessel has mutinied and are trying to claim the cargo as their own.</td>
+</tr>
+<tr>
+<td>69</td>
+<td>Stories are swirling about a new smuggler base in the sector.</td>
+</tr>
+<tr>
+<td>70</td>
+<td>An independent trading fleet is hiring escort ships as they are planning to travel through pirate space.</td>
+</tr>
+<tr>
+<td>71</td>
+<td>A riot on a maximum security prison asteroid has been raging for weeks now.</td>
+</tr>
+<tr>
+<td>72</td>
+<td>A colony ship arrived from the core with a vast amount of settlers looking for a new home.</td>
+</tr>
+<tr>
+<td>73</td>
+<td>Slave traders have supposedly moved silently into the sector.</td>
+</tr>
+<tr>
+<td>74</td>
+<td>A steroid scandal is about to derail the HyperDyne Blitz championship.</td>
+</tr>
+<tr>
+<td>75</td>
+<td>A blockaded planet's officials are looking for freighter pilots to run the blockade.</td>
+</tr>
+<tr>
+<td>76</td>
+<td>A message without a clear source was received in a certain sector and people say it was a plea for help.</td>
+</tr>
+<tr>
+<td>77</td>
+<td>Ships are disappearing from a remote sector causing captains to steer clear of the area.</td>
+</tr>
+<tr>
+<td>78</td>
+<td>A supernova is threatening the population of a remote planet and no one is sure they can be saved.</td>
+</tr>
+<tr>
+<td>79</td>
+<td>An alliance was brokered between two systems and now several other systems are nervous about the shift in power dynamics.</td>
+</tr>
+<tr>
+<td>80</td>
+<td>A notorious hacker group moved into the sector after fleeing the authorities in another sector.</td>
+</tr>
+<tr>
+<td>81</td>
+<td>A new illegal drug is wreaking havoc among spacer crews.</td>
+</tr>
+<tr>
+<td>82</td>
+<td>Illegal gambling seems to be on the rise in the sector.</td>
+</tr>
+<tr>
+<td>83</td>
+<td>A flamboyant salesman is traveling through the sector offering alien miracle cures, healing salves, and special ointments.</td>
+</tr>
+<tr>
+<td>84</td>
+<td>It is said racial tensions in a remote colony are reaching a boiling point.</td>
+</tr>
+<tr>
+<td>85</td>
+<td>A crime syndicate's members have turned on each other in what is quickly becoming a civil war.</td>
+</tr>
+<tr>
+<td>86</td>
+<td>A space circus is coming to a nearby planet and everyone is excited.</td>
+</tr>
+<tr>
+<td>87</td>
+<td>Pirate activity has increased in an adjacent sector.</td>
+</tr>
+<tr>
+<td>88</td>
+<td>Two systems are said to have broken their strategic trade alliance over accusations of treachery.</td>
+</tr>
+<tr>
+<td>89</td>
+<td>A criminal faction is said to have placed a bounty on a political leader.</td>
+</tr>
+<tr>
+<td>90</td>
+<td>An abandoned space station was found in orbit around a planet that was once the site of a &quot;gold rush&quot; but now is deserted.</td>
+</tr>
+<tr>
+<td>91</td>
+<td>An ancient alien tomb discovered was on a remote world.</td>
+</tr>
+<tr>
+<td>92</td>
+<td>An old dying spacer claims a distant planet's air gives immortality to those who breathe it.</td>
+</tr>
+<tr>
+<td>93</td>
+<td>A popular celebrity is missing though they could just be on vacation.</td>
+</tr>
+<tr>
+<td>94</td>
+<td>The old-timers are saying the economy will crash soon.</td>
+</tr>
+<tr>
+<td>95</td>
+<td>A massive chunk of ice was spotted in space though some crew members of the vessel say there was an object frozen inside it.</td>
+</tr>
+<tr>
+<td>96</td>
+<td>A plague on a nearby planet threatens to spread to other worlds.</td>
+</tr>
+<tr>
+<td>97</td>
+<td>A team of scientists is attempting to hire a ship to transport them to a distant planet.</td>
+</tr>
+<tr>
+<td>98</td>
+<td>A one in a thousand years comet coming back through the sector and all spacers better be prepared to navigate the debris field.</td>
+</tr>
+<tr>
+<td>99</td>
+<td>A terrorist group supposedly issued a manifesto stating they are out to disrupt all space travel.</td>
+</tr>
+<tr>
+<td>100</td>
+<td>An extremely rare animal escaped from a spacefaring circus and people are concerned because it is a carnivore the size of a house.</td>
+</tr>
+</tbody>
+</table>
+</div>
+  </main>
+</div>
+<script src="../../../site.js"></script>
+</body>
+</html>

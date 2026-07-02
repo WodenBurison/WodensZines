@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escape Pods · Woden&#39;s Adventures</title>
+<meta name="description" content="An Ironsworn: Starforged solo playthrough">
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+<div class="topbar">
+  <a class="topbar-title" href="../../../">Woden&#39;s Adventures</a>
+  <button class="hamburger" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-tagline">An Ironsworn: Starforged solo playthrough</div>
+    <ul class="nav-list">
+      <li><a class="nav-link" href="../../../">Home / Sessions</a></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Characters</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../characters/woden/">Woden</a></li></ul></li><li class="nav-folder nav-collapsed"><button class="nav-folder-toggle" type="button">Custom Content</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Activities and Reasons</button><ul class="nav-sublist"><li><a class="nav-link" href="../../activities-and-reasons/npc-crew-shore-leave-activities/">NPC Crew Shore Leave Activities</a></li><li><a class="nav-link" href="../../activities-and-reasons/reasons-a-pc-is-absent/">Reasons a PC is Absent</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Adventure Ideas and Side Jobs</button><ul class="nav-sublist"><li><a class="nav-link" href="../../adventure-ideas-and-side-jobs/adventure-ideas/">Adventure Ideas</a></li><li><a class="nav-link" href="../../adventure-ideas-and-side-jobs/side-jobs/">Side Jobs</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Cargo</button><ul class="nav-sublist"><li><a class="nav-link" href="../../cargo/bulk-cargo/">Bulk Cargo</a></li><li><a class="nav-link" href="../../cargo/cargo-runs/">Cargo Runs</a></li><li><a class="nav-link" href="../../cargo/cargo-weight/">Cargo Weight</a></li><li><a class="nav-link" href="../../cargo/personal-and-small-items-in-a-cargo-hold/">Personal and Small Items in a Cargo Hold</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Encounters and Discoveries</button><ul class="nav-sublist"><li><a class="nav-link" href="../../encounters-and-discoveries/asteroid-belt-encounters/">Asteroid Belt Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/desert-planet-encounters/">Desert Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/events/">Events</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/ice-planet-encounters/">Ice Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/jungle-planet-encounters/">Jungle Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/lab-experiment-encounters/">Lab Experiment Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/news-chatter/">News Chatter</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/ocean-planet-encounters/">Ocean Planet Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/ravaged-research-facility/">Ravaged Research Facility</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/space-complications-and-encounters/">Space Complications and Encounters</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/spaceship-mechanical-problems/">Spaceship Mechanical Problems</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/spatial-anomalies/">Spatial Anomalies</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/star-system-exploration-discoveries/">Star System Exploration Discoveries</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/urban-encounters-and-complications/">Urban Encounters and Complications</a></li><li><a class="nav-link" href="../../encounters-and-discoveries/volcanic-planet-encounters/">Volcanic Planet Encounters</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Fields of Study</button><ul class="nav-sublist"><li><a class="nav-link" href="../../fields-of-study/agriculture/">Agriculture</a></li><li><a class="nav-link" href="../../fields-of-study/architecture/">Architecture</a></li><li><a class="nav-link" href="../../fields-of-study/business/">Business</a></li><li><a class="nav-link" href="../../fields-of-study/divinity/">Divinity</a></li><li><a class="nav-link" href="../../fields-of-study/education/">Education</a></li><li><a class="nav-link" href="../../fields-of-study/engineering-fields/">Engineering Fields</a></li><li><a class="nav-link" href="../../fields-of-study/family-and-consumer-science/">Family and Consumer Science</a></li><li><a class="nav-link" href="../../fields-of-study/formal-sciences/">Formal Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/human-physical-performance/">Human Physical Performance</a></li><li><a class="nav-link" href="../../fields-of-study/humanities/">Humanities</a></li><li><a class="nav-link" href="../../fields-of-study/journalism-and-communications/">Journalism and Communications</a></li><li><a class="nav-link" href="../../fields-of-study/law/">Law</a></li><li><a class="nav-link" href="../../fields-of-study/library-studies/">Library Studies</a></li><li><a class="nav-link" href="../../fields-of-study/medicinal-sciences/">Medicinal Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/military-sciences/">Military Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/natural-sciences/">Natural Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/psychic-abilities/">Psychic Abilities</a></li><li><a class="nav-link" href="../../fields-of-study/public-administration/">Public Administration</a></li><li><a class="nav-link" href="../../fields-of-study/social-sciences/">Social Sciences</a></li><li><a class="nav-link" href="../../fields-of-study/transportation/">Transportation</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Items and Things</button><ul class="nav-sublist"><li><a class="nav-link" href="../../items-and-things/book-titles/">Book Titles</a></li><li><a class="nav-link" href="../../items-and-things/bounty-board/">Bounty Board</a></li><li><a class="nav-link" href="../../items-and-things/computer-files/">Computer Files</a></li><li><a class="nav-link" href="../../items-and-things/fictional-alloys/">Fictional Alloys</a></li><li><a class="nav-link" href="../../items-and-things/fictional-infectious-diseases/">Fictional Infectious Diseases</a></li><li><a class="nav-link" href="../../items-and-things/fictional-medications/">Fictional Medications</a></li><li><a class="nav-link" href="../../items-and-things/fictional-spices/">Fictional Spices</a></li><li><a class="nav-link" href="../../items-and-things/fictional-trade-goods-and-animals/">Fictional Trade Goods and Animals</a></li><li><a class="nav-link" href="../../items-and-things/illegal-drugs/">Illegal Drugs</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-biology-lab/">Items in a Biology Lab</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-chemical-lab/">Items in a Chemical Lab</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-crashed-cargo-spaceship/">Items in a Crashed Cargo Spaceship</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-cybernetics-clinic/">Items in a Cybernetics Clinic</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-desk/">Items in a Desk</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-freighter-cockpit/">Items in a Freighter Cockpit</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-governmental-office/">Items in a Governmental Office</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-lab-directors-office/">Items in a Lab Directors Office</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-ship-captain-quarters/">Items in a Ship Captain Quarters</a></li><li><a class="nav-link" href="../../items-and-things/items-in-a-warehouse/">Items in a Warehouse</a></li><li><a class="nav-link" href="../../items-and-things/metals/">Metals</a></li><li><a class="nav-link" href="../../items-and-things/military-medals-and-decorations/">Military Medals and Decorations</a></li><li><a class="nav-link" href="../../items-and-things/poisonous-plants/">Poisonous Plants</a></li><li><a class="nav-link" href="../../items-and-things/types-of-planets/">Types of Planets</a></li><li><a class="nav-link" href="../../items-and-things/types-of-stars/">Types of Stars</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Names</button><ul class="nav-sublist"><li><a class="nav-link" href="../../names/alien-names/">Alien Names</a></li><li><a class="nav-link" href="../../names/bar-names/">Bar Names</a></li><li><a class="nav-link" href="../../names/city-names/">City Names</a></li><li><a class="nav-link" href="../../names/corporation-names/">Corporation Names</a></li><li><a class="nav-link" href="../../names/drink-names/">Drink Names</a></li><li><a class="nav-link" href="../../names/human-female-names/">Human Female Names</a></li><li><a class="nav-link" href="../../names/human-male-names/">Human Male Names</a></li><li><a class="nav-link" href="../../names/human-surnames/">Human Surnames</a></li><li><a class="nav-link" href="../../names/planet-names/">Planet Names</a></li><li><a class="nav-link" href="../../names/ship-names/">Ship Names</a></li><li><a class="nav-link" href="../../names/space-station-names/">Space Station Names</a></li><li><a class="nav-link" href="../../names/spaceport-names/">Spaceport Names</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Places</button><ul class="nav-sublist"><li><a class="nav-link" href="../../places/casinos-and-hotels/">Casinos and Hotels</a></li><li><a class="nav-link" href="../../places/spaceport-bar-rumors/">Spaceport Bar Rumors</a></li><li><a class="nav-link" href="../../places/unexplored-planets/">Unexplored Planets</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Subtables</button><ul class="nav-sublist"><li><a class="nav-link" href="../../subtables/alien-names-1/">Alien Names 1</a></li><li><a class="nav-link" href="../../subtables/alien-names-2/">Alien Names 2</a></li><li><a class="nav-link" href="../../subtables/bar-names-1/">Bar Names 1</a></li><li><a class="nav-link" href="../../subtables/bar-names-2/">Bar Names 2</a></li><li><a class="nav-link" href="../../subtables/book-titles-1/">Book Titles 1</a></li><li><a class="nav-link" href="../../subtables/book-titles-2/">Book Titles 2</a></li><li><a class="nav-link" href="../../subtables/bulk-cargo-1/">Bulk Cargo 1</a></li><li><a class="nav-link" href="../../subtables/bulk-cargo-2/">Bulk Cargo 2</a></li><li><a class="nav-link" href="../../subtables/bulk-cargo-3/">Bulk Cargo 3</a></li><li><a class="nav-link" href="../../subtables/cargo-runs-1/">Cargo Runs 1</a></li><li><a class="nav-link" href="../../subtables/cargo-runs-2/">Cargo Runs 2</a></li><li><a class="nav-link" href="../../subtables/city-names-1/">City Names 1</a></li><li><a class="nav-link" href="../../subtables/city-names-2/">City Names 2</a></li><li><a class="nav-link" href="../../subtables/city-names-3/">City Names 3</a></li><li><a class="nav-link" href="../../subtables/city-names-4/">City Names 4</a></li><li><a class="nav-link" href="../../subtables/codes-1/">Codes 1</a></li><li><a class="nav-link" href="../../subtables/codes-2/">Codes 2</a></li><li><a class="nav-link" href="../../subtables/corporation-names-1/">Corporation Names 1</a></li><li><a class="nav-link" href="../../subtables/corporation-names-2/">Corporation Names 2</a></li><li><a class="nav-link" href="../../subtables/divinity-1/">Divinity 1</a></li><li><a class="nav-link" href="../../subtables/divinity-2/">Divinity 2</a></li><li><a class="nav-link" href="../../subtables/engineering-fields-1/">Engineering Fields 1</a></li><li><a class="nav-link" href="../../subtables/engineering-fields-2/">Engineering Fields 2</a></li><li><a class="nav-link" href="../../subtables/formal-sciences-1/">Formal Sciences 1</a></li><li><a class="nav-link" href="../../subtables/formal-sciences-2/">Formal Sciences 2</a></li><li><a class="nav-link" href="../../subtables/human-female-names-1/">Human Female Names 1</a></li><li><a class="nav-link" href="../../subtables/human-female-names-2/">Human Female Names 2</a></li><li><a class="nav-link" href="../../subtables/human-female-names-3/">Human Female Names 3</a></li><li><a class="nav-link" href="../../subtables/human-female-names-4/">Human Female Names 4</a></li><li><a class="nav-link" href="../../subtables/human-male-names-1/">Human Male Names 1</a></li><li><a class="nav-link" href="../../subtables/human-male-names-2/">Human Male Names 2</a></li><li><a class="nav-link" href="../../subtables/human-male-names-3/">Human Male Names 3</a></li><li><a class="nav-link" href="../../subtables/human-male-names-4/">Human Male Names 4</a></li><li><a class="nav-link" href="../../subtables/human-surnames-1/">Human Surnames 1</a></li><li><a class="nav-link" href="../../subtables/human-surnames-2/">Human Surnames 2</a></li><li><a class="nav-link" href="../../subtables/human-surnames-3/">Human Surnames 3</a></li><li><a class="nav-link" href="../../subtables/human-surnames-4/">Human Surnames 4</a></li><li><a class="nav-link" href="../../subtables/humanities-1/">Humanities 1</a></li><li><a class="nav-link" href="../../subtables/humanities-2/">Humanities 2</a></li><li><a class="nav-link" href="../../subtables/humanities-3/">Humanities 3</a></li><li><a class="nav-link" href="../../subtables/journalism-and-communications-1/">Journalism and Communications 1</a></li><li><a class="nav-link" href="../../subtables/journalism-and-communications-2/">Journalism and Communications 2</a></li><li><a class="nav-link" href="../../subtables/military-sciences-1/">Military Sciences 1</a></li><li><a class="nav-link" href="../../subtables/military-sciences-2/">Military Sciences 2</a></li><li><a class="nav-link" href="../../subtables/natural-sciences-1/">Natural Sciences 1</a></li><li><a class="nav-link" href="../../subtables/natural-sciences-2/">Natural Sciences 2</a></li><li><a class="nav-link" href="../../subtables/natural-sciences-3/">Natural Sciences 3</a></li><li><a class="nav-link" href="../../subtables/planet-names-1/">Planet Names 1</a></li><li><a class="nav-link" href="../../subtables/planet-names-2/">Planet Names 2</a></li><li><a class="nav-link" href="../../subtables/planet-names-3/">Planet Names 3</a></li><li><a class="nav-link" href="../../subtables/planet-names-4/">Planet Names 4</a></li><li><a class="nav-link" href="../../subtables/planet-names-5/">Planet Names 5</a></li><li><a class="nav-link" href="../../subtables/planet-names-6/">Planet Names 6</a></li><li><a class="nav-link" href="../../subtables/ship-names-1/">Ship Names 1</a></li><li><a class="nav-link" href="../../subtables/ship-names-2/">Ship Names 2</a></li><li><a class="nav-link" href="../../subtables/ship-names-3/">Ship Names 3</a></li><li><a class="nav-link" href="../../subtables/ship-names-4/">Ship Names 4</a></li><li><a class="nav-link" href="../../subtables/ship-transponder-info-1/">Ship Transponder Info 1</a></li><li><a class="nav-link" href="../../subtables/ship-transponder-info-2/">Ship Transponder Info 2</a></li><li><a class="nav-link" href="../../subtables/ship-transponder-info-3/">Ship Transponder Info 3</a></li><li><a class="nav-link" href="../../subtables/ship-transponder-info-4/">Ship Transponder Info 4</a></li><li><a class="nav-link" href="../../subtables/social-sciences-1/">Social Sciences 1</a></li><li><a class="nav-link" href="../../subtables/social-sciences-2/">Social Sciences 2</a></li><li><a class="nav-link" href="../../subtables/social-sciences-3/">Social Sciences 3</a></li><li><a class="nav-link" href="../../subtables/social-sciences-4/">Social Sciences 4</a></li><li><a class="nav-link" href="../../subtables/space-station-names-1/">Space Station Names 1</a></li><li><a class="nav-link" href="../../subtables/space-station-names-2/">Space Station Names 2</a></li><li><a class="nav-link" href="../../subtables/spaceport-names-1/">Spaceport Names 1</a></li><li><a class="nav-link" href="../../subtables/spaceport-names-2/">Spaceport Names 2</a></li><li><a class="nav-link" href="../../subtables/technobabble-1/">Technobabble 1</a></li><li><a class="nav-link" href="../../subtables/technobabble-2/">Technobabble 2</a></li><li><a class="nav-link" href="../../subtables/unexplored-planets-1/">Unexplored Planets 1</a></li><li><a class="nav-link" href="../../subtables/unexplored-planets-2/">Unexplored Planets 2</a></li><li><a class="nav-link" href="../../subtables/unexplored-planets-3/">Unexplored Planets 3</a></li><li><a class="nav-link" href="../../subtables/unexplored-planets-4/">Unexplored Planets 4</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Technobabble</button><ul class="nav-sublist"><li><a class="nav-link" href="../../technobabble/codes/">Codes</a></li><li><a class="nav-link" href="../../technobabble/technobabble/">Technobabble</a></li><li><a class="nav-link" href="../../technobabble/technobabble-phrases/">Technobabble Phrases</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Vessels</button><ul class="nav-sublist"><li><a class="nav-link" href="../derelicts/">Derelicts</a></li><li><a class="nav-link nav-active" href="./">Escape Pods</a></li><li><a class="nav-link" href="../ship-transponder-info/">Ship Transponder Info</a></li><li><a class="nav-link" href="../space-stations/">Space Stations</a></li></ul></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Locations</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">1 Main Map</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../locations/1-main-map/the-forge/">The Forge</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">3 Outlands</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Kalidas Maw</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Planets</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/planets/centurion/">Centurion</a></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/planets/holland/">Holland</a></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/planets/san-luis-potos/">San Luis Potosí</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Settlements</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Beacon</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Places</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/beacon/places/stellartron/">StellarTron</a></li></ul></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/beacon/beacon/">Beacon</a></li></ul></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/concord/">Concord</a></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/settlements/lodestar/">Lodestar</a></li></ul></li><li><a class="nav-link" href="../../../locations/3-outlands/kalidas-maw/kalidas-maw/">Kalidas Maw</a></li></ul></li></ul></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Lore</button><ul class="nav-sublist"><li class="nav-folder"><button class="nav-folder-toggle" type="button">Connections Worksheet</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../lore/connections-worksheet/isla-nakayama/">Isla Nakayama</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Factions</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../lore/factions/hunters-of-the-golden-alliance/">Hunters of the Golden Alliance</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">NPCs</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../lore/npcs/tindra-companion/">Tindra (Companion)</a></li></ul></li><li><a class="nav-link" href="../../../lore/galactic-standard-time/">Galactic Standard Time</a></li><li><a class="nav-link" href="../../../lore/quest-starters/">Quest Starters</a></li><li><a class="nav-link" href="../../../lore/truths/">Truths</a></li></ul></li><li class="nav-folder"><button class="nav-folder-toggle" type="button">Progress</button><ul class="nav-sublist"><li><a class="nav-link" href="../../../progress/bg-vow-find-a-new-precursor-species/">BG Vow Find a new precursor species</a></li><li><a class="nav-link" href="../../../progress/ct-isla-nakayama/">CT Isla Nakayama</a></li></ul></li>
+    </ul>
+  </nav>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <main class="content">
+    <header class="page-header">
+    <h1>Escape Pods</h1>
+    
+  </header><div class="prose"><table>
+<thead>
+<tr>
+<th>dice: 1d100</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Damaged System: Sensor Array — Occupants: 6 — Injuries: Cuts and abrasions — Oddity: All occupants are trying to speak but cannot</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Damaged System: None — Occupants: 12 — Injuries: Fractured humerus, nerve damage, Wrist fracture — Oddity: Smoldering wires strewn about</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Damaged System: None — Occupants: 9 — Injuries: None — Oddity: Suspended animation cryotube</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Damaged System: None — Occupants: 4 — Injuries: None — Oddity: Deactivated security drones (1D10)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Damaged System: None — Occupants: 4 — Injuries: None — Oddity: Vines and plants growing out of every crack and crevice</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Damaged System: None — Occupants: 1 — Injuries: Concussion, Burns — Oddity: A ten-foot-tall humanoid robot that's powered down</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Damaged System: Gravity Control — Occupants: 11 — Injuries: Fractured fibula — Oddity: Counterfeit credit chips (2D100)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Damaged System: Navigation — Occupants: 7 — Injuries: Fractured ribs — Oddity: Crushed hat with the logo of a nightclub on it</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Damaged System: Navigation — Occupants: 4 — Injuries: Bruises and contusions — Oddity: A tiny piece of amber with an insect inside it</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Damaged System: None — Occupants: 9 — Injuries: Fractured ribs, bruises, contusions, concussion — Oddity: Several ID cards and passports with different names but all picture the same person</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Damaged System: Environmental Control — Occupants: 7 — Injuries: None — Oddity: Radioactive canister emitting a faint green glow</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Damaged System: None — Occupants: 8 — Injuries: Cuts and abrasions — Oddity: Nanite containment jar (seal broken)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Damaged System: None — Occupants: 12 — Injuries: Nerve damage — Oddity: Jar of shimmering dust</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Damaged System: None — Occupants: None — Injuries: None — Oddity: Pile of tools</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Damaged System: Power Generator — Occupants: 5 — Injuries: Fractured humerus, bruises, and contusions — Oddity: Bloody knife</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Damaged System: None — Occupants: 2 — Injuries: Lacerations — Oddity: Cybernetic limb prosthetic</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Damaged System: None — Occupants: 3 — Injuries: Fractured fibula, fractured femur — Oddity: Plant specimen with glowing leaves</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Damaged System: None — Occupants: 5 — Injuries: Facial fractures, sprained ankle, spinal fractures — Oddity: Cyber lockpicking tool</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Damaged System: None — Occupants: None — Injuries: None — Oddity: A container full of illegal drugs</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Damaged System: Communication — Occupants: 4 — Injuries: Wrist fracture — Oddity: Tattered journal with cryptic symbols</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Damaged System: Propulsion — Occupants: 8 — Injuries: None — Oddity: Container of illegal spices</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Damaged System: None — Occupants: 1 — Injuries: None — Oddity: Crystallized metal protruding out of a wall</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Damaged System: Communication — Occupants: 8 — Injuries: Facial fractures — Oddity: Rifles (1D20)</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Damaged System: Sensor Array — Occupants: 8 — Injuries: Concussion — Oddity: A rusty music box that plays a haunting melody</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Damaged System: Environmental Control — Occupants: 10 — Injuries: Wrist fracture — Oddity: Shattered goggles</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Damaged System: None — Occupants: None — Injuries: None — Oddity: A large sealed container of red bubbling liquid</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Damaged System: Propulsion — Occupants: 1 — Injuries: Cuts and abrasions — Oddity: Trunks full of clothes</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Damaged System: None — Occupants: 3 — Injuries: Fractured ulna — Oddity: Charred personal equipment</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Damaged System: Environmental Control — Occupants: 7 — Injuries: None — Oddity: Bio-engineered insect specimen</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Damaged System: None — Occupants: 2 — Injuries: Unconscious — Oddity: A singing stone that emits haunting melodies when touched</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Damaged System: Gravity Control — Occupants: 7 — Injuries: Fractured tibia, Head trauma, Fractured ulna — Oddity: Jellyfish in a jar</td>
+</tr>
+<tr>
+<td>32</td>
+<td>Damaged System: Navigation — Occupants: 3 — Injuries: Wrist fracture — Oddity: Blood soaked interior</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Damaged System: Environmental Control — Occupants: 4 — Injuries: Shoulder dislocated — Oddity: Bundle of paper letters</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Damaged System: Power Generator — Occupants: 2 — Injuries: None — Oddity: Toy kaleidoscope</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Damaged System: Propulsion — Occupants: None — Injuries: None — Oddity: A briefcase full of paper money</td>
+</tr>
+<tr>
+<td>36</td>
+<td>Damaged System: None — Occupants: 2 — Injuries: Smoke inhalation, Burns, Lacerations — Oddity: Bloodstained towels</td>
+</tr>
+<tr>
+<td>37</td>
+<td>Damaged System: Gravity Control — Occupants: 4 — Injuries: Concussion — Oddity: Outline of a body imprinted on a wall</td>
+</tr>
+<tr>
+<td>38</td>
+<td>Damaged System: Gravity Control — Occupants: 7 — Injuries: None — Oddity: Portable energy generator</td>
+</tr>
+<tr>
+<td>39</td>
+<td>Damaged System: Environmental Control — Occupants: 1 — Injuries: Lacerations, collapsed lung — Oddity: Metallic sphere</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Damaged System: None — Occupants: 1 — Injuries: Lacerations, burns — Oddity: Sword hilt</td>
+</tr>
+<tr>
+<td>41</td>
+<td>Damaged System: None — Occupants: 3 — Injuries: None — Oddity: Alien seashell</td>
+</tr>
+<tr>
+<td>42</td>
+<td>Damaged System: None — Occupants: 6 — Injuries: Sprained ankle, Torn ligaments, Unconscious — Oddity: Acid burns all about the interior</td>
+</tr>
+<tr>
+<td>43</td>
+<td>Damaged System: None — Occupants: None — Injuries: None — Oddity: Perfectly square black stone</td>
+</tr>
+<tr>
+<td>44</td>
+<td>Damaged System: Sensor Array — Occupants: 8 — Injuries: Fractured ulna — Oddity: Shrunken head with a mischievous grin</td>
+</tr>
+<tr>
+<td>45</td>
+<td>Damaged System: None — Occupants: 5 — Injuries: Concussion, burns — Oddity: Microscope in a case</td>
+</tr>
+<tr>
+<td>46</td>
+<td>Damaged System: Power Generator — Occupants: 2 — Injuries: Wrist fracture, torn ligaments — Oddity: A hollow book containing a secret compartment</td>
+</tr>
+<tr>
+<td>47</td>
+<td>Damaged System: Life Support — Occupants: None — Injuries: None — Oddity: Handwritten diary filled with disturbing dreams and prophecies</td>
+</tr>
+<tr>
+<td>48</td>
+<td>Damaged System: Life Support — Occupants: 4 — Injuries: Fractured fibula — Oddity: Ancient data chip</td>
+</tr>
+<tr>
+<td>49</td>
+<td>Damaged System: Environmental Control — Occupants: None — Injuries: None — Oddity: A data chip with a vast list of names and locations</td>
+</tr>
+<tr>
+<td>50</td>
+<td>Damaged System: Gravity Control — Occupants: 8 — Injuries: Lacerations, Unconscious, Burns — Oddity: Disguise kit</td>
+</tr>
+<tr>
+<td>51</td>
+<td>Damaged System: Navigation — Occupants: 1 — Injuries: Spinal fractures — Oddity: Mechanical spider with intricate clockwork mechanisms</td>
+</tr>
+<tr>
+<td>52</td>
+<td>Damaged System: None — Occupants: 3 — Injuries: Collapsed lung — Oddity: A single bar of gold</td>
+</tr>
+<tr>
+<td>53</td>
+<td>Damaged System: None — Occupants: 4 — Injuries: None — Oddity: Bio-mimetic camouflage suit</td>
+</tr>
+<tr>
+<td>54</td>
+<td>Damaged System: Communication — Occupants: 4 — Injuries: None — Oddity: Golden finger ring</td>
+</tr>
+<tr>
+<td>55</td>
+<td>Damaged System: Sensor Array — Occupants: None — Injuries: None — Oddity: An odd communication device (hidden)</td>
+</tr>
+<tr>
+<td>56</td>
+<td>Damaged System: Propulsion — Occupants: 1 — Injuries: Fractured radius — Oddity: Advanced exoskeleton suit with integrated weapons systems</td>
+</tr>
+<tr>
+<td>57</td>
+<td>Damaged System: None — Occupants: None — Injuries: None — Oddity: Small stone statue</td>
+</tr>
+<tr>
+<td>58</td>
+<td>Damaged System: Power Generator — Occupants: 4 — Injuries: Head trauma, internal bleeding, smoke inhalation — Oddity: Tattered flag</td>
+</tr>
+<tr>
+<td>59</td>
+<td>Damaged System: Communication — Occupants: 2 — Injuries: Shoulder dislocated — Oddity: Specialized hacking deck</td>
+</tr>
+<tr>
+<td>60</td>
+<td>Damaged System: Propulsion — Occupants: 2 — Injuries: Fractured ulna — Oddity: A cache of classified documents (hidden)</td>
+</tr>
+<tr>
+<td>61</td>
+<td>Damaged System: None — Occupants: 8 — Injuries: Concussion — Oddity: Exotic fruit in a special container</td>
+</tr>
+<tr>
+<td>62</td>
+<td>Damaged System: None — Occupants: 5 — Injuries: Whiplash — Oddity: Smuggling manifest</td>
+</tr>
+<tr>
+<td>63</td>
+<td>Damaged System: None — Occupants: 3 — Injuries: Unconscious — Oddity: Sticky tar-like substance all about the interior</td>
+</tr>
+<tr>
+<td>64</td>
+<td>Damaged System: Communication — Occupants: 1 — Injuries: Fractured fibula — Oddity: A buzzing sound like an insect can be heard intermittently</td>
+</tr>
+<tr>
+<td>65</td>
+<td>Damaged System: Life Support — Occupants: 7 — Injuries: Smoke inhalation — Oddity: Voodoo doll with pins sticking out of it</td>
+</tr>
+<tr>
+<td>66</td>
+<td>Damaged System: Communication — Occupants: 1 — Injuries: None — Oddity: A dead bat</td>
+</tr>
+<tr>
+<td>67</td>
+<td>Damaged System: Gravity Control — Occupants: 2 — Injuries: None — Oddity: Stellar map with several systems highlighted</td>
+</tr>
+<tr>
+<td>68</td>
+<td>Damaged System: Life Support — Occupants: 5 — Injuries: Cuts and abrasions — Oddity: Encrypted data cube with strange symbols</td>
+</tr>
+<tr>
+<td>69</td>
+<td>Damaged System: None — Occupants: None — Injuries: None — Oddity: Ship's digital logbook</td>
+</tr>
+<tr>
+<td>70</td>
+<td>Damaged System: Power Generator — Occupants: 1 — Injuries: None — Oddity: An ancient map with hidden markings</td>
+</tr>
+<tr>
+<td>71</td>
+<td>Damaged System: Power Generator — Occupants: 3 — Injuries: Fractured fibula — Oddity: Slime covers everything</td>
+</tr>
+<tr>
+<td>72</td>
+<td>Damaged System: None — Occupants: 5 — Injuries: Fractured femur, Organ damage, Fractured fibula — Oddity: Interior extremely cold</td>
+</tr>
+<tr>
+<td>73</td>
+<td>Damaged System: Gravity Control — Occupants: 11 — Injuries: Unconscious — Oddity: Canisters marked &quot;Danger: Nerve Gas&quot; (1D8)</td>
+</tr>
+<tr>
+<td>74</td>
+<td>Damaged System: None — Occupants: 6 — Injuries: None — Oddity: Unsettling music playing from an unknown source</td>
+</tr>
+<tr>
+<td>75</td>
+<td>Damaged System: None — Occupants: 3 — Injuries: Fractured fibula, internal bleeding — Oddity: Strange symbols painted on the walls</td>
+</tr>
+<tr>
+<td>76</td>
+<td>Damaged System: Communication — Occupants: None — Injuries: None — Oddity: Black market credit chip</td>
+</tr>
+<tr>
+<td>77</td>
+<td>Damaged System: Life Support — Occupants: 9 — Injuries: Shoulder dislocated, collapsed lung, cuts, and abrasions — Oddity: Counterfeit identification cards (1D20)</td>
+</tr>
+<tr>
+<td>78</td>
+<td>Damaged System: None — Occupants: 3 — Injuries: Fractured tibia — Oddity: A lab specimen ameba the size of a fried egg</td>
+</tr>
+<tr>
+<td>79</td>
+<td>Damaged System: Propulsion — Occupants: 3 — Injuries: Concussion, Whiplash, Lacerations — Oddity: Scratches on a wall that looks like someone counting the days</td>
+</tr>
+<tr>
+<td>80</td>
+<td>Damaged System: Propulsion — Occupants: None — Injuries: None — Oddity: Water leaks out of every control panel</td>
+</tr>
+<tr>
+<td>81</td>
+<td>Damaged System: Communication — Occupants: 7 — Injuries: Burns — Oddity: Blueprint of a refueling station</td>
+</tr>
+<tr>
+<td>82</td>
+<td>Damaged System: Life Support — Occupants: 1 — Injuries: Internal bleeding — Oddity: A recorded message replaying over and over again</td>
+</tr>
+<tr>
+<td>83</td>
+<td>Damaged System: None — Occupants: 3 — Injuries: None — Oddity: Data chip marked &quot;classified&quot;</td>
+</tr>
+<tr>
+<td>84</td>
+<td>Damaged System: None — Occupants: 2 — Injuries: Fractured tibia — Oddity: Holographic love letter</td>
+</tr>
+<tr>
+<td>85</td>
+<td>Damaged System: Life Support — Occupants: 7 — Injuries: None — Oddity: Mysterious amulet with a swirling center</td>
+</tr>
+<tr>
+<td>86</td>
+<td>Damaged System: Life Support — Occupants: 7 — Injuries: None — Oddity: Virtual reality gloves</td>
+</tr>
+<tr>
+<td>87</td>
+<td>Damaged System: Life Support — Occupants: 1 — Injuries: Smoke inhalation — Oddity: Vial of glowing liquid</td>
+</tr>
+<tr>
+<td>88</td>
+<td>Damaged System: None — Occupants: 6 — Injuries: Fractured femur, Cuts and abrasions, Internal bleeding — Oddity: Cracked computer tablet</td>
+</tr>
+<tr>
+<td>89</td>
+<td>Damaged System: None — Occupants: 3 — Injuries: Cuts and abrasions — Oddity: A stone tablet covered in ancient hieroglyphs</td>
+</tr>
+<tr>
+<td>90</td>
+<td>Damaged System: Navigation — Occupants: None — Injuries: None — Oddity: Box of illegal neural implants (1D20)</td>
+</tr>
+<tr>
+<td>91</td>
+<td>Damaged System: None — Occupants: None — Injuries: None — Oddity: &quot;It is a nightmare!&quot; written on a wall in blood</td>
+</tr>
+<tr>
+<td>92</td>
+<td>Damaged System: Navigation — Occupants: 2 — Injuries: Cuts and abrasions, Burns — Oddity: Petri dish containing bioluminescent microorganisms</td>
+</tr>
+<tr>
+<td>93</td>
+<td>Damaged System: Life Support — Occupants: 1 — Injuries: Torn ligaments — Oddity: A cage full of mice</td>
+</tr>
+<tr>
+<td>94</td>
+<td>Damaged System: None — Occupants: None — Injuries: None — Oddity: A pile of combat gear</td>
+</tr>
+<tr>
+<td>95</td>
+<td>Damaged System: Sensor Array — Occupants: None — Injuries: None — Oddity: Portable distortion field emitter</td>
+</tr>
+<tr>
+<td>96</td>
+<td>Damaged System: Navigation — Occupants: 4 — Injuries: Fractured ulna, fractured radius — Oddity: All the access panels are pulled open</td>
+</tr>
+<tr>
+<td>97</td>
+<td>Damaged System: None — Occupants: 2 — Injuries: None — Oddity: Rare book</td>
+</tr>
+<tr>
+<td>98</td>
+<td>Damaged System: Environmental Control — Occupants: 1 — Injuries: Wrist fracture — Oddity: Military- style helmet</td>
+</tr>
+<tr>
+<td>99</td>
+<td>Damaged System: Communication — Occupants: None — Injuries: None — Oddity: Bottle of iridescent liquid that changes color when shaken</td>
+</tr>
+<tr>
+<td>100</td>
+<td>Damaged System: None — Occupants: 2 — Injuries: Organ damage, internal bleeding — Oddity: Small animal cage with the door ripped open</td>
+</tr>
+</tbody>
+</table>
+</div>
+  </main>
+</div>
+<script src="../../../site.js"></script>
+</body>
+</html>
