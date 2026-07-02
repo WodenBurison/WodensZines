@@ -744,22 +744,30 @@ function titleCase(str) {
 // pos = which edge; along = % position along that edge; len = px; corner =
 // bend a short stub inward at the end, like a mini version of the main brackets.
 const MAP_FRAME_ACCENTS = [
-  { pos: "top", along: 22, len: 20, color: "var(--accent-blue)" },
-  { pos: "top", along: 38, len: 8, color: "var(--accent-green)" },
-  { pos: "top", along: 68, len: 14, color: "var(--accent-blue)", corner: true },
-  { pos: "bottom", along: 18, len: 10, color: "var(--accent-green)" },
-  { pos: "bottom", along: 55, len: 26, color: "var(--accent-blue)" },
-  { pos: "left", along: 20, len: 12, color: "var(--accent-green)", corner: true },
-  { pos: "left", along: 48, len: 22, color: "var(--accent-blue)" },
-  { pos: "left", along: 78, len: 8, color: "var(--text-faint)" },
-  { pos: "right", along: 15, len: 18, color: "var(--accent-blue)" },
-  { pos: "right", along: 42, len: 9, color: "var(--accent-green)" },
-  { pos: "right", along: 70, len: 15, color: "var(--accent-green)", corner: true },
+  { pos: "top", along: 22, inset: 0, len: 20, color: "var(--accent-blue)" },
+  { pos: "top", along: 38, inset: 8, len: 8, color: "var(--accent-green)" },
+  { pos: "top", along: 68, inset: 0, len: 14, color: "var(--accent-blue)", corner: true },
+  { pos: "top", along: 84, inset: 12, len: 10, color: "var(--text-faint)" },
+  { pos: "top", along: 10, inset: 13, len: 6, color: "var(--accent-green)" },
+  { pos: "bottom", along: 18, inset: 0, len: 10, color: "var(--accent-green)" },
+  { pos: "bottom", along: 55, inset: 0, len: 26, color: "var(--accent-blue)" },
+  { pos: "bottom", along: 78, inset: 9, len: 12, color: "var(--accent-blue)" },
+  { pos: "left", along: 20, inset: 0, len: 12, color: "var(--accent-green)", corner: true },
+  { pos: "left", along: 48, inset: 0, len: 22, color: "var(--accent-blue)" },
+  { pos: "left", along: 78, inset: 0, len: 8, color: "var(--text-faint)" },
+  { pos: "left", along: 35, inset: 10, len: 9, color: "var(--accent-blue)" },
+  { pos: "left", along: 90, inset: 6, len: 14, color: "var(--accent-green)" },
+  { pos: "right", along: 15, inset: 0, len: 18, color: "var(--accent-blue)" },
+  { pos: "right", along: 42, inset: 0, len: 9, color: "var(--accent-green)" },
+  { pos: "right", along: 70, inset: 0, len: 15, color: "var(--accent-green)", corner: true },
+  { pos: "right", along: 25, inset: 11, len: 7, color: "var(--text-faint)" },
+  { pos: "right", along: 88, inset: 7, len: 11, color: "var(--accent-blue)" },
 ];
 
-function mapFrameAccentHtml({ pos, along, len, color, corner }) {
+function mapFrameAccentHtml({ pos, along, inset = 0, len, color, corner }) {
   const horizontal = pos === "top" || pos === "bottom";
-  const edgeStyle = pos === "top" ? "top:0;" : pos === "bottom" ? "bottom:0;" : pos === "left" ? "left:0;" : "right:0;";
+  const edgeStyle =
+    pos === "top" ? `top:${inset}px;` : pos === "bottom" ? `bottom:${inset}px;` : pos === "left" ? `left:${inset}px;` : `right:${inset}px;`;
   const alongStyle = horizontal ? `left:${along}%;` : `top:${along}%;`;
   const sizeStyle = horizontal ? `width:${len}px;height:2px;` : `width:2px;height:${len}px;`;
   const stub = corner
