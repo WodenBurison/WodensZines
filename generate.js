@@ -612,7 +612,9 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
     if (pathMatch) {
       const assetSlug = resolveAssetTarget(pathMatch[1].trim());
       if (assetSlug) {
-        return `<img class="page-hero-image" src="${relAssetHref(env.currentSlug, assetSlug)}" alt="Map">`;
+        const label = titleCase((env.currentSlug || "").split("/").pop() || "Map");
+        const img = `<img class="page-hero-image" src="${relAssetHref(env.currentSlug, assetSlug)}" alt="${escapeHtml(label)}">`;
+        return mapFrameHtml(img, label);
       }
     }
     return "";
@@ -735,6 +737,20 @@ function titleCase(str) {
     .filter(Boolean)
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(" ");
+}
+
+// Site-only HUD frame for map images -- purely CSS/SVG, independent of the
+// viewportFrame image Obsidian's zoommap plugin uses in-app.
+function mapFrameHtml(imgHtml, label) {
+  return `<div class="map-frame">
+    ${imgHtml}
+    <span class="map-frame-corner map-frame-corner--tl"></span>
+    <span class="map-frame-corner map-frame-corner--tr"></span>
+    <span class="map-frame-corner map-frame-corner--bl"></span>
+    <span class="map-frame-corner map-frame-corner--br"></span>
+    <span class="map-frame-label">${escapeHtml(label)}</span>
+    <span class="map-frame-scanlines"></span>
+  </div>`;
 }
 
 function pipMeterHtml(label, value, max = 5) {
@@ -1097,6 +1113,43 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
 .page-meta { color: var(--text-faint); font-size: 0.9rem; padding-left: 0.7rem; }
 
 .page-hero-image { width: 100%; max-width: 100%; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 1.5rem; }
+
+/* Site-only HUD frame for map images */
+.map-frame { position: relative; display: block; margin: 0 0 1.5rem; border-radius: 8px; overflow: hidden; background: var(--bg-elevated); }
+.map-frame .page-hero-image { margin: 0; border: none; border-radius: 0; display: block; }
+.map-frame-corner { position: absolute; width: 30px; height: 30px; pointer-events: none; }
+.map-frame-corner--tl { top: 10px; left: 10px; border-top: 2px solid var(--accent-green); border-left: 2px solid var(--accent-green); }
+.map-frame-corner--tr { top: 10px; right: 10px; border-top: 2px solid var(--accent-green); border-right: 2px solid var(--accent-green); }
+.map-frame-corner--bl { bottom: 10px; left: 10px; border-bottom: 2px solid var(--accent-green); border-left: 2px solid var(--accent-green); }
+.map-frame-corner--br { bottom: 10px; right: 10px; border-bottom: 2px solid var(--accent-green); border-right: 2px solid var(--accent-green); }
+.map-frame-label {
+  position: absolute;
+  bottom: 10px;
+  left: 48px;
+  font-family: var(--font-head);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-green);
+  background: rgba(10, 20, 32, 0.72);
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  pointer-events: none;
+}
+.map-frame-scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(79, 179, 217, 0.05) 0px,
+    rgba(79, 179, 217, 0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+}
 
 .prose h2 { color: var(--accent-blue); font-family: var(--font-head); margin-top: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
 .prose h3 { color: var(--accent-green); font-family: var(--font-head); margin-top: 1.5rem; }
