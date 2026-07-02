@@ -1054,7 +1054,12 @@ function characterSheetHtml(fm) {
 
   const assets = Array.isArray(fm.assets) ? fm.assets.map(assetCardHtml).join("") : "";
 
-  const infoBits = [fm.callsign, fm.pronouns].filter(Boolean).map(escapeHtml).join(" &middot; ");
+  const infoBits = [
+    fm.callsign ? `Callsign: ${escapeHtml(fm.callsign)}` : "",
+    fm.pronouns ? `Pronouns: ${escapeHtml(fm.pronouns)}` : "",
+  ]
+    .filter(Boolean)
+    .join(" &middot; ");
 
   return `<div class="char-sheet">
     ${fm.description ? `<p class="char-description">${escapeHtml(fm.description)}</p>` : ""}
