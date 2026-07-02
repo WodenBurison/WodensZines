@@ -747,6 +747,9 @@ function mapFrameHtml(imgHtml, label) {
     <span class="map-frame-corner map-frame-corner--tr"></span>
     <span class="map-frame-corner map-frame-corner--bl"></span>
     <span class="map-frame-corner map-frame-corner--br"></span>
+    <span class="map-frame-tick map-frame-tick--left"></span>
+    <span class="map-frame-tick map-frame-tick--right"></span>
+    <span class="map-frame-tick map-frame-tick--top"></span>
     <div class="map-frame-window">
       ${imgHtml}
       <span class="map-frame-scanlines"></span>
@@ -1120,19 +1123,31 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
 .map-frame {
   position: relative;
   margin: 0 0 1.5rem;
-  padding: 26px 26px 14px;
+  padding: 18px 18px 10px;
   background: linear-gradient(160deg, var(--bg-elevated), var(--bg-card) 65%);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 10px;
   box-shadow: inset 0 0 0 1px rgba(79, 179, 217, 0.08);
 }
-.map-frame-window { position: relative; border-radius: 5px; overflow: hidden; border: 1px solid var(--border); background: var(--bg); }
+.map-frame-window { position: relative; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); background: var(--bg); }
+.map-frame-window::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(79, 179, 217, 0.35);
+  border-radius: 2px;
+  pointer-events: none;
+}
 .map-frame-window .page-hero-image { margin: 0; border: none; border-radius: 0; display: block; }
-.map-frame-corner { position: absolute; width: 34px; height: 34px; pointer-events: none; }
-.map-frame-corner--tl { top: 8px; left: 8px; border-top: 3px solid var(--accent-green); border-left: 3px solid var(--accent-green); border-radius: 3px 0 0 0; }
-.map-frame-corner--tr { top: 8px; right: 8px; border-top: 3px solid var(--accent-green); border-right: 3px solid var(--accent-green); border-radius: 0 3px 0 0; }
-.map-frame-corner--bl { bottom: 8px; left: 8px; border-bottom: 3px solid var(--accent-green); border-left: 3px solid var(--accent-green); border-radius: 0 0 0 3px; }
-.map-frame-corner--br { bottom: 8px; right: 8px; border-bottom: 3px solid var(--accent-green); border-right: 3px solid var(--accent-green); border-radius: 0 0 3px 0; }
+.map-frame-corner { position: absolute; width: 22px; height: 22px; pointer-events: none; }
+.map-frame-corner--tl { top: 5px; left: 5px; border-top: 2px solid var(--accent-green); border-left: 2px solid var(--accent-green); border-radius: 3px 0 0 0; }
+.map-frame-corner--tr { top: 5px; right: 5px; border-top: 2px solid var(--accent-green); border-right: 2px solid var(--accent-green); border-radius: 0 3px 0 0; }
+.map-frame-corner--bl { bottom: 5px; left: 5px; border-bottom: 2px solid var(--accent-green); border-left: 2px solid var(--accent-green); border-radius: 0 0 0 3px; }
+.map-frame-corner--br { bottom: 5px; right: 5px; border-bottom: 2px solid var(--accent-green); border-right: 2px solid var(--accent-green); border-radius: 0 0 3px 0; }
+.map-frame-tick { position: absolute; background: var(--accent-blue); pointer-events: none; opacity: 0.6; }
+.map-frame-tick--left { top: 50%; left: 0; width: 4px; height: 1px; transform: translateY(-50%); }
+.map-frame-tick--right { top: 50%; right: 0; width: 4px; height: 1px; transform: translateY(-50%); }
+.map-frame-tick--top { top: 0; left: 50%; width: 1px; height: 4px; transform: translateX(-50%); }
 .map-frame-caption {
   margin-top: 10px;
   font-family: var(--font-head);
