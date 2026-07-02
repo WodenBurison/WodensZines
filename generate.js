@@ -1482,7 +1482,7 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
 .char-stat-value { font-family: var(--font-head); font-size: 1.5rem; color: var(--accent-green); font-weight: 700; }
 .char-meters-row { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 0.8rem; }
 .char-meter { display: flex; flex-direction: column; gap: 0.3rem; }
-.char-meter-label { font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.03em; }
+.char-meter-label { font-weight: 600; color: var(--accent-blue); font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.03em; }
 .char-meter-value { font-size: 0.8rem; color: var(--text-faint); }
 .char-pip-row { display: flex; gap: 4px; }
 .char-pip { width: 14px; height: 14px; border-radius: 3px; border: 1px solid var(--border); background: var(--bg-elevated); display: inline-block; }
