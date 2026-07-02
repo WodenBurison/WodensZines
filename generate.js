@@ -743,13 +743,15 @@ function titleCase(str) {
 // viewportFrame image Obsidian's zoommap plugin uses in-app.
 function mapFrameHtml(imgHtml, label) {
   return `<div class="map-frame">
-    ${imgHtml}
     <span class="map-frame-corner map-frame-corner--tl"></span>
     <span class="map-frame-corner map-frame-corner--tr"></span>
     <span class="map-frame-corner map-frame-corner--bl"></span>
     <span class="map-frame-corner map-frame-corner--br"></span>
-    <span class="map-frame-label">${escapeHtml(label)}</span>
-    <span class="map-frame-scanlines"></span>
+    <div class="map-frame-window">
+      ${imgHtml}
+      <span class="map-frame-scanlines"></span>
+    </div>
+    <div class="map-frame-caption">${escapeHtml(label)}</div>
   </div>`;
 }
 
@@ -1114,28 +1116,31 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
 
 .page-hero-image { width: 100%; max-width: 100%; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 1.5rem; }
 
-/* Site-only HUD frame for map images */
-.map-frame { position: relative; display: block; margin: 0 0 1.5rem; border-radius: 8px; overflow: hidden; background: var(--bg-elevated); }
-.map-frame .page-hero-image { margin: 0; border: none; border-radius: 0; display: block; }
-.map-frame-corner { position: absolute; width: 30px; height: 30px; pointer-events: none; }
-.map-frame-corner--tl { top: 10px; left: 10px; border-top: 2px solid var(--accent-green); border-left: 2px solid var(--accent-green); }
-.map-frame-corner--tr { top: 10px; right: 10px; border-top: 2px solid var(--accent-green); border-right: 2px solid var(--accent-green); }
-.map-frame-corner--bl { bottom: 10px; left: 10px; border-bottom: 2px solid var(--accent-green); border-left: 2px solid var(--accent-green); }
-.map-frame-corner--br { bottom: 10px; right: 10px; border-bottom: 2px solid var(--accent-green); border-right: 2px solid var(--accent-green); }
-.map-frame-label {
-  position: absolute;
-  bottom: 10px;
-  left: 48px;
+/* Site-only HUD frame for map images -- thick plated border, image sits inset in a "window" */
+.map-frame {
+  position: relative;
+  margin: 0 0 1.5rem;
+  padding: 26px 26px 14px;
+  background: linear-gradient(160deg, var(--bg-elevated), var(--bg-card) 65%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px rgba(79, 179, 217, 0.08);
+}
+.map-frame-window { position: relative; border-radius: 5px; overflow: hidden; border: 1px solid var(--border); background: var(--bg); }
+.map-frame-window .page-hero-image { margin: 0; border: none; border-radius: 0; display: block; }
+.map-frame-corner { position: absolute; width: 34px; height: 34px; pointer-events: none; }
+.map-frame-corner--tl { top: 8px; left: 8px; border-top: 3px solid var(--accent-green); border-left: 3px solid var(--accent-green); border-radius: 3px 0 0 0; }
+.map-frame-corner--tr { top: 8px; right: 8px; border-top: 3px solid var(--accent-green); border-right: 3px solid var(--accent-green); border-radius: 0 3px 0 0; }
+.map-frame-corner--bl { bottom: 8px; left: 8px; border-bottom: 3px solid var(--accent-green); border-left: 3px solid var(--accent-green); border-radius: 0 0 0 3px; }
+.map-frame-corner--br { bottom: 8px; right: 8px; border-bottom: 3px solid var(--accent-green); border-right: 3px solid var(--accent-green); border-radius: 0 0 3px 0; }
+.map-frame-caption {
+  margin-top: 10px;
   font-family: var(--font-head);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent-green);
-  background: rgba(10, 20, 32, 0.72);
-  padding: 0.2rem 0.5rem;
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  pointer-events: none;
+  text-align: center;
 }
 .map-frame-scanlines {
   position: absolute;
