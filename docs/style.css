@@ -208,9 +208,9 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
   transition: transform 0.15s ease;
 }
 .map-pin:hover .map-pin-dot { transform: scale(1.25); }
-.map-pin-tooltip {
+.map-pin-label {
   position: absolute;
-  bottom: calc(100% + 6px);
+  top: calc(100% + 5px);
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
@@ -222,11 +222,10 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
   border: 1px solid var(--border);
   padding: 0.15rem 0.4rem;
   border-radius: 3px;
-  opacity: 0;
   pointer-events: none;
-  transition: opacity 0.15s ease;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
-.map-pin:hover .map-pin-tooltip { opacity: 1; }
+.map-pin:hover .map-pin-label { color: var(--accent-green); border-color: var(--accent-green); }
 
 .prose h2 { color: var(--accent-blue); font-family: var(--font-head); margin-top: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
 .prose h3 { color: var(--accent-green); font-family: var(--font-head); margin-top: 1.5rem; }
