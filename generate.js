@@ -794,7 +794,7 @@ function generateMapFrameAccents(count) {
   return out;
 }
 
-MAP_FRAME_ACCENTS.push(...generateMapFrameAccents(57));
+MAP_FRAME_ACCENTS.push(...generateMapFrameAccents(82));
 
 function mapFrameAccentHtml({ pos, along, inset = 0, len, color, corner }) {
   const horizontal = pos === "top" || pos === "bottom";
