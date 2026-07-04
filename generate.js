@@ -15,19 +15,52 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// ---------------- CONFIG ----------------
+// ---------------- Site-wide config ----------------
 const VAULT_ROOT = path.resolve(__dirname, "../Woden_Starforged_Vault");
-const CONTENT_DIR = path.join(VAULT_ROOT, "Woden_is_Starforged");
-const GRAPHICS_DIR = path.join(VAULT_ROOT, "Graphics");
-const OUTPUT_DIR = path.join(__dirname, "docs");
-const SITE_TITLE = "Woden's Adventures";
-const SITE_TAGLINE = "An Ironsworn: Starforged solo playthrough";
-// Top-level vault folders that are Obsidian-only reference material (roll tables,
-// oracles, etc.) and should never be published to the site at all.
-const EXCLUDED_TOP_LEVEL = new Set(["Custom Content"]);
+const DOCS_DIR = path.join(__dirname, "docs");
+const HUB_TITLE = "Woden's Adventures";
+const HUB_TAGLINE = "A shelf of tabletop journals, one verse per game";
 const IMAGE_EXT = new Set([".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".svg"]);
 
-// ---------------- Utilities ----------------
+// ---------------- Verse registry ----------------
+// Each "verse" is one game/campaign living in its own subfolder of the vault
+// and published to its own subfolder of the site (docs/<id>/), with its own
+// theme. To add a new verse later: add an entry here, point contentDir at its
+// vault folder, and give buildVerse's STYLE_CSS a variant for its system (or
+// factor STYLE_CSS out into a per-verse theme file once there's a second one).
+const VERSES = [
+  {
+    id: "starforged",
+    title: "Woden is Starforged",
+    tagline: "An Ironsworn: Starforged solo playthrough",
+    system: "Ironsworn: Starforged",
+    genre: "Sci-fi",
+    status: "In progress",
+    summary:
+      "A solo Ironsworn: Starforged campaign, logged session by session, with wiki pages for the crew, sectors, and factions of the Forge.",
+    contentDir: path.join(VAULT_ROOT, "Woden_is_Starforged"),
+    graphicsDir: path.join(VAULT_ROOT, "Graphics"),
+    // Top-level vault folders that are Obsidian-only reference material (roll
+    // tables, oracles, etc.) and should never be published to the site at all.
+    excludedTopLevel: new Set(["Custom Content"]),
+  },
+];
+
+// ---------------- Per-verse build ----------------
+// Builds one verse's entire site -- its own nav, pages, homepage feed, and
+// CSS/JS -- into docs/<verse.id>/. Everything from here down to the matching
+// closing brace was originally a single-site script; it's parameterized on
+// `V` now so each verse gets a clean, isolated run (its own pages/, nav tree,
+// slug maps, etc. -- nothing leaks between verses).
+function buildVerse(V) {
+  const CONTENT_DIR = V.contentDir;
+  const GRAPHICS_DIR = V.graphicsDir;
+  const OUTPUT_DIR = path.join(DOCS_DIR, V.id);
+  const SITE_TITLE = V.title;
+  const SITE_TAGLINE = V.tagline;
+  const EXCLUDED_TOP_LEVEL = V.excludedTopLevel;
+
+  // ---------------- Utilities ----------------
 
 function slugify(segment) {
   return segment
@@ -690,6 +723,14 @@ journalPages.sort((a, b) => sessionNumber(b.title) - sessionNumber(a.title));
 
 // ---------------- HTML templates ----------------
 
+// Path from any page in this verse back up to the site-wide hub homepage
+// (docs/index.html). One level up gets out of the verse's own output folder,
+// then however many more levels the current page is nested.
+function hubHref(currentSlug) {
+  const depth = (currentSlug === "" ? 0 : currentSlug.split("/").length) + 1;
+  return "../".repeat(depth) + "index.html";
+}
+
 function layout({ title, currentSlug, contentHtml, description }) {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -702,7 +743,10 @@ function layout({ title, currentSlug, contentHtml, description }) {
 </head>
 <body>
 <div class="topbar">
-  <a class="topbar-title" href="${relHref(currentSlug, "")}">${escapeHtml(SITE_TITLE)}</a>
+  <div class="topbar-brand">
+    <a class="topbar-hub-link" href="${hubHref(currentSlug)}">&larr; ${escapeHtml(HUB_TITLE)}</a>
+    <a class="topbar-title" href="${relHref(currentSlug, "")}">${escapeHtml(SITE_TITLE)}</a>
+  </div>
   <button class="hamburger" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -1103,10 +1147,10 @@ function writePage(slug, html) {
   fs.writeFileSync(outFile, html);
 }
 
-// clean output dir
+// clean this verse's own output dir (docs/ itself is wiped once, up front, by
+// the orchestration step at the bottom of this file)
 fs.rmSync(OUTPUT_DIR, { recursive: true, force: true });
 fs.mkdirSync(OUTPUT_DIR, { recursive: true });
-fs.writeFileSync(path.join(OUTPUT_DIR, ".nojekyll"), "");
 
 // copy graphics assets (skip the raw .xcf source file)
 const outGraphicsDir = path.join(OUTPUT_DIR, "graphics");
@@ -1222,6 +1266,14 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
   text-shadow: 0 0 12px var(--accent-green-dim);
 }
 .topbar-title:hover { color: var(--accent-green); text-decoration: none; }
+.topbar-brand { display: flex; flex-direction: column; gap: 0.1rem; }
+.topbar-hub-link {
+  font-family: var(--font-head);
+  font-size: 0.68rem;
+  color: var(--text-faint);
+  letter-spacing: 0.03em;
+}
+.topbar-hub-link:hover { color: var(--accent-blue); text-decoration: none; }
 
 .hamburger {
   display: flex;
@@ -1627,6 +1679,89 @@ fs.writeFileSync(path.join(OUTPUT_DIR, "site.js"), SITE_JS);
 
 console.log(`Built ${pages.length} pages (${journalPages.length} journal entries) to ${OUTPUT_DIR}`);
 if (unresolvedLinks.size > 0) {
-  console.log(`\n${unresolvedLinks.size} unresolved wikilink target(s):`);
+  console.log(`\n[${V.id}] ${unresolvedLinks.size} unresolved wikilink target(s):`);
   for (const l of unresolvedLinks) console.log(`  - ${l}`);
 }
+
+  return {
+    sessionCount: journalPages.length,
+    latestSessionTitle: journalPages[0]?.title || null,
+  };
+}
+
+// ---------------- Hub homepage (verse index) ----------------
+// The hub is the site root: a "pen and paper journal" landing page that lists
+// every verse as a pinned index card. It's deliberately separate from any
+// verse's own theme -- each verse can look however fits its game, but the
+// front door of the site always looks like the same journal.
+
+function escapeHtmlHub(str) {
+  return String(str ?? "").replace(
+    /[&<>"']/g,
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c],
+  );
+}
+
+function verseCardHtml(V, stats) {
+  const sessionLine =
+    stats.sessionCount > 0
+      ? `${stats.sessionCount} session${stats.sessionCount === 1 ? "" : "s"} logged`
+      : "Just getting started";
+  return `<a class="verse-card" href="${encodeURIComponent(V.id)}/">
+  <span class="verse-card-pin" aria-hidden="true"></span>
+  <span class="verse-card-stamps">
+    <span class="verse-stamp">${escapeHtmlHub(V.system)}</span>
+    <span class="verse-stamp verse-stamp--status">${escapeHtmlHub(V.status)}</span>
+  </span>
+  <h2 class="verse-card-title">${escapeHtmlHub(V.title)}</h2>
+  <p class="verse-card-genre">${escapeHtmlHub(V.genre)}</p>
+  <p class="verse-card-summary">${escapeHtmlHub(V.summary)}</p>
+  <p class="verse-card-meta">${escapeHtmlHub(sessionLine)}</p>
+  <span class="verse-card-cta">Read the log &rarr;</span>
+</a>`;
+}
+
+function buildHub(verseResults) {
+  const cardsHtml = verseResults.map(({ verse, stats }) => verseCardHtml(verse, stats)).join("\n");
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${escapeHtmlHub(HUB_TITLE)}</title>
+<meta name="description" content="${escapeHtmlHub(HUB_TAGLINE)}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="hub.css">
+</head>
+<body>
+<div class="hub-page">
+  <header class="hub-header">
+    <h1 class="hub-title">${escapeHtmlHub(HUB_TITLE)}</h1>
+    <p class="hub-tagline">${escapeHtmlHub(HUB_TAGLINE)}</p>
+  </header>
+  <main class="verse-board">
+    ${cardsHtml}
+    <div class="verse-card verse-card--ghost" aria-hidden="true">
+      <span class="verse-card-pin verse-card-pin--ghost"></span>
+      <h2 class="verse-card-title">&hellip;</h2>
+      <p class="verse-card-summary">More verses get pinned up here as new games start.</p>
+    </div>
+  </main>
+</div>
+</body>
+</html>`;
+  fs.writeFileSync(path.join(DOCS_DIR, "index.html"), html);
+  fs.writeFileSync(path.join(DOCS_DIR, "hub.css"), fs.readFileSync(path.join(__dirname, "themes", "journal.css"), "utf-8"));
+}
+
+// ---------------- Orchestration ----------------
+fs.rmSync(DOCS_DIR, { recursive: true, force: true });
+fs.mkdirSync(DOCS_DIR, { recursive: true });
+fs.writeFileSync(path.join(DOCS_DIR, ".nojekyll"), "");
+
+const verseResults = VERSES.map((verse) => ({ verse, stats: buildVerse(verse) }));
+buildHub(verseResults);
+
+console.log(`Built hub + ${VERSES.length} verse(s) to ${DOCS_DIR}`);

@@ -1,0 +1,173 @@
+/* Hub homepage theme -- "handwritten field journal".
+   This styles ONLY docs/index.html (the verse index). Each verse keeps its
+   own theme entirely; this file never touches anything under docs/<verse>/. */
+
+:root {
+  --paper-bg: #ddc9a1;
+  --paper-bg-fleck-dark: rgba(74, 54, 30, 0.08);
+  --paper: #f4ecd7;
+  --paper-line: rgba(72, 50, 30, 0.12);
+  --card-bg: #f8efd7;
+  --ink: #2e2a24;
+  --ink-blue: #24344d;
+  --ink-blue-soft: #4a6483;
+  --accent-red: #9c3b2e;
+  --accent-red-soft: rgba(156, 59, 46, 0.35);
+  --font-display: "Caveat", cursive;
+  --font-hand: "Patrick Hand", cursive;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper-bg);
+  color: var(--ink);
+  font-family: var(--font-hand);
+  line-height: 1.6;
+}
+
+a { color: inherit; }
+
+.hub-page {
+  min-height: 100vh;
+  padding: 3.5rem 1.5rem 5rem;
+  /* cheap paper-grain fleck texture, one tiled radial-gradient layer rather
+     than an image asset */
+  background-image: radial-gradient(var(--paper-bg-fleck-dark) 1px, transparent 1.6px);
+  background-size: 15px 15px;
+}
+
+.hub-header {
+  text-align: center;
+  margin: 0 auto 3.5rem;
+  max-width: 720px;
+}
+.hub-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 4.2rem;
+  line-height: 1;
+  margin: 0;
+  color: var(--ink-blue);
+  text-shadow: 1px 2px 0 rgba(255, 250, 235, 0.5);
+  transform: rotate(-1deg);
+}
+.hub-tagline {
+  font-size: 1.15rem;
+  margin: 0.6rem 0 0;
+  color: var(--ink);
+  opacity: 0.75;
+  font-style: italic;
+}
+
+.verse-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2.75rem 2.25rem;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.verse-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: var(--card-bg);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 27px,
+    var(--paper-line) 28px
+  );
+  border-left: 3px solid var(--accent-red-soft);
+  border-radius: 3px;
+  padding: 1.7rem 1.4rem 1.4rem;
+  text-decoration: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35), 0 2px 0 rgba(0, 0, 0, 0.1);
+  transform: rotate(-1.2deg);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.verse-card:nth-child(2n) { transform: rotate(1deg); }
+.verse-card:nth-child(3n) { transform: rotate(-0.5deg); }
+.verse-card:hover {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.4), 0 2px 0 rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+.verse-card-pin {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #e8746a, var(--accent-red) 70%);
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.45);
+}
+.verse-card-pin--ghost {
+  background: radial-gradient(circle at 35% 30%, #a3a3a3, #6b6b6b 70%);
+  opacity: 0.6;
+}
+
+.verse-card-stamps { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.verse-stamp {
+  font-family: var(--font-hand);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-red);
+  border: 1.5px dashed var(--accent-red);
+  border-radius: 3px;
+  padding: 0.1rem 0.45rem;
+  transform: rotate(-2deg);
+  opacity: 0.85;
+  width: fit-content;
+}
+.verse-stamp--status { color: var(--ink-blue-soft); border-color: var(--ink-blue-soft); transform: rotate(1.5deg); }
+
+.verse-card-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.1rem;
+  line-height: 1.05;
+  margin: 0.15rem 0 0;
+  color: var(--ink-blue);
+}
+.verse-card-genre { margin: 0; font-size: 0.85rem; font-style: italic; color: var(--ink-blue-soft); }
+.verse-card-summary { margin: 0.3rem 0 0; font-size: 0.98rem; color: var(--ink); }
+.verse-card-meta { margin: 0.6rem 0 0; font-size: 0.85rem; color: var(--ink-blue-soft); }
+.verse-card-cta {
+  margin-top: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--accent-red);
+  align-self: flex-start;
+  border-bottom: 2px solid var(--accent-red);
+}
+
+.verse-card--ghost {
+  background: transparent;
+  background-image: none;
+  border: 2px dashed rgba(46, 42, 36, 0.25);
+  border-left: 2px dashed rgba(46, 42, 36, 0.25);
+  box-shadow: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 190px;
+  transform: rotate(0.6deg);
+}
+.verse-card--ghost:hover { transform: rotate(0.6deg); box-shadow: none; }
+.verse-card--ghost .verse-card-title { color: rgba(46, 42, 36, 0.35); }
+.verse-card--ghost .verse-card-summary { color: rgba(46, 42, 36, 0.45); }
+
+@media (max-width: 480px) {
+  .hub-title { font-size: 3rem; }
+  .hub-page { padding: 2.5rem 1rem 4rem; }
+}
