@@ -43,6 +43,12 @@ const VERSES = [
     // Top-level vault folders that are Obsidian-only reference material (roll
     // tables, oracles, etc.) and should never be published to the site at all.
     excludedTopLevel: new Set(["Custom Content"]),
+    // Individual files (relative to contentDir, posix-style) to keep private
+    // even though their parent folder is otherwise published.
+    excludedFiles: new Set([
+      "Adventure Crafter/Quick Reference.md",
+      "Adventure Crafter/Adventure Sheet.md",
+    ]),
   },
 ];
 
@@ -59,6 +65,7 @@ function buildVerse(V) {
   const SITE_TITLE = V.title;
   const SITE_TAGLINE = V.tagline;
   const EXCLUDED_TOP_LEVEL = V.excludedTopLevel;
+  const EXCLUDED_FILES = V.excludedFiles ?? new Set();
 
   // ---------------- Utilities ----------------
 
@@ -116,8 +123,11 @@ function relAssetHref(fromSlug, assetRelPath) {
 // ---------------- Discover content ----------------
 
 const mdFiles = walk(CONTENT_DIR, [".md"]).filter((file) => {
-  const topFolder = path.relative(CONTENT_DIR, file).split(path.sep)[0];
-  return !EXCLUDED_TOP_LEVEL.has(topFolder);
+  const relPath = path.relative(CONTENT_DIR, file);
+  const topFolder = relPath.split(path.sep)[0];
+  if (EXCLUDED_TOP_LEVEL.has(topFolder)) return false;
+  if (EXCLUDED_FILES.has(relPath.split(path.sep).join("/"))) return false;
+  return true;
 });
 const graphicsFiles = fs.existsSync(GRAPHICS_DIR)
   ? fs
@@ -1162,17 +1172,32 @@ for (const f of graphicsFiles) {
 // build every content page
 for (const page of pages) {
   if (page.topFolder === "Journals") continue; // handled specially below
-  const bodyHtml = renderMarkdown(page.body, page.slug, page.frontmatter);
+  const fm = page.frontmatter;
+  let pageBody = page.body;
   let headerImg = "";
-  const mapPath = page.frontmatter.path;
+  const mapPath = fm.path;
   if (mapPath) {
     const assetSlug = resolveAssetTarget(mapPath);
     if (assetSlug) {
       headerImg = `<img class="page-hero-image" src="${relAssetHref(page.slug, assetSlug)}" alt="${escapeHtml(page.title)}">`;
     }
+  } else if (fm["iron-vault-kind"] === "character") {
+    // Character pages: the first image embed in the body (typically a
+    // portrait/headshot) becomes the top hero image, ahead of the stat
+    // sheet, instead of rendering inline wherever it falls in the note.
+    // Any later image (e.g. a full-body portrait) stays in the body and
+    // ends up rendered after the stat sheet, at the bottom of the page.
+    const portraitMatch = pageBody.match(/!\[\[([^\]|#]+\.(?:png|jpe?g|gif|webp|bmp|svg))(?:[^\]]*)\]\]/i);
+    if (portraitMatch) {
+      const assetSlug = resolveAssetTarget(portraitMatch[1]);
+      if (assetSlug) {
+        headerImg = `<img class="page-hero-image" src="${relAssetHref(page.slug, assetSlug)}" alt="${escapeHtml(page.title)}">`;
+        pageBody = pageBody.slice(0, portraitMatch.index) + pageBody.slice(portraitMatch.index + portraitMatch[0].length);
+      }
+    }
   }
+  const bodyHtml = renderMarkdown(pageBody, page.slug, fm);
   let trackWidget = "";
-  const fm = page.frontmatter;
   if (fm["iron-vault-kind"] === "progress" && typeof fm.progress === "number") {
     const boxes = trackBoxesHtml(fm.progress, fm.progress, 40);
     const metaBits = [fm["track-type"], fm.rank].filter(Boolean).map(escapeHtml).join(" &middot; ");
