@@ -149,8 +149,17 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
 
 .page-hero-image { width: 100%; max-width: 100%; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 1.5rem; }
 
-/* Character portrait headshot -- quarter width of the normal hero image, centered */
-.char-portrait-image { width: 25%; max-width: 220px; display: block; margin: 0 auto 1.5rem; border-radius: 8px; border: 1px solid var(--border); }
+/* Character portrait headshot + description/callsign/pronouns side by side;
+   stacks (image on top) once the viewport gets too narrow for a row. */
+.char-portrait-row { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.5rem; }
+.char-portrait-image { width: 25%; max-width: 220px; flex-shrink: 0; display: block; margin: 0; border-radius: 8px; border: 1px solid var(--border); }
+.char-portrait-info { flex: 1; min-width: 0; }
+.char-portrait-info .char-description { margin: 0 0 0.4rem; }
+.char-portrait-info .page-meta { margin: 0; padding-left: 0; }
+@media (max-width: 640px) {
+  .char-portrait-row { flex-direction: column; align-items: flex-start; }
+  .char-portrait-image { width: 40%; max-width: 160px; }
+}
 
 /* Site-only HUD frame for map images -- thick plated border, image sits inset in a "window" */
 .map-frame {

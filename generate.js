@@ -1071,6 +1071,18 @@ function assetCardHtml(asset) {
   </div>`;
 }
 
+function characterInfoHtml(fm) {
+  const infoBits = [
+    fm.callsign ? `Callsign: ${escapeHtml(fm.callsign)}` : "",
+    fm.pronouns ? `Pronouns: ${escapeHtml(fm.pronouns)}` : "",
+  ]
+    .filter(Boolean)
+    .join(" &middot; ");
+
+  return `${fm.description ? `<p class="char-description">${escapeHtml(fm.description)}</p>` : ""}
+    ${infoBits ? `<p class="page-meta">${infoBits}</p>` : ""}`;
+}
+
 function characterSheetHtml(fm) {
   const stats = ["edge", "heart", "iron", "shadow", "wits"]
     .map((s) => `<div class="char-stat"><span class="char-stat-label">${s}</span><span class="char-stat-value">${fm[s] ?? 0}</span></div>`)
@@ -1108,16 +1120,7 @@ function characterSheetHtml(fm) {
 
   const assets = Array.isArray(fm.assets) ? fm.assets.map(assetCardHtml).join("") : "";
 
-  const infoBits = [
-    fm.callsign ? `Callsign: ${escapeHtml(fm.callsign)}` : "",
-    fm.pronouns ? `Pronouns: ${escapeHtml(fm.pronouns)}` : "",
-  ]
-    .filter(Boolean)
-    .join(" &middot; ");
-
   return `<div class="char-sheet">
-    ${fm.description ? `<p class="char-description">${escapeHtml(fm.description)}</p>` : ""}
-    ${infoBits ? `<p class="page-meta">${infoBits}</p>` : ""}
     <div class="char-section">
       <h3 class="char-section-title">Stats</h3>
       <div class="char-stats-row">${stats}</div>
@@ -1187,13 +1190,21 @@ for (const page of pages) {
     // sheet, instead of rendering inline wherever it falls in the note.
     // Any later image (e.g. a full-body portrait) stays in the body and
     // ends up rendered after the stat sheet, at the bottom of the page.
+    // The portrait sits alongside the description/callsign/pronouns on
+    // desktop (row layout), stacking below it on narrow/mobile screens
+    // (the .char-portrait-row CSS handles the breakpoint).
     const portraitMatch = pageBody.match(/!\[\[([^\]|#]+\.(?:png|jpe?g|gif|webp|bmp|svg))(?:[^\]]*)\]\]/i);
+    let portraitImg = "";
     if (portraitMatch) {
       const assetSlug = resolveAssetTarget(portraitMatch[1]);
       if (assetSlug) {
-        headerImg = `<img class="char-portrait-image" src="${relAssetHref(page.slug, assetSlug)}" alt="${escapeHtml(page.title)}">`;
+        portraitImg = `<img class="char-portrait-image" src="${relAssetHref(page.slug, assetSlug)}" alt="${escapeHtml(page.title)}">`;
         pageBody = pageBody.slice(0, portraitMatch.index) + pageBody.slice(portraitMatch.index + portraitMatch[0].length);
       }
+    }
+    const infoHtml = characterInfoHtml(fm);
+    if (portraitImg || infoHtml.trim()) {
+      headerImg = `<div class="char-portrait-row">${portraitImg}<div class="char-portrait-info">${infoHtml}</div></div>`;
     }
   }
   const bodyHtml = renderMarkdown(pageBody, page.slug, fm);
@@ -1392,8 +1403,17 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
 
 .page-hero-image { width: 100%; max-width: 100%; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 1.5rem; }
 
-/* Character portrait headshot -- quarter width of the normal hero image, centered */
-.char-portrait-image { width: 25%; max-width: 220px; display: block; margin: 0 auto 1.5rem; border-radius: 8px; border: 1px solid var(--border); }
+/* Character portrait headshot + description/callsign/pronouns side by side;
+   stacks (image on top) once the viewport gets too narrow for a row. */
+.char-portrait-row { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.5rem; }
+.char-portrait-image { width: 25%; max-width: 220px; flex-shrink: 0; display: block; margin: 0; border-radius: 8px; border: 1px solid var(--border); }
+.char-portrait-info { flex: 1; min-width: 0; }
+.char-portrait-info .char-description { margin: 0 0 0.4rem; }
+.char-portrait-info .page-meta { margin: 0; padding-left: 0; }
+@media (max-width: 640px) {
+  .char-portrait-row { flex-direction: column; align-items: flex-start; }
+  .char-portrait-image { width: 40%; max-width: 160px; }
+}
 
 /* Site-only HUD frame for map images -- thick plated border, image sits inset in a "window" */
 .map-frame {
