@@ -146,6 +146,11 @@ for (const file of mdFiles) {
   const slug = slugPath(relNoExt);
   const raw = fs.readFileSync(file, "utf-8");
   const parsed = matter(raw);
+  // draft: true in frontmatter keeps a note in the vault but out of the
+  // published site entirely -- not built, not in nav, not in the homepage
+  // feed, and invisible to wikilink resolution (so any note that links to it
+  // just falls back to plain unresolved text instead of a dead link).
+  if (parsed.data && parsed.data.draft) continue;
   const basenameKey = slugify(path.basename(relNoExt));
   const page = {
     file,
