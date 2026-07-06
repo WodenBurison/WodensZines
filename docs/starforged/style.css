@@ -149,6 +149,9 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
 
 .page-hero-image { width: 100%; max-width: 100%; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 1.5rem; }
 
+/* Character portrait headshot -- quarter width of the normal hero image, centered */
+.char-portrait-image { width: 25%; max-width: 220px; display: block; margin: 0 auto 1.5rem; border-radius: 8px; border: 1px solid var(--border); }
+
 /* Site-only HUD frame for map images -- thick plated border, image sits inset in a "window" */
 .map-frame {
   position: relative;

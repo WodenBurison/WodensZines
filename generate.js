@@ -1191,7 +1191,7 @@ for (const page of pages) {
     if (portraitMatch) {
       const assetSlug = resolveAssetTarget(portraitMatch[1]);
       if (assetSlug) {
-        headerImg = `<img class="page-hero-image" src="${relAssetHref(page.slug, assetSlug)}" alt="${escapeHtml(page.title)}">`;
+        headerImg = `<img class="char-portrait-image" src="${relAssetHref(page.slug, assetSlug)}" alt="${escapeHtml(page.title)}">`;
         pageBody = pageBody.slice(0, portraitMatch.index) + pageBody.slice(portraitMatch.index + portraitMatch[0].length);
       }
     }
@@ -1391,6 +1391,9 @@ a:hover { color: var(--accent-green); text-decoration: underline; }
 .page-meta { color: var(--text-faint); font-size: 0.9rem; padding-left: 0.7rem; }
 
 .page-hero-image { width: 100%; max-width: 100%; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 1.5rem; }
+
+/* Character portrait headshot -- quarter width of the normal hero image, centered */
+.char-portrait-image { width: 25%; max-width: 220px; display: block; margin: 0 auto 1.5rem; border-radius: 8px; border: 1px solid var(--border); }
 
 /* Site-only HUD frame for map images -- thick plated border, image sits inset in a "window" */
 .map-frame {
