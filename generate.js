@@ -38,6 +38,9 @@ const VERSES = [
     status: "In progress",
     summary:
       "A solo Ironsworn: Starforged campaign, logged session by session, with wiki pages for the crew, sectors, and factions of the Forge.",
+    // Custom-designed cover art (full bleed, text baked in) for the hub's
+    // magazine-rack card. Path is relative to the hub's own assets/ folder.
+    coverImage: "sfzine1.webp",
     contentDir: path.join(VAULT_ROOT, "Woden_is_Starforged"),
     graphicsDir: path.join(VAULT_ROOT, "Graphics"),
     // Top-level vault folders that are Obsidian-only reference material (roll
@@ -1743,10 +1746,15 @@ if (unresolvedLinks.size > 0) {
 }
 
 // ---------------- Hub homepage (verse index) ----------------
-// The hub is the site root: a "pen and paper journal" landing page that lists
-// every verse as a pinned index card. It's deliberately separate from any
-// verse's own theme -- each verse can look however fits its game, but the
-// front door of the site always looks like the same journal.
+// The hub is the site root: a "magazine rack" landing page where every verse
+// is a magazine cover leaning in a wire rack, under a hand-made shop sign.
+// It's deliberately separate from any verse's own theme -- each verse can
+// look however fits its game, but the front door of the site is always this
+// rack. Verses are chunked into shelves of MAGS_PER_SHELF so new verses
+// added later just grow the rack downward instead of needing template work.
+
+const MAG_COLORS = ["blue", "red", "green", "gold", "purple", "teal", "brown", "navy"];
+const MAGS_PER_SHELF = 4;
 
 function escapeHtmlHub(str) {
   return String(str ?? "").replace(
@@ -1755,27 +1763,67 @@ function escapeHtmlHub(str) {
   );
 }
 
-function verseCardHtml(V, stats) {
+function magCoverHtml(V, stats, colorClass) {
   const sessionLine =
     stats.sessionCount > 0
       ? `${stats.sessionCount} session${stats.sessionCount === 1 ? "" : "s"} logged`
       : "Just getting started";
-  return `<a class="verse-card" href="${encodeURIComponent(V.id)}/">
-  <span class="verse-card-pin" aria-hidden="true"></span>
-  <span class="verse-card-stamps">
-    <span class="verse-stamp">${escapeHtmlHub(V.system)}</span>
-    <span class="verse-stamp verse-stamp--status">${escapeHtmlHub(V.status)}</span>
-  </span>
-  <h2 class="verse-card-title">${escapeHtmlHub(V.title)}</h2>
-  <p class="verse-card-genre">${escapeHtmlHub(V.genre)}</p>
-  <p class="verse-card-summary">${escapeHtmlHub(V.summary)}</p>
-  <p class="verse-card-meta">${escapeHtmlHub(sessionLine)}</p>
-  <span class="verse-card-cta">Read the log &rarr;</span>
+
+  // Verses with their own designed cover image (full bleed, text baked in)
+  // skip the CSS-drawn masthead/art/coverline/summary entirely -- the image
+  // already is the cover. Dropped the dynamic session-count footer too,
+  // since it doesn't know what's in the bottom corner of a custom design;
+  // easy to add back as a small overlay badge if wanted.
+  if (V.coverImage) {
+    return `<a class="mag" href="${encodeURIComponent(V.id)}/" aria-label="${escapeHtmlHub(V.title)}">
+  <div class="mag-cover mag-cover--image" style="background-image: url('assets/${encodeURIComponent(V.coverImage)}')"></div>
+</a>`;
+  }
+
+  return `<a class="mag mag--${colorClass}" href="${encodeURIComponent(V.id)}/">
+  <div class="mag-cover">
+    <div class="mag-masthead">${escapeHtmlHub(V.title)}</div>
+    <div class="mag-art" aria-hidden="true">
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="16,3 28,10 28,22 16,29 4,22 4,10" fill="none" stroke="#fff" stroke-width="2"/>
+        <line x1="16" y1="3" x2="16" y2="29" stroke="#fff" stroke-width="1.2"/>
+        <line x1="4" y1="10" x2="28" y2="22" stroke="#fff" stroke-width="1.2"/>
+        <line x1="28" y1="10" x2="4" y2="22" stroke="#fff" stroke-width="1.2"/>
+      </svg>
+    </div>
+    <div class="mag-coverline">${escapeHtmlHub(V.genre)} &middot; ${escapeHtmlHub(V.status)}</div>
+    <p class="mag-summary">${escapeHtmlHub(V.summary)}</p>
+    <div class="mag-footer">
+      <span class="mag-barcode" aria-hidden="true"></span>
+      <span class="mag-price">${escapeHtmlHub(sessionLine)}</span>
+    </div>
+  </div>
 </a>`;
 }
 
+function ghostMagHtml() {
+  return `<div class="mag mag--ghost" aria-hidden="true">
+  <div class="mag-cover">
+    <div class="mag-masthead">&hellip;</div>
+    <p class="mag-summary">More verses get racked up here as new games start.</p>
+  </div>
+</div>`;
+}
+
 function buildHub(verseResults) {
-  const cardsHtml = verseResults.map(({ verse, stats }) => verseCardHtml(verse, stats)).join("\n");
+  const items = verseResults.map(({ verse, stats }, i) => magCoverHtml(verse, stats, MAG_COLORS[i % MAG_COLORS.length]));
+  items.push(ghostMagHtml());
+  const shelves = [];
+  for (let i = 0; i < items.length; i += MAGS_PER_SHELF) {
+    const rowHtml = items.slice(i, i + MAGS_PER_SHELF).join("\n");
+    shelves.push(`<div class="shelf">
+      <div class="shelf-mags">${rowHtml}</div>
+      <div class="shelf-wire" aria-hidden="true">
+        <div class="shelf-tines"></div>
+        <div class="shelf-bar"></div>
+      </div>
+    </div>`);
+  }
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1785,28 +1833,24 @@ function buildHub(verseResults) {
 <meta name="description" content="${escapeHtmlHub(HUB_TAGLINE)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="hub.css">
 </head>
 <body>
-<div class="hub-page">
-  <header class="hub-header">
-    <h1 class="hub-title">${escapeHtmlHub(HUB_TITLE)}</h1>
-    <p class="hub-tagline">${escapeHtmlHub(HUB_TAGLINE)}</p>
-  </header>
-  <main class="verse-board">
-    ${cardsHtml}
-    <div class="verse-card verse-card--ghost" aria-hidden="true">
-      <span class="verse-card-pin verse-card-pin--ghost"></span>
-      <h2 class="verse-card-title">&hellip;</h2>
-      <p class="verse-card-summary">More verses get pinned up here as new games start.</p>
-    </div>
-  </main>
+<div class="scene">
+  <div class="sign-wrap">
+    <div class="tape tape-left"></div>
+    <div class="tape tape-right"></div>
+    <div class="sign">Woden's Adventure Zines</div>
+  </div>
+  <div class="rack">
+    ${shelves.join("\n")}
+  </div>
 </div>
 </body>
 </html>`;
   fs.writeFileSync(path.join(DOCS_DIR, "index.html"), html);
-  fs.writeFileSync(path.join(DOCS_DIR, "hub.css"), fs.readFileSync(path.join(__dirname, "themes", "journal.css"), "utf-8"));
+  fs.writeFileSync(path.join(DOCS_DIR, "hub.css"), fs.readFileSync(path.join(__dirname, "themes", "magazine-rack.css"), "utf-8"));
 }
 
 // ---------------- Orchestration ----------------
@@ -1816,5 +1860,12 @@ fs.writeFileSync(path.join(DOCS_DIR, ".nojekyll"), "");
 
 const verseResults = VERSES.map((verse) => ({ verse, stats: buildVerse(verse) }));
 buildHub(verseResults);
+
+// Copy the hub's own asset folder (custom zine cover art etc.) into docs/
+// so it's part of the published site, not just the source repo.
+const HUB_ASSETS_SRC = path.join(__dirname, "assets");
+if (fs.existsSync(HUB_ASSETS_SRC)) {
+  fs.cpSync(HUB_ASSETS_SRC, path.join(DOCS_DIR, "assets"), { recursive: true });
+}
 
 console.log(`Built hub + ${VERSES.length} verse(s) to ${DOCS_DIR}`);
