@@ -1835,6 +1835,7 @@ function buildHub(verseResults) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="hub.css">
+<link rel="stylesheet" href="https://zinecityring.neocities.org/zinering.css">
 </head>
 <body>
 <div class="scene">
@@ -1846,6 +1847,10 @@ function buildHub(verseResults) {
   <div class="rack">
     ${shelves.join("\n")}
   </div>
+</div>
+<div id="zine-city">
+  <script src="https://zinecityring.neocities.org/zinecity-variables.js"></script>
+  <script src="https://zinecityring.neocities.org/widgets/zinecityanimated.js"></script>
 </div>
 </body>
 </html>`;
