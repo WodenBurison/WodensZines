@@ -1,4 +1,4 @@
-// Static site generator for Woden's Adventures -- a multi-verse zine hub.
+// Static site generator for Woden's Zines -- a multi-verse zine hub.
 //
 // Reads markdown content directly from the Obsidian vault, resolves wikilinks,
 // and emits a plain static HTML/CSS site into ./docs for GitHub Pages (no
@@ -25,16 +25,14 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // ---------------- Site-wide config ----------------
 const VAULT_ROOT = path.resolve(__dirname, "../Woden_Starforged_Vault");
 const DOCS_DIR = path.join(__dirname, "docs");
-const HUB_TITLE = "Woden's Adventures";
+const HUB_TITLE = "Woden's Zines";
 const HUB_TAGLINE = "A shelf of tabletop journals, one verse per game";
 const IMAGE_EXT = new Set([".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".svg"]);
 
-// Custom domain for the published site. Leave "" until wodenszines.online is
-// bought and its DNS actually points at GitHub Pages -- when this is set, a
-// docs/CNAME file gets (re)written on every build, which is what tells
-// GitHub Pages which domain the site should answer to. Setting it before DNS
-// is ready is harmless (GitHub just won't verify the domain yet), but leave
-// it blank until you're ready so a stale/wrong CNAME never ships in a build.
+// Custom domain for the published site. Set to wodenzines.online (no "s"
+// before "zines" -- easy slip back to the originally-planned spelling, don't)
+// now that DNS points at GitHub Pages. A docs/CNAME file gets (re)written on
+// every build, which is what tells GitHub Pages which domain to answer to.
 const SITE_DOMAIN = "wodenzines.online";
 
 // ---------------- System renderers ----------------
@@ -84,7 +82,7 @@ const VERSES = [
       "A solo Ironsworn: Starforged campaign, logged session by session, with wiki pages for the crew, sectors, and factions of the Forge.",
     // Custom-designed cover art (full bleed, text baked in) for the hub's
     // magazine-rack card. Path is relative to the hub's own assets/ folder.
-    coverImage: "sfzine1.webp",
+    coverImage: "cover-starforged.webp",
     contentDir: path.join(VAULT_ROOT, "Woden_is_Starforged"),
     graphicsDir: path.join(VAULT_ROOT, "Graphics"),
     // Top-level vault folders that are Obsidian-only reference material (roll
@@ -1405,6 +1403,25 @@ function buildVerse(V) {
 const MAG_COLORS = ["blue", "red", "green", "gold", "purple", "teal", "brown", "navy"];
 const MAGS_PER_SHELF = 4;
 
+// Covers that appear on the rack but aren't a generated verse -- either a
+// link straight out to another one of Woden's sites, or a placeholder for a
+// page that's planned but not built yet. Both just need a cover image
+// dropped in assets/; neither touches the verse-building machinery. Order
+// here is the order they appear on the rack, before the verses.
+const RACK_ITEMS = [
+  {
+    kind: "external-link",
+    title: "Woden Burison",
+    coverImage: "cover-neocities.webp",
+    href: "https://wodenburison.neocities.org/",
+  },
+  {
+    kind: "coming-soon",
+    title: "Solo TTRPG Corner",
+    coverImage: "cover-solo-ttrpg.webp",
+  },
+];
+
 function escapeHtmlHub(str) {
   return String(str ?? "").replace(
     /[&<>"']/g,
@@ -1459,8 +1476,30 @@ function ghostMagHtml() {
 </div>`;
 }
 
+// Opens in a new tab since it's leaving the zine site entirely -- same
+// convention used for external links across the other two main sites.
+function externalLinkMagHtml(item) {
+  return `<a class="mag" href="${escapeHtmlHub(item.href)}" target="_blank" rel="noopener" aria-label="${escapeHtmlHub(item.title)}">
+  <div class="mag-cover mag-cover--image" style="background-image: url('assets/${encodeURIComponent(item.coverImage)}')"></div>
+</a>`;
+}
+
+// Real cover art, but not a link yet -- the page behind it doesn't exist.
+// Still shows on the rack (that's the point: it's a preview of what's
+// coming) with a badge making clear it's not clickable yet.
+function comingSoonMagHtml(item) {
+  return `<div class="mag" aria-label="${escapeHtmlHub(item.title)} -- coming soon">
+  <div class="mag-cover mag-cover--image" style="background-image: url('assets/${encodeURIComponent(item.coverImage)}')">
+    <span class="mag-coming-soon-badge">Coming Soon</span>
+  </div>
+</div>`;
+}
+
 function buildHub(verseResults) {
-  const items = verseResults.map(({ verse, stats }, i) => magCoverHtml(verse, stats, MAG_COLORS[i % MAG_COLORS.length]));
+  const items = [
+    ...RACK_ITEMS.map((item) => (item.kind === "external-link" ? externalLinkMagHtml(item) : comingSoonMagHtml(item))),
+    ...verseResults.map(({ verse, stats }, i) => magCoverHtml(verse, stats, MAG_COLORS[i % MAG_COLORS.length])),
+  ];
   items.push(ghostMagHtml());
   const shelves = [];
   for (let i = 0; i < items.length; i += MAGS_PER_SHELF) {
@@ -1485,13 +1524,82 @@ function buildHub(verseResults) {
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="hub.css">
 <link rel="stylesheet" href="https://zinecityring.neocities.org/zinering.css">
+<style>
+/* Small "hanging tag" signs under the main sign -- one linking to the links
+   site, one to Ko-fi -- plus the coming-soon badge for a rack cover with no
+   page behind it yet. All absolutely-positioned overlays, so none of them
+   add height to the normal document flow, which is what keeps them from
+   disturbing hub.css's pixel-phase-locked pegboard/rack math (see the
+   comment on html,body there). Kept here rather than in hub.css for that
+   same reason. (There used to also be a fixed top cross-link bar with
+   Neocities/Links/Ko-fi -- redundant now that Neocities has its own rack
+   cover and Links has this mini-sign, and it was the whole reason for a
+   mobile-only .scene padding hack that no longer needs to exist.) */
+.mini-signs {
+  position: absolute;
+  left: 50%;
+  bottom: -14px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  gap: 0.6rem;
+  z-index: 3;
+}
+.mini-sign {
+  display: inline-block;
+  white-space: nowrap;
+  background: var(--cardboard);
+  background-image: repeating-linear-gradient(
+    100deg,
+    rgba(0, 0, 0, 0.03) 0px,
+    rgba(0, 0, 0, 0.03) 2px,
+    transparent 2px,
+    transparent 7px
+  );
+  color: var(--ink);
+  font-family: var(--font-sign);
+  font-size: 1.05rem;
+  line-height: 1.2;
+  padding: 0.4rem 1.1rem 0.5rem;
+  border-radius: 2px;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.35);
+}
+.mini-sign--links { transform: rotate(1.5deg); }
+.mini-sign--kofi { transform: rotate(-2deg); font-size: 0.92rem; }
+.mini-sign:hover { filter: brightness(1.06); }
+@media (max-width: 720px) {
+  .mini-signs { bottom: -12px; gap: 0.4rem; }
+  .mini-sign { font-size: 0.8rem; padding: 0.3rem 0.8rem 0.4rem; }
+  .mini-sign--kofi { font-size: 0.72rem; }
+}
+.mag-cover { position: relative; }
+.mag-coming-soon-badge {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.72);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+  padding: 3px 4px;
+  border-radius: 2px;
+}
+</style>
 </head>
 <body>
 <div class="scene">
   <div class="sign-wrap">
     <div class="tape tape-left"></div>
     <div class="tape tape-right"></div>
-    <div class="sign">Woden's Adventure Zines</div>
+    <div class="sign">Woden's Zines</div>
+    <div class="mini-signs">
+      <a class="mini-sign mini-sign--links" href="https://wodenburison.space/" target="_blank" rel="noopener">Woden's Links</a>
+      <a class="mini-sign mini-sign--kofi" href="https://ko-fi.com/wodenburison" target="_blank" rel="noopener">Ko-fi</a>
+    </div>
   </div>
   <div class="rack">
     ${shelves.join("\n")}

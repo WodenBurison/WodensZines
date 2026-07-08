@@ -1,6 +1,6 @@
-# Woden's Adventures
+# Woden's Zines
 
-Static site generator for Woden's tabletop playthroughs, published via GitHub Pages. The site is a hub of "verses" — one verse per game/campaign, each with its own content and theme — with a shared journal-themed homepage tying them together.
+Static site generator for Woden's tabletop playthroughs, published via GitHub Pages. The site is a hub of "verses" — one verse per game/campaign, each with its own content and theme — with a shared "magazine rack" homepage (`themes/magazine-rack.css`) tying them together.
 
 ## How it works
 

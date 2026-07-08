@@ -327,12 +327,87 @@ a { color: inherit; text-decoration: none; }
 /* ---------------- Mobile ---------------- */
 
 @media (max-width: 720px) {
-  .mag { width: 160px; height: 220px; }
-  .shelf-mags .mag:not(:first-child) { margin-left: -44px; }
+  /* Below this width each zine gets its own row and its own little wire
+     strip underneath, instead of the desktop leaning-stack-of-magazines
+     look. This deliberately gives up the pegboard-hole/wire phase-lock
+     (see the comment on html,body up top) -- a shared, per-shelf wire made
+     sense for a fixed handful of shelves, but not for an per-item wire on a
+     rack that grows every time a new zine gets added. Not worth chasing;
+     the misalignment is purely cosmetic. */
+  .shelf-mags {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2.6rem;
+  }
+  .shelf-wire { display: none; }
+  .mag {
+    /* z-index: 0 (with the existing position: relative from the base .mag
+       rule) opens a fresh local stacking context, so ::after's z-index: 2
+       below only outranks THIS mag's own cover, not later rows' covers.
+       transform: none flattens the always-on desktop "leaning stack" tilt
+       (rotateX), which doesn't make sense once each zine is alone in its
+       own full-width row. */
+    z-index: 0;
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    aspect-ratio: 230 / 315;
+    margin-left: 0 !important;
+    margin-bottom: 22px;
+    transform: none;
+  }
+  /* On desktop the wire is a sibling of .mag (.shelf-wire), so lifting a mag
+     on hover clears it without disturbing the wire. Here the wire is a
+     pseudo-element OF .mag, which means it would lift right along with the
+     mag if .mag itself got the hover transform -- "the rack following the
+     zine." So the lift moves to .mag-cover instead, leaving .mag (and its
+     ::after wire) planted. */
+  .mag:hover,
+  .mag:focus-visible {
+    transform: none;
+    z-index: 0 !important;
+  }
+  .mag-cover {
+    transition: transform 0.2s ease;
+  }
+  .mag:hover .mag-cover,
+  .mag:focus-visible .mag-cover {
+    /* -29.3px matches ::after's 29.3px overlap into the cover below (bottom:
+       -1.7px, height: 31px -- see that rule), so hovering still clears the
+       wire instead of leaving a sliver still covered. */
+    transform: translateY(-29.3px) scale(1.03);
+  }
+  .mag::after {
+    content: "";
+    position: absolute;
+    /* Matches desktop's .shelf-wire, which paints IN FRONT of a resting mag
+       (z-index: 10 vs. the mag's 1-4) so the wire mesh appears to sit over
+       the bottom of the cover, like the mag is racked behind it. z-index: 2
+       here (above .mag-cover's implicit auto/0) gets the same look; a
+       first pass put this behind the cover instead, which read as the rack
+       floating separately below the zine rather than holding it. */
+    z-index: 2;
+    left: -2px;
+    right: -2px;
+    /* bottom: -17px left a 17px gap between the zine's bottom edge and the
+       rack's bottom edge. Closing 90% of that per request: 17 * 0.1 = 1.7px
+       left. */
+    bottom: -1.7px;
+    height: 31px;
+    background-image:
+      linear-gradient(180deg, var(--wire-hi), var(--wire-mid) 45%, var(--wire-lo)),
+      repeating-linear-gradient(90deg, var(--wire-mid) 0px, var(--wire-hi) 1.2px, var(--wire-lo) 2.5px, transparent 2.5px, transparent 23px);
+    background-size: 100% 8px, auto 100%;
+    background-position: top center, center;
+    background-repeat: no-repeat, repeat;
+    border-radius: 4px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.35);
+  }
+  .mag--ghost::after { display: none; }
   .mag-masthead { font-size: 0.92rem; }
   .mag-art { height: 46px; }
   .mag-art svg { width: 39px; height: 39px; }
   .mag-coverline { font-size: 0.56rem; }
   .mag-summary { font-size: 0.6rem; }
-  .rack { gap: 2.4rem; padding: 0.5rem 1.2rem 1rem; }
+  .rack { gap: 1.4rem; padding: 0.5rem 1.2rem 1rem; }
 }
